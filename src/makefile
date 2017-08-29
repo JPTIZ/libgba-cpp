@@ -1,5 +1,5 @@
 all:
 	@echo Compiling Drivers...
-	makefile -C drivers -f makefile
+	make -C drivers -f makefile
 	@echo Compiling engine...
-	makefile -C engine -f makefile
+	make -C engine -f makefile

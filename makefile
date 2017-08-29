@@ -1,5 +1,5 @@
 all:
 	@echo Compiling libgba...
-	makefile -C src -f makefile
+	make -C src -f makefile
 	@echo Compiling tests...
-	makefile -C tests -f makefile
+	make -C tests -f makefile

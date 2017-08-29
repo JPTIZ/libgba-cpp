@@ -1,25 +1,45 @@
+# Config
 OUTPUT  := $(shell basename $(CURDIR))
-LIBGBA  := ../../src/drivers/
+
 CPPSTD  := c++17
-OPTLV   := 0
+OPTIMLV := 0
+INCLUDE :=
+
+# Libraries
+LIBGBA  := ../../src/drivers/
+
+# Architecture
+ARCH    := -mthumb -mthumb-interwork -fomit-frame-pointer -ffast-math -fno-exceptions -fno-rtti
+
+# Toolchain
+BIN     := $(DEVKITARM)/bin
+SPECS   := $(DEVKITARM)/arm-none-eabi/lib/gba.specs
+
+CC      := $(BIN)/arm-none-eabi-gcc
+CXX     := $(BIN)/arm-none-eabi-g++
+OBJCOPY := $(BIN)/arm-none-eabi-objcopy
+GBAFIX  := $(BIN)/gbafix
 
 subdirs := $(wildcard */)
 sources := $(wildcard *.cpp) $(wildcard $(addsuffix *.cpp,$(subdirs)))
 objects := $(patsubst %.cpp,%.o,$(sources))
 
-BIN     := $(DEVKITARM)/bin
-ARCH    := -mthumb -mthumb-interwork -fomit-frame-pointer -ffast-math -fno-exceptions -fno-rtti
-
 all: $(OUTPUT)
 
 
+# Source Rules
+
 $(objects) : %.o : %.cpp
 	@echo Compiling $^
-	$(BIN)/arm-none-eabi-g++ -o $@ -c $^ $(ARCH) -std=$(CPPSTD) -O$(OPTLV) -I$(LIBGBA)
+	$(CXX) -o $@ -c $^ $(ARCH) -std=$(CPPSTD) -O$(OPTIMLV) -I$(LIBGBA) -specs=$(SPECS)
 
-$(OUTPUT): $(objects)
-	@echo Generating $@
-	$(BIN)/arm-none-eabi-ar rvs $@.a $^ -lgba -L $(LIBGBA)/libgba.a
+$(OUTPUT): $(objects) $(LIBGBA)/libgba.a
+	@echo Generating $@.elf
+	$(CXX) -o $@.elf $^ -I$(LIBGBA) -specs=$(SPECS)
+	@echo Generating $@.gba
+	$(OBJCOPY) -O binary $@.elf $@.gba
+	@echo Fixing ROM
+	$(GBAFIX) $@.gba
 
 clean:
-	rm -f *.o **/*.o $(OUTPUT).a
+	rm -f $(objects) $(OUTPUT).a

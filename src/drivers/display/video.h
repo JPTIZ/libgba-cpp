@@ -12,7 +12,7 @@ enum class PaletteMode {
     PALETTE_256,
 };
 
-union VRAM_Data{
+union VRAMData{
     uint16_t s;
     uint8_t c[2];
 };
@@ -48,7 +48,7 @@ struct Color {
     }
 };
 
-static auto& vram_data = *new (reinterpret_cast<void*>(0x0600'0000)) std::array<VRAM_Data, 0x18000 / 2>{};
+static auto& vram_data = *new (reinterpret_cast<void*>(0x0600'0000)) std::array<VRAMData, 0x18000 / 2>{};
 
 namespace mode3 {
     static constexpr auto screen_width = 240;
