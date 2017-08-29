@@ -29,8 +29,8 @@ struct Color {
     Color(int r, int g, int b):
         value{static_cast<uint16_t>(
                 ((r & 0x1f) << 0) |
-                ((g & 0x1f) << 0) |
-                ((b & 0x1f) << 0)
+                ((g & 0x1f) << 5) |
+                ((b & 0x1f) << 10)
               )
              }
     {}

@@ -40,36 +40,38 @@ enum class ScreenSize {
     ROTSCAL_1024X1024,
 };
 
-struct BGControl {
-    std::bitset<16> data = 0;
-
+class BGControl {
+public:
     void priority(BGPriority value) {
-        data = (data.to_ulong() & (~0b11u)) | utils::value_of(value);
+        data = (data & (~0b11u)) | utils::value_of(value);
     }
 
     void char_base_block(unsigned base) {
-        data = (data.to_ulong() & (~(0b11u << 2))) | (base & 0b11u);
+        data = (data & (~0b1100u)) | ((base & 0b11u) << 2);
     }
 
     void mosaic(bool flag) {
-        data[6] = flag;
+        data = (data & ~0b100000) | (flag << 6);
     }
 
     void palette_mode(PaletteMode mode) {
-        data[7] = utils::value_of(mode);
+        data = (data & ~0b1000000) | (utils::value_of(mode) << 7);
     }
 
     void screen_base_block(unsigned base) {
-        data = (data.to_ulong() & (~(0b11111u << 8))) | (base & 0b11111u);
+        data = (data & (~0x1fu << 8)) | ((base & 0x1f) << 8);
     }
 
     void overflow(Overflow value) {
-        data[13] = utils::value_of(value);
+        data = (data & ~(0b1u << 13)) | (utils::value_of(value) << 13);
     }
 
     void size(ScreenSize size_) {
-        data = (data.to_ulong() & (~(0b11u << 14))) | utils::value_of(size_);
+        data = (data & (~(0b11u << 14))) | utils::value_of(size_);
     }
+
+private:
+    std::uint16_t data;
 };
 
 static auto& bg_palette = *new (reinterpret_cast<void*>(0x0500'0000)) std::array<Color, 256>{};
@@ -83,7 +85,7 @@ static auto& bg_oy(Layer layer) {
     return *(reinterpret_cast<uint16_t*>(0x0400'0010) + 2 * utils::value_of(layer));
 }
 
-inline void layer_visible(Layer layer, bool visible) {
+inline void layer_visible(Layer layer, bool visible=true) {
     lcd_control[8 + utils::value_of(layer)] = visible;
 }
 

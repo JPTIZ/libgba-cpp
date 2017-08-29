@@ -11,7 +11,7 @@ struct Tile {
 };
 
 static auto& tiles = *new (reinterpret_cast<void*>(0x0600'0000)) std::array<Tile, 0x40>{};
-static auto& map = *new (end(tiles)) std::array<Tile, 0x1024>{};
+static auto& map = *new (end(tiles)) std::array<std::uint16_t, 1024>{};
 
 }
 

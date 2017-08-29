@@ -21,4 +21,4 @@ $(OUTPUT): $(objects)
 	$(BIN)/arm-none-eabi-ar rvs $@.a $^
 
 clean:
-	rm -f *.o **/*.o $(OUTPUT).a
+	rm -f $(objects) $(OUTPUT).a
