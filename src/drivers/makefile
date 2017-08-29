@@ -1,11 +1,9 @@
 OUTPUT  := libgba
 CPPSTD  := c++17
 OPTLV   := 0
-#SOURCES := $(wildcard *.cpp) $(wildcard display/&
-#OBJS    := $(SOURCES:.cpp=.o)
 
 subdirs := $(wildcard */)
-sources := $(wildcard $(addsuffix *.cpp,$(subdirs)))
+sources := $(wildcard *.cpp) $(wildcard $(addsuffix *.cpp,$(subdirs)))
 objects := $(patsubst %.cpp,%.o,$(sources))
 
 BIN     := $(DEVKITARM)/bin
@@ -17,7 +15,6 @@ all: $(OUTPUT)
 $(objects) : %.o : %.cpp
 	@echo Compiling $^
 	$(BIN)/arm-none-eabi-g++ -o $@ -c $^ $(ARCH) -std=$(CPPSTD) -O$(OPTLV)
-#%.o: %.cpp
 
 $(OUTPUT): $(objects)
 	@echo Generating $@

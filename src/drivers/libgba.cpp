@@ -1,0 +1,5 @@
+#include "display/control.h"
+#include "display/window.h"
+#include "display/bg.h"
+#include "display/obj.h"
+#include "display/video.h"
