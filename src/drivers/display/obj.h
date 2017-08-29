@@ -10,6 +10,8 @@ enum class ObjectMapping {
     MAP_2D,
 };
 
+static auto& obj_palette = *new (reinterpret_cast<void*>(0x0500'0200)) std::array<Color, 256>{};
+
 inline void object_mapping(ObjectMapping map) {
     lcd_control[6] = utils::value_of(map);
 }

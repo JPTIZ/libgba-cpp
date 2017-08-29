@@ -7,9 +7,45 @@
 
 namespace gba::display {
 
+enum class PaletteMode {
+    PALETTE_16,
+    PALETTE_256,
+};
+
 union VRAM_Data{
     uint16_t s;
     uint8_t c[2];
+};
+
+struct Color {
+    uint16_t value = 0u;
+
+    Color() = default;
+
+    Color(unsigned value):
+        value{static_cast<uint16_t>(value)}
+    {}
+
+    Color(int r, int g, int b):
+        value{static_cast<uint16_t>(
+                ((r & 0x1f) << 0) |
+                ((g & 0x1f) << 0) |
+                ((b & 0x1f) << 0)
+              )
+             }
+    {}
+
+    auto r() const {
+        return value & 0x1f;
+    }
+
+    auto g() const {
+        return (value >> 5) & 0x1f;
+    }
+
+    auto b() const {
+        return (value >> 10) & 0x1f;
+    }
 };
 
 static auto& vram_data = *new (reinterpret_cast<void*>(0x0600'0000)) std::array<VRAM_Data, 0x18000 / 2>{};

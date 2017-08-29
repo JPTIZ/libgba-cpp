@@ -24,6 +24,10 @@ enum class Page {
 static auto& lcd_control = *new (reinterpret_cast<void*>(0x0400'0000)) std::bitset<16>{};
 static volatile auto& vcount = *reinterpret_cast<std::uint16_t*>(0x0400'0006);
 
+inline void change_mode(Mode mode) {
+    lcd_control = (lcd_control.to_ulong() & ~0b111u) | utils::value_of(mode);
+}
+
 inline void select_page(Page page) {
     lcd_control[4] = utils::value_of(page);
 }
