@@ -1,5 +1,5 @@
-#ifndef GBA_DRIVERS_DISPLAY_CONTROL_H
-#define GBA_DRIVERS_DISPLAY_CONTROL_H
+#ifndef GBA_DRIVERS_DISPLAY_BG_H
+#define GBA_DRIVERS_DISPLAY_BG_H
 
 #include "control.h"
 

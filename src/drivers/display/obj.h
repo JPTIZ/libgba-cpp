@@ -1,5 +1,5 @@
-#ifndef GBA_DRIVERS_DISPLAY_CONTROL_H
-#define GBA_DRIVERS_DISPLAY_CONTROL_H
+#ifndef GBA_DRIVERS_DISPLAY_OBJ_H
+#define GBA_DRIVERS_DISPLAY_OBJ_H
 
 #include "control.h"
 
@@ -11,7 +11,7 @@ enum class ObjectMapping {
 };
 
 inline void object_mapping(ObjectMapping map) {
-    lcd_control[6] = utils::value_of(page);
+    lcd_control[6] = utils::value_of(map);
 }
 
 }

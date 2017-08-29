@@ -1,36 +1,43 @@
-#ifndef GBA_DRIVERS_DISPLAY_CONTROL_H
-#define GBA_DRIVERS_DISPLAY_CONTROL_H
+#ifndef GBA_DRIVERS_DISPLAY_VIDEO_H
+#define GBA_DRIVERS_DISPLAY_VIDEO_H
+
+#include <array>
 
 #include "control.h"
 
 namespace gba::display {
 
-static auto& vram_data = *new (reinterpret_cast<void*>(0x0600'0000)) std::array<std::uint16_t, 0x17fff>{};
+union VRAM_Data{
+    uint16_t s;
+    uint8_t c[2];
+};
+
+static auto& vram_data = *new (reinterpret_cast<void*>(0x0600'0000)) std::array<VRAM_Data, 0x18000 / 2>{};
 
 namespace mode3 {
-    static const auto screen_width = 240;
-    static const auto screen_height = 160;
+    static constexpr auto screen_width = 240;
+    static constexpr auto screen_height = 160;
 
-    static auto vram(int x, int y) {
-        return vram_data[x + screen_width * y / 2];
+    auto& vram(int x, int y) {
+        return vram_data[x + screen_width * y].s;
     }
 }
 
 namespace mode4 {
-    static const auto screen_width = 240;
-    static const auto screen_height = 160;
+    static constexpr auto screen_width = 240;
+    static constexpr auto screen_height = 160;
 
-    static auto vram(int x, int y) {
-        return (*reinterpret_cast<std::array<std::uint8_t, vram_data.size()>*>(vram_data))[x + screen_width * y];
+    auto& vram(int x, int y) {
+        return vram_data[x + screen_width * y / 2].c[y & 1];
     }
 }
 
 namespace mode5 {
-    static const auto screen_width = 160;
-    static const auto screen_height = 128;
+    static constexpr auto screen_width = 160;
+    static constexpr auto screen_height = 128;
 
-    static auto vram(int x, int y) {
-        return vram_data[x + screen_width * y];
+    auto& vram(int x, int y) {
+        return vram_data[x + screen_width * y].s;
     }
 }
 
@@ -40,3 +47,5 @@ inline void vsync() {
 }
 
 }
+
+#endif
