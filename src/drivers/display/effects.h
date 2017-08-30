@@ -35,6 +35,7 @@ private:
 };
 
 enum class SpecialEffect {
+    NONE,
     ALPHA_BLEND,
     BRIGHTNESS_WHITE,
     BRIGHTNESS_BLACK,
