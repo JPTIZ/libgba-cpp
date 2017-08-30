@@ -2,6 +2,7 @@
 #define GBA_DRIVERS_DISPLAY_EFFECTS_H
 
 #include "control.h"
+#include "layers.h"
 
 namespace gba::display {
 
