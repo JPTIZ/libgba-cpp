@@ -10,7 +10,7 @@ namespace resources::maps {
 using gba::display::Color;
 using gba::display::map::Tile;
 
-std::array<Color, 7> sample_palette = {
+static std::array<Color, 7> sample_palette = {
     Color{0x1f, 0x00, 0x00},
     Color{0x00, 0x1f, 0x00},
     Color{0x00, 0x00, 0x17},
@@ -20,7 +20,7 @@ std::array<Color, 7> sample_palette = {
     Color{0x1f, 0x1f, 0x1f},
 };
 
-std::array<Tile, 8> sample_tiles = {
+static std::array<Tile, 11> sample_tiles = {
     Tile
     {0x33333333,
      0x33333333,
@@ -84,6 +84,33 @@ std::array<Tile, 8> sample_tiles = {
      0x12111121,
      0x12111121,
      0x12111121},
+
+    {0x00044000,
+     0x04444440,
+     0x00044444,
+     0x00000444,
+     0x00044444,
+     0x04444440,
+     0x00044000,
+     0x00000000},
+
+    {0x00000000,
+     0x00000000,
+     0x00077000,
+     0x00777700,
+     0x00777700,
+     0x00077000,
+     0x00000000,
+     0x00000000},
+
+    {0x07654321,
+     0x01234567,
+     0x02644321,
+     0x17660321,
+     0x21234567,
+     0x64637254,
+     0x51734642,
+     0x62346177},
 };
 
 }

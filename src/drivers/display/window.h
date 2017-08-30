@@ -11,7 +11,7 @@ enum class Window {
     OBJ,
 };
 
-inline void window_visible(Window window, bool visible) {
+inline void window_visible(Window window, bool visible=true) {
     lcd_control[13 + utils::value_of(window)] = visible;
 }
 
