@@ -34,7 +34,34 @@ private:
     uint16_t& mosaic_register = *reinterpret_cast<uint16_t*>(0x0400'004c);
 };
 
+class ColorEffectRegister {
+public:
+    void first_target(Layer layer, bool enabled=true) {
+        data[utils::value_of(layer)] = enabled;
+    }
+
+    void backdrop_first_target(bool enabled=true) {
+        data[5] = enabled;
+    }
+
+    void second_target(Layer layer, bool enabled=true) {
+        data[utils::value_of(layer) + 8] = enabled;
+    }
+
+    void backdrop_second_target(bool enabled=true) {
+        data[13] = enabled;
+    }
+
+    void select(SpecialEffect effect) {
+        data = (data.to_ulong() & ~(0b11u << 6)) | ((utils::value_of(effect) & 0b11u) << 6);
+    }
+
+private:
+    std::bitset<16> data;
+};
+
 static auto mosaic_level = MosaicRegister{};
+static auto& color_effects = *new (reinterpret_cast<void*>(0x0400'0050)) ColorEffectRegister{};
 
 }
 

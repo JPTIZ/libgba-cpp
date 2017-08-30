@@ -41,17 +41,18 @@ int main() {
     layer_visible(Layer::BG1);
 
     bg_controls[0].screen_base_block(1);
-    bg_controls[0].priority(BGPriority::LOWEST);
     bg_controls[1].screen_base_block(2);
+
+    bg_controls[0].priority(BGPriority::LOWEST);
     bg_controls[1].priority(BGPriority::LOW);
+    bg_controls[2].priority(BGPriority::HIGH);
+    bg_controls[3].priority(BGPriority::HIGHEST);
 
     bg_ox(Layer::BG1) = 16;
     bg_oy(Layer::BG1) = -16;
 
     bg_controls[0].mosaic(true);
     bg_controls[1].mosaic(true);
-    mosaic_level.bg_h(0);
-    mosaic_level.bg_v(0);
 
     copy_palette();
     copy_tiles();
@@ -62,6 +63,8 @@ int main() {
 
     while (true) {
         vsync();
+
+        bg_ox(Layer::BG1) = -i;
 
         mosaic_level.bg_h(i);
         mosaic_level.bg_v(i);
