@@ -1,7 +1,6 @@
 #include <display/layers.h>
 #include <display/control.h>
 #include <display/effects.h>
-#include <display/window.h>
 
 #include "sample_tiles.h"
 #include "sample_map.h"
@@ -52,6 +51,9 @@ int main() {
     bg_ox(Layer::BG1) = 16;
     bg_oy(Layer::BG1) = -16;
 
+    bg_controls[0].mosaic(true);
+    bg_controls[1].mosaic(true);
+
     copy_palette();
     copy_tiles();
 
@@ -64,12 +66,8 @@ int main() {
 
         bg_ox(Layer::BG1) = -i;
 
-        window0.left    = 0b0111;
-        window1.right   = 0b1001;
-        window0.top     = 0b1011;
-
-        window1.left    = 0b1110;
-        window1.bottom  = 0b1111;
+        mosaic_level.bg_h(i);
+        mosaic_level.bg_v(i);
 
         ++i;
     }

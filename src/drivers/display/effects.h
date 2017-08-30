@@ -34,6 +34,12 @@ private:
     uint16_t& mosaic_register = *reinterpret_cast<uint16_t*>(0x0400'004c);
 };
 
+enum class SpecialEffect {
+    ALPHA_BLEND,
+    BRIGHTNESS_WHITE,
+    BRIGHTNESS_BLACK,
+};
+
 class ColorEffectRegister {
 public:
     void first_target(Layer layer, bool enabled=true) {
@@ -60,8 +66,15 @@ private:
     std::bitset<16> data;
 };
 
+struct AlphaBlendStrength {
+    uint8_t first;
+    uint8_t second;
+};
+
 static auto mosaic_level = MosaicRegister{};
 static auto& color_effects = *new (reinterpret_cast<void*>(0x0400'0050)) ColorEffectRegister{};
+static auto& alphablend_strength = *new (reinterpret_cast<void*>(0x0400'0052)) AlphaBlendStrength{};
+static auto& brightness = *reinterpret_cast<uint16_t*>(0x0400'0054);
 
 }
 
