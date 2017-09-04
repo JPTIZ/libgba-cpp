@@ -7,11 +7,6 @@
 
 namespace gba::display {
 
-enum class PaletteMode {
-    PALETTE_16,
-    PALETTE_256,
-};
-
 union VRAMData{
     uint16_t s;
     uint8_t c[2];
@@ -78,8 +73,8 @@ namespace mode5 {
 }
 
 inline void vsync() {
-    while (vcount >= 160) {}
-    while (vcount < 160) {}
+    while (vcount() >= 160) {}
+    while (vcount() < 160) {}
 }
 
 }

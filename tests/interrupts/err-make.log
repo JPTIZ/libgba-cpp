@@ -1,0 +1,9 @@
+Compiling main.cpp
+/opt/devkitpro/devkitARM/bin/arm-none-eabi-g++ -o main.o -c main.cpp -mthumb -mthumb-interwork -fomit-frame-pointer -ffast-math -fno-exceptions -fno-rtti -std=c++17 -O0 -I../../src/drivers/ -specs=/opt/devkitpro/devkitARM/arm-none-eabi/lib/gba.specs
+Generating interrupts.elf
+/opt/devkitpro/devkitARM/bin/arm-none-eabi-g++ -o interrupts.elf main.o ../../src/drivers//libgba.a -I../../src/drivers/ -specs=/opt/devkitpro/devkitARM/arm-none-eabi/lib/gba.specs
+Generating interrupts.gba
+/opt/devkitpro/devkitARM/bin/arm-none-eabi-objcopy -O binary interrupts.elf interrupts.gba
+Fixing ROM
+/opt/devkitpro/devkitARM/bin/gbafix interrupts.gba
+ROM fixed!

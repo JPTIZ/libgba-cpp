@@ -23,6 +23,11 @@ enum class BGPriority {
     LOWEST,
 };
 
+enum class PaletteMode {
+    PALETTE_16,
+    PALETTE_256,
+};
+
 enum class Overflow {
     TRANSPARENT = 0,
     WRAPAROUND,
