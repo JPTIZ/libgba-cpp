@@ -2,7 +2,7 @@
 OUTPUT  := $(shell basename $(CURDIR))
 
 CPPSTD  := c++17
-OPTIMLV := 0
+OPTIMLV := 2
 INCLUDE :=
 
 # Libraries
