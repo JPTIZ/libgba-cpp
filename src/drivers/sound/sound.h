@@ -8,7 +8,7 @@ namespace gba::sound {
 /**
  * Must be on for registers to be accessed and for sound to play.
  */
-void master_enabled(bool);
+void enable(bool);
 
 /**
  * General
@@ -21,19 +21,18 @@ enum class Channel {
     NOISE,
 };
 
-void enable_channel(Channel channel);
+enum class Volume {
+    VOLUME_25,
+    VOLUME_50,
+    VOLUME_100,
+};
 
 void left_volume(unsigned);
 void right_volume(unsigned);
 
-void enable_left(Channel);
-void enable_right(Channel);
+void enable_left(Channel, bool enabled=true);
+void enable_right(Channel, bool enabled=true);
 
-void master_volume(unsigned);
-
-void sound_rate(unsigned);
-void timed(bool);
-void reset();
 void sweep_number(unsigned);
 
 enum class SweepMode {

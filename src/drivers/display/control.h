@@ -23,7 +23,7 @@ enum class Page {
 
 static auto& lcd_control = *new (reinterpret_cast<void*>(0x0400'0000)) std::bitset<16>{};
 
-inline auto& vcount() {
+inline volatile auto& vcount() {
     return *reinterpret_cast<std::uint16_t*>(0x0400'0006);
 }
 

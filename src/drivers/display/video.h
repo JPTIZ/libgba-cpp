@@ -7,11 +7,6 @@
 
 namespace gba::display {
 
-union VRAMData{
-    uint16_t s;
-    uint8_t c[2];
-};
-
 struct Color {
     uint16_t value = 0u;
 
@@ -43,6 +38,12 @@ struct Color {
     }
 };
 
+union VRAMData {
+    uint16_t s;
+    uint8_t c[2];
+    Color color;
+};
+
 static auto& vram_data = *new (reinterpret_cast<void*>(0x0600'0000)) std::array<VRAMData, 0x18000 / 2>{};
 
 namespace mode3 {
@@ -50,7 +51,11 @@ namespace mode3 {
     static constexpr auto screen_height = 160;
 
     auto& vram(int x, int y) {
-        return vram_data[x + screen_width * y].s;
+        return vram_data[x + screen_width * y].color;
+    }
+
+    auto& vram(int index) {
+        return vram_data[index].color;
     }
 }
 
