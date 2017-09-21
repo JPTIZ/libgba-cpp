@@ -5,6 +5,7 @@
 
 #include "control.h"
 #include "video.h"
+#include "../architecture/registers.h"
 
 namespace gba::display {
 
@@ -91,6 +92,7 @@ static auto& bg_oy(Layer layer) {
 }
 
 inline void layer_visible(Layer layer, bool visible=true) {
+    auto& lcd_control = gba::architecture::registers::display::lcd_control;
     lcd_control[8 + utils::value_of(layer)] = visible;
 }
 

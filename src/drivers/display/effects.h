@@ -6,6 +6,9 @@
 
 namespace gba::display {
 
+/**
+ * Data for mosaic effect.
+ */
 class MosaicRegister {
 public:
     MosaicRegister() = default;

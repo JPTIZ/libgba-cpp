@@ -24,7 +24,7 @@ namespace display {
 static auto& lcd_control               = at<std::bitset<16>>(0x0400'0000);
 static auto& green_swap                = at<std::bitset<16>>(0x0400'0002);
 static auto& lcd_status                = at<std::bitset<16>>(0x0400'0004);
-static auto& vcount                    = at<uint16_t>(0x0400'0006);
+static volatile auto& vcount           = at<uint16_t>(0x0400'0006);
 
 static auto& bg0_control               = at<std::bitset<16>>(0x0400'0008);
 static auto& bg1_control               = at<std::bitset<16>>(0x0400'000a);
