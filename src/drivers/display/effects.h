@@ -7,44 +7,30 @@
 namespace gba::display {
 
 /**
- * Data for mosaic effect.
+ * Mosaic intensity for Background layers.
  */
-class MosaicRegister {
-public:
-    MosaicRegister() = default;
+void mosaic_bg_level(unsigned width, unsigned height);
 
-    void bg_h(unsigned amount) {
-        data = (data & ~(0b1111u << 0)) | ((amount & 0b1111) << 0);
-        mosaic_register = data;
-    }
+/**
+ * Mosaic intensity for Object layer.
+ */
+void mosaic_obj_level(unsigned width, unsigned height);
 
-    void bg_v(unsigned amount) {
-        data = (data & ~(0b1111u << 4)) | ((amount & 0b1111) << 4);
-        mosaic_register = data;
-    }
 
-    void obj_h(unsigned amount) {
-        data = (data & ~(0b1111u << 8)) | ((amount & 0b1111) << 8);
-        mosaic_register = data;
-    }
-
-    void obj_v(unsigned amount) {
-        data = (data & ~(0b1111u << 0xc)) | ((amount & 0b1111) << 0xc);
-        mosaic_register = data;
-    }
-
-private:
-    uint16_t data = 0;
-    uint16_t& mosaic_register = *reinterpret_cast<uint16_t*>(0x0400'004c);
-};
-
+/**
+ * Possible special color effects by hardware.
+ */
 enum class SpecialEffect {
-    NONE,
-    ALPHA_BLEND,
-    BRIGHTNESS_WHITE,
-    BRIGHTNESS_BLACK,
+    NONE, /**< No special effect. **/
+    ALPHA_BLEND, /**< Alpha blend effect. **/
+    BRIGHTNESS_WHITE, /**< Change brightness to a more lighter coloring. **/
+    BRIGHTNESS_BLACK, /**< Change brightness to a more shady coloring. **/
 };
 
+
+/**
+ * Controls a register for color effect control.
+ */
 class ColorEffectRegister {
 public:
     void first_target(Layer layer, bool enabled=true) {
@@ -76,7 +62,6 @@ struct AlphaBlendStrength {
     uint8_t second;
 };
 
-static auto mosaic_level = MosaicRegister{};
 static auto& color_effects = *new (reinterpret_cast<void*>(0x0400'0050)) ColorEffectRegister{};
 static auto& alphablend_strength = *new (reinterpret_cast<void*>(0x0400'0052)) AlphaBlendStrength{};
 static auto& brightness = *reinterpret_cast<uint16_t*>(0x0400'0054);

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['oam_5fin_5fhblank',['oam_in_hblank',['../namespacegba_1_1display.html#a7b2f19d7b40cea68e66165be9f16e674',1,'gba::display']]]
+  ['mosaic_5fbg_5flevel',['mosaic_bg_level',['../namespacegba_1_1display.html#a8106b717c15963ca2c7d1fd0873a8b6e',1,'gba::display']]],
+  ['mosaic_5fobj_5flevel',['mosaic_obj_level',['../namespacegba_1_1display.html#a1da834c9b61eb5abd7f6bc7daca9ea98',1,'gba::display']]]
 ];

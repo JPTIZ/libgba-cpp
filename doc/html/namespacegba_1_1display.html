@@ -108,10 +108,10 @@ Enumerations</h2></td></tr>
 <a class="el" href="namespacegba_1_1display.html#a584ce1ca960960f132b232b3780c7292a3f710e769a0ae706342108341bef1981">Page::PAGE1</a>
  }</td></tr>
 <tr class="separator:a584ce1ca960960f132b232b3780c7292"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a244a3aa2d0d66724b5dc35ebfcf7fb86"><td class="memItemLeft" align="right" valign="top"><a id="a244a3aa2d0d66724b5dc35ebfcf7fb86"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>SpecialEffect</b> { <b>NONE</b>, 
-<b>ALPHA_BLEND</b>, 
-<b>BRIGHTNESS_WHITE</b>, 
-<b>BRIGHTNESS_BLACK</b>
+<tr class="memitem:a244a3aa2d0d66724b5dc35ebfcf7fb86"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1display.html#a244a3aa2d0d66724b5dc35ebfcf7fb86">SpecialEffect</a> { <a class="el" href="namespacegba_1_1display.html#a244a3aa2d0d66724b5dc35ebfcf7fb86ab50339a10e1de285ac99d4c3990b8693">SpecialEffect::NONE</a>, 
+<a class="el" href="namespacegba_1_1display.html#a244a3aa2d0d66724b5dc35ebfcf7fb86a1a95fd52e8c2f5bdefe02bfd023703de">SpecialEffect::ALPHA_BLEND</a>, 
+<a class="el" href="namespacegba_1_1display.html#a244a3aa2d0d66724b5dc35ebfcf7fb86ad15aede8973ac57c9bf0afa3159b9c88">SpecialEffect::BRIGHTNESS_WHITE</a>, 
+<a class="el" href="namespacegba_1_1display.html#a244a3aa2d0d66724b5dc35ebfcf7fb86a56e3d31cac80f46a8eee2cc341c2355f">SpecialEffect::BRIGHTNESS_BLACK</a>
  }</td></tr>
 <tr class="separator:a244a3aa2d0d66724b5dc35ebfcf7fb86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a922855a924b13d7954b7790e2eb46cdb"><td class="memItemLeft" align="right" valign="top"><a id="a922855a924b13d7954b7790e2eb46cdb"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Layer</b> { <br />
@@ -173,6 +173,10 @@ Functions</h2></td></tr>
 <tr class="separator:a7b2f19d7b40cea68e66165be9f16e674"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acaeba34885d693dadeb3dac4a1cd021e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1display.html#acaeba34885d693dadeb3dac4a1cd021e">force_blank</a> (bool flag)</td></tr>
 <tr class="separator:acaeba34885d693dadeb3dac4a1cd021e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8106b717c15963ca2c7d1fd0873a8b6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1display.html#a8106b717c15963ca2c7d1fd0873a8b6e">mosaic_bg_level</a> (unsigned width, unsigned height)</td></tr>
+<tr class="separator:a8106b717c15963ca2c7d1fd0873a8b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1da834c9b61eb5abd7f6bc7daca9ea98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1display.html#a1da834c9b61eb5abd7f6bc7daca9ea98">mosaic_obj_level</a> (unsigned width, unsigned height)</td></tr>
+<tr class="separator:a1da834c9b61eb5abd7f6bc7daca9ea98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d4d52b37af6d8925c4a43fb1a124bb1"><td class="memItemLeft" align="right" valign="top"><a id="a7d4d52b37af6d8925c4a43fb1a124bb1"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>layer_visible</b> (Layer layer, bool visible=true)</td></tr>
 <tr class="separator:a7d4d52b37af6d8925c4a43fb1a124bb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -255,6 +259,39 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>window_visible</b> (W
 
 </div>
 </div>
+<a id="a244a3aa2d0d66724b5dc35ebfcf7fb86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a244a3aa2d0d66724b5dc35ebfcf7fb86">&#9670;&nbsp;</a></span>SpecialEffect</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacegba_1_1display.html#a244a3aa2d0d66724b5dc35ebfcf7fb86">gba::display::SpecialEffect</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Possible special color effects by hardware. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a244a3aa2d0d66724b5dc35ebfcf7fb86ab50339a10e1de285ac99d4c3990b8693"></a>NONE&#160;</td><td class="fielddoc"><p>No special effect. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a244a3aa2d0d66724b5dc35ebfcf7fb86a1a95fd52e8c2f5bdefe02bfd023703de"></a>ALPHA_BLEND&#160;</td><td class="fielddoc"><p>Alpha blend effect. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a244a3aa2d0d66724b5dc35ebfcf7fb86ad15aede8973ac57c9bf0afa3159b9c88"></a>BRIGHTNESS_WHITE&#160;</td><td class="fielddoc"><p>Change brightness to a more lighter coloring. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a244a3aa2d0d66724b5dc35ebfcf7fb86a56e3d31cac80f46a8eee2cc341c2355f"></a>BRIGHTNESS_BLACK&#160;</td><td class="fielddoc"><p>Change brightness to a more shady coloring. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="aa7b6405c56818d29b05c96a365436790"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa7b6405c56818d29b05c96a365436790">&#9670;&nbsp;</a></span>change_mode()</h2>
@@ -315,6 +352,64 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>window_visible</b> (W
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a8106b717c15963ca2c7d1fd0873a8b6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8106b717c15963ca2c7d1fd0873a8b6e">&#9670;&nbsp;</a></span>mosaic_bg_level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gba::display::mosaic_bg_level </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Mosaic intensity for Background layers. </p>
+
+</div>
+</div>
+<a id="a1da834c9b61eb5abd7f6bc7daca9ea98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1da834c9b61eb5abd7f6bc7daca9ea98">&#9670;&nbsp;</a></span>mosaic_obj_level()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gba::display::mosaic_obj_level </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Mosaic intensity for Object layer. </p>
 
 </div>
 </div>

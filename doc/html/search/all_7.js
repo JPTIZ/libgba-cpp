@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['page',['Page',['../namespacegba_1_1display.html#a584ce1ca960960f132b232b3780c7292',1,'gba::display']]],
-  ['page0',['PAGE0',['../namespacegba_1_1display.html#a584ce1ca960960f132b232b3780c7292ada8b5f7591fcacf22b0b5f3cd3df7274',1,'gba::display']]],
-  ['page1',['PAGE1',['../namespacegba_1_1display.html#a584ce1ca960960f132b232b3780c7292a3f710e769a0ae706342108341bef1981',1,'gba::display']]]
+  ['oam_5fin_5fhblank',['oam_in_hblank',['../namespacegba_1_1display.html#a7b2f19d7b40cea68e66165be9f16e674',1,'gba::display']]]
 ];

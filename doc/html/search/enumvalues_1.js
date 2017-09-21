@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['page0',['PAGE0',['../namespacegba_1_1display.html#a584ce1ca960960f132b232b3780c7292ada8b5f7591fcacf22b0b5f3cd3df7274',1,'gba::display']]],
-  ['page1',['PAGE1',['../namespacegba_1_1display.html#a584ce1ca960960f132b232b3780c7292a3f710e769a0ae706342108341bef1981',1,'gba::display']]]
+  ['brightness_5fblack',['BRIGHTNESS_BLACK',['../namespacegba_1_1display.html#a244a3aa2d0d66724b5dc35ebfcf7fb86a56e3d31cac80f46a8eee2cc341c2355f',1,'gba::display']]],
+  ['brightness_5fwhite',['BRIGHTNESS_WHITE',['../namespacegba_1_1display.html#a244a3aa2d0d66724b5dc35ebfcf7fb86ad15aede8973ac57c9bf0afa3159b9c88',1,'gba::display']]]
 ];
