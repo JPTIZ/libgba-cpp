@@ -4,8 +4,25 @@
 #include <cstdint>
 #include <bitset>
 
+/**
+ * Elements related to GBA's physical architecture.
+ */
+namespace gba::architecture {}
+
+/**
+ * Registers from GBA architecture.
+ */
 namespace gba::architecture::registers {
 
+/**
+ * Allocates and returns data from a register from a given address.
+ *
+ * @param address The addres as an unsigned integer value.
+ *
+ * @tparam T Type to read the register as.
+ *
+ * @returns Instantiated data in given address.
+ */
 template <typename T>
 auto& at(unsigned address) {
     return *new (reinterpret_cast<void*>(address)) T{};
@@ -17,13 +34,28 @@ auto& at<uint16_t>(unsigned address) {
 }
 
 /**
- * Display Registers
+ * Display Registers.
  */
 namespace display {
 
-static auto& lcd_control               = at<std::bitset<16>>(0x0400'0000);
+/**
+ * Display Control Register.
+ */
+static auto& lcd_control               = at<std::bitset<16>>(0x0400'0000); /**< rly no? **/
+
+/**
+ * Green Swap Register (undocumented).
+ */
 static auto& green_swap                = at<std::bitset<16>>(0x0400'0002);
+
+/**
+ * Display status register.
+ */
 static auto& lcd_status                = at<std::bitset<16>>(0x0400'0004);
+
+/**
+ * Number of scanline currently being processed by PPU.
+ */
 static volatile auto& vcount           = at<uint16_t>(0x0400'0006);
 
 static auto& bg0_control               = at<std::bitset<16>>(0x0400'0008);

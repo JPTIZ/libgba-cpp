@@ -1,0 +1,32 @@
+/**
+ * General.
+ */
+body, table, div, p, dl {
+    font-family: Lucida Grande, Verdana, Geneva, Arial, sans-serif;
+    font-size: medium;
+}
+
+pre {
+    font-size: 105%;
+}
+
+/**
+ * Members styling.
+ */
+
+/**
+ * General code appearance.
+ */
+.memberdecls, .memname, .fragment {
+    font-family: Consolas, Courier, monospace;
+    font-size: medium;
+}
+
+/**
+ * Member title, etc.
+ */
+.memtitle {
+    background: #9fb1ff;
+    background: none;
+    border: none;
+}

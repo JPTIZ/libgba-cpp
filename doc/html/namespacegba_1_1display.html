@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxy.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -66,7 +67,8 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">gba::display Namespace Reference</div>  </div>
 </div><!--header-->
@@ -177,6 +179,12 @@ Functions</h2></td></tr>
 <tr class="separator:a8106b717c15963ca2c7d1fd0873a8b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1da834c9b61eb5abd7f6bc7daca9ea98"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1display.html#a1da834c9b61eb5abd7f6bc7daca9ea98">mosaic_obj_level</a> (unsigned width, unsigned height)</td></tr>
 <tr class="separator:a1da834c9b61eb5abd7f6bc7daca9ea98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a420e946cfd383a7467908ecec1d64c94"><td class="memItemLeft" align="right" valign="top"><a id="a420e946cfd383a7467908ecec1d64c94"></a>
+static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>bg_ox</b> (Layer layer)</td></tr>
+<tr class="separator:a420e946cfd383a7467908ecec1d64c94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7049d94cda9e7d3625a96fc6585a50e"><td class="memItemLeft" align="right" valign="top"><a id="ac7049d94cda9e7d3625a96fc6585a50e"></a>
+static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>bg_oy</b> (Layer layer)</td></tr>
+<tr class="separator:ac7049d94cda9e7d3625a96fc6585a50e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d4d52b37af6d8925c4a43fb1a124bb1"><td class="memItemLeft" align="right" valign="top"><a id="a7d4d52b37af6d8925c4a43fb1a124bb1"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>layer_visible</b> (Layer layer, bool visible=true)</td></tr>
 <tr class="separator:a7d4d52b37af6d8925c4a43fb1a124bb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -189,6 +197,39 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>vsync</b> ()</td></tr
 <tr class="memitem:a22f1d2666387c18310870bff5bbc3666"><td class="memItemLeft" align="right" valign="top"><a id="a22f1d2666387c18310870bff5bbc3666"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>window_visible</b> (Window window, bool visible=true)</td></tr>
 <tr class="separator:a22f1d2666387c18310870bff5bbc3666"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ac396733ca3e7e75d13bb7d1ca992e86a"><td class="memItemLeft" align="right" valign="top"><a id="ac396733ca3e7e75d13bb7d1ca992e86a"></a>
+static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>color_effects</b> = *new (reinterpret_cast&lt;void*&gt;(0x0400'0050)) ColorEffectRegister{}</td></tr>
+<tr class="separator:ac396733ca3e7e75d13bb7d1ca992e86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76b4363421a915c09aabfd561f598a90"><td class="memItemLeft" align="right" valign="top"><a id="a76b4363421a915c09aabfd561f598a90"></a>
+static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>alphablend_strength</b> = *new (reinterpret_cast&lt;void*&gt;(0x0400'0052)) AlphaBlendStrength{}</td></tr>
+<tr class="separator:a76b4363421a915c09aabfd561f598a90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a899a8399f8e4c27c5fab797908b498f3"><td class="memItemLeft" align="right" valign="top"><a id="a899a8399f8e4c27c5fab797908b498f3"></a>
+static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>brightness</b> = *reinterpret_cast&lt;uint16_t*&gt;(0x0400'0054)</td></tr>
+<tr class="separator:a899a8399f8e4c27c5fab797908b498f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09ce7c1fdc25db021ba24610ca32d85f"><td class="memItemLeft" align="right" valign="top"><a id="a09ce7c1fdc25db021ba24610ca32d85f"></a>
+static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>bg_palette</b> = *new (reinterpret_cast&lt;void*&gt;(0x0500'0000)) std::array&lt;Color, 256&gt;{}</td></tr>
+<tr class="separator:a09ce7c1fdc25db021ba24610ca32d85f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec930ef49dce571d85936fefe7b5013c"><td class="memItemLeft" align="right" valign="top"><a id="aec930ef49dce571d85936fefe7b5013c"></a>
+static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>bg_controls</b> = *new (reinterpret_cast&lt;void*&gt;(0x0400'0008)) std::array&lt;BGControl, 4&gt;{}</td></tr>
+<tr class="separator:aec930ef49dce571d85936fefe7b5013c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a9d3b35043b0fdb2e896fc9bac4ae6f"><td class="memItemLeft" align="right" valign="top"><a id="a3a9d3b35043b0fdb2e896fc9bac4ae6f"></a>
+static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>obj_palette</b> = *new (reinterpret_cast&lt;void*&gt;(0x0500'0200)) std::array&lt;Color, 256&gt;{}</td></tr>
+<tr class="separator:a3a9d3b35043b0fdb2e896fc9bac4ae6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0efa64906065535c87e7da319cbfc4d3"><td class="memItemLeft" align="right" valign="top"><a id="a0efa64906065535c87e7da319cbfc4d3"></a>
+static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>vram_data</b> = *new (reinterpret_cast&lt;void*&gt;(0x0600'0000)) std::array&lt;VRAMData, 0x18000 / 2&gt;{}</td></tr>
+<tr class="separator:a0efa64906065535c87e7da319cbfc4d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c38c822fe93b0b5964afc6513a77dae"><td class="memItemLeft" align="right" valign="top"><a id="a4c38c822fe93b0b5964afc6513a77dae"></a>
+static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>window0</b> = *new (reinterpret_cast&lt;void*&gt;(0x0400'0040)) WindowSize{}</td></tr>
+<tr class="separator:a4c38c822fe93b0b5964afc6513a77dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa438701ea20042c17c593c511dac0c58"><td class="memItemLeft" align="right" valign="top"><a id="aa438701ea20042c17c593c511dac0c58"></a>
+static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>window1</b> = *new (reinterpret_cast&lt;void*&gt;(0x0400'0042)) WindowSize{}</td></tr>
+<tr class="separator:aa438701ea20042c17c593c511dac0c58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5654b2cb069188a0fd20dfe3a4e1e38a"><td class="memItemLeft" align="right" valign="top"><a id="a5654b2cb069188a0fd20dfe3a4e1e38a"></a>
+static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>window_control</b> = *new (reinterpret_cast&lt;void*&gt;(0x0400'0048)) WindowControl{}</td></tr>
+<tr class="separator:a5654b2cb069188a0fd20dfe3a4e1e38a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Elements for GBA's display manipulation. </p>

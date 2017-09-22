@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mosaicregister',['MosaicRegister',['../classgba_1_1display_1_1MosaicRegister.html',1,'gba::display']]]
+  ['handler',['Handler',['../structanonymous__namespace_02interrupts_8cpp_03_1_1Handler.html',1,'anonymous_namespace{interrupts.cpp}']]]
 ];

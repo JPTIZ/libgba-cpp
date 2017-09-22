@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['display',['display',['../namespacegba_1_1architecture_1_1registers_1_1display.html',1,'gba::architecture::registers::display'],['../namespacegba_1_1display.html',1,'gba::display']]],
-  ['gba',['gba',['../namespacegba.html',1,'']]],
-  ['io',['io',['../namespacegba_1_1architecture_1_1registers_1_1io.html',1,'gba::architecture::registers']]],
-  ['sound',['sound',['../namespacegba_1_1architecture_1_1registers_1_1sound.html',1,'gba::architecture::registers']]]
+  ['anonymous_5fnamespace_7binterrupts_2ecpp_7d',['anonymous_namespace{interrupts.cpp}',['../namespaceanonymous__namespace_02interrupts_8cpp_03.html',1,'']]]
 ];

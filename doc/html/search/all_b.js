@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['vcount',['vcount',['../namespacegba_1_1display.html#ad27529221e3c90b4e9df36312fd7bad0',1,'gba::display']]],
-  ['vramdata',['VRAMData',['../uniongba_1_1display_1_1VRAMData.html',1,'gba::display']]]
+  ['select_5fpage',['select_page',['../namespacegba_1_1display.html#aad7d7191dec493556f4b0441cc82edc8',1,'gba::display']]],
+  ['sender',['Sender',['../structanonymous__namespace_02interrupts_8cpp_03_1_1Sender.html',1,'anonymous_namespace{interrupts.cpp}']]],
+  ['specialeffect',['SpecialEffect',['../namespacegba_1_1display.html#a244a3aa2d0d66724b5dc35ebfcf7fb86',1,'gba::display']]]
 ];

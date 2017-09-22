@@ -1,11 +1,12 @@
 var indexSectionsWithContent =
 {
-  0: "abcfgmnopstvw",
-  1: "abcmtvw",
-  2: "g",
-  3: "cfmosv",
-  4: "mps",
-  5: "abmnp"
+  0: "abcfghlmnopstvw",
+  1: "abchmstvw",
+  2: "ag",
+  3: "acfmosv",
+  4: "glv",
+  5: "mps",
+  6: "abmnp"
 };
 
 var indexSectionNames =
@@ -14,8 +15,9 @@ var indexSectionNames =
   1: "classes",
   2: "namespaces",
   3: "functions",
-  4: "enums",
-  5: "enumvalues"
+  4: "variables",
+  5: "enums",
+  6: "enumvalues"
 };
 
 var indexSectionLabels =
@@ -24,7 +26,8 @@ var indexSectionLabels =
   1: "Classes",
   2: "Namespaces",
   3: "Functions",
-  4: "Enumerations",
-  5: "Enumerator"
+  4: "Variables",
+  5: "Enumerations",
+  6: "Enumerator"
 };
 

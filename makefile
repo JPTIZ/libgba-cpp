@@ -7,4 +7,4 @@ all:
 docs:
 	@echo Generating documentation...
 	@echo
-	@doxygen doxy.conf
+	@doxygen doc/doxy.conf
