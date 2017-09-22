@@ -2,12 +2,16 @@
  * General.
  */
 body, table, div, p, dl {
-    font-family: Lucida Grande, Verdana, Geneva, Arial, sans-serif;
+    font-family: 'Dejavu Sans', Lucida Grande, Verdana, Geneva, Arial, sans-serif;
     font-size: medium;
 }
 
 pre {
     font-size: 105%;
+}
+
+.doxtable tbody tr th {
+    font-family: sans-serif;
 }
 
 /**
@@ -17,15 +21,20 @@ pre {
 /**
  * General code appearance.
  */
-.memberdecls, .memname, .fragment {
-    font-family: Consolas, Courier, monospace;
+.memberdecls, .memname, div.fragment {
+    font-family: Courier New, Consolas, monospace;
     font-size: medium;
+}
+
+div.fragment {
+    padding: 8px;
 }
 
 /**
  * Member title, etc.
  */
 .memtitle {
+    font-family: Courier New, Dejavu Sans, sans-serif;
     background: #9fb1ff;
     background: none;
     border: none;

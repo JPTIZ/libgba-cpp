@@ -41,10 +41,10 @@ namespace display {
 /**
  * Display Control Register.
  */
-static auto& lcd_control               = at<std::bitset<16>>(0x0400'0000); /**< rly no? **/
+static auto& lcd_control               = at<std::bitset<16>>(0x0400'0000);
 
 /**
- * Green Swap Register (undocumented).
+ * Green Swap Register (no official documentation).
  */
 static auto& green_swap                = at<std::bitset<16>>(0x0400'0002);
 
@@ -58,18 +58,85 @@ static auto& lcd_status                = at<std::bitset<16>>(0x0400'0004);
  */
 static volatile auto& vcount           = at<uint16_t>(0x0400'0006);
 
+/**
+ * BG0 layer control register.
+ *
+ * | Bit   | Explanation                                 |
+ * |-------|---------------------------------------------|
+ * | 0-1   | Priority.                                   |
+ * | 2-3   | Character base block.                       |
+ * | 4-5   | Unused (must be 0).                         |
+ * | 6     | Mosaic enabled.                             |
+ * | 7     | Palette depth. 0: 16 colors, 1: 256 colors. |
+ * | 8-12  | Screen base block (in units of 2 KB).       |
+ * | 13    | Display area overflow method. @see Overflow |
+ * | 14-15 | Screen size. @see ScreenSize                |
+ */
 static auto& bg0_control               = at<std::bitset<16>>(0x0400'0008);
+
+/**
+ * BG1 layer control register. Works exactly like BG0 control.
+ *
+ * @see bg0_control
+ */
 static auto& bg1_control               = at<std::bitset<16>>(0x0400'000a);
+
+/**
+ * BG2 layer control register. Works exactly like BG0 control.
+ *
+ * @see bg0_control
+ */
 static auto& bg2_control               = at<std::bitset<16>>(0x0400'000c);
+
+/**
+ * BG3 layer control register. Works exactly like BG0 control.
+ *
+ * @see bg0_control
+ */
 static auto& bg3_control               = at<std::bitset<16>>(0x0400'000e);
 
+/**
+ * BG0 layer's reference `X` starting point. Higher values makes the layer
+ * seems to have "moved left", while lower values makes the layer seems to have
+ * "moved right".
+ */
 static auto& bg0_x_offset              = at<uint16_t>(0x0400'0010);
+
+/**
+ * BG0 layer's reference `Y` starting point. Higher values makes the layer
+ * seems to have "moved up", while lower values makes the layer seems to have
+ * "moved down".
+ */
 static auto& bg0_y_offset              = at<uint16_t>(0x0400'0012);
+
+/**
+ * BG1 layer's reference `X` starting point. @see bg0_x_offset
+ */
 static auto& bg1_x_offset              = at<uint16_t>(0x0400'0014);
+
+/**
+ * BG1 layer's reference `Y` starting point. @see bg0_y_offset
+ */
 static auto& bg1_y_offset              = at<uint16_t>(0x0400'0016);
+
+/**
+ * BG2 layer's reference `X` starting point. @see bg0_x_offset
+ */
 static auto& bg2_x_offset              = at<uint16_t>(0x0400'0018);
+
+/**
+ * BG2 layer's reference `Y` starting point. @see bg0_y_offset
+ */
 static auto& bg2_y_offset              = at<uint16_t>(0x0400'001a);
+
+/**
+ * BG3 layer's reference `X` starting point. @see bg0_x_offset
+ */
 static auto& bg3_x_offset              = at<uint16_t>(0x0400'001c);
+
+/**
+ * BG3 layer's reference `Y` starting point. @see bg0_y_offset
+ */
 static auto& bg3_y_offset              = at<uint16_t>(0x0400'001e);
 
 static auto& bg2_rot_scale_dx          = at<uint16_t>(0x0400'0020);

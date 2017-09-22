@@ -16,3 +16,12 @@ requirements are:
 
 - GCC 7.1 or above;
 - DevKitPro (to compile for GBA ARMv4 ISA and ARM7TDMI processor).
+
+Bibliography
+------------
+
+There are two main contributions for the knowledge necessary to make this
+library: one is the greatly well explained tutorials [TONC by J
+Vijn](http://www.coranac.com/tonc/text/toc.htm) (which I really want to thank
+him for making it), and the other is the great [GBA Techical Manual by Martin
+Korth](http://problemkaputt.de/gbatek.htm).

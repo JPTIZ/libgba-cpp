@@ -4,9 +4,10 @@ var indexSectionsWithContent =
   1: "abchmstvw",
   2: "ag",
   3: "acfmosv",
-  4: "glv",
+  4: "bglv",
   5: "mps",
-  6: "abmnp"
+  6: "abmnp",
+  7: "l"
 };
 
 var indexSectionNames =
@@ -17,7 +18,8 @@ var indexSectionNames =
   3: "functions",
   4: "variables",
   5: "enums",
-  6: "enumvalues"
+  6: "enumvalues",
+  7: "pages"
 };
 
 var indexSectionLabels =
@@ -28,6 +30,7 @@ var indexSectionLabels =
   3: "Functions",
   4: "Variables",
   5: "Enumerations",
-  6: "Enumerator"
+  6: "Enumerator",
+  7: "Pages"
 };
 
