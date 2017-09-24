@@ -81,14 +81,8 @@ Variables</h2></td></tr>
 <tr class="separator:aa23b50bca2e12735be89428e6fccbe8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19170761668bfb39314c4c6a2b436035"><td class="memItemLeft" align="right" valign="top">static volatile auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1architecture_1_1registers_1_1display.html#a19170761668bfb39314c4c6a2b436035">vcount</a> = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;uint16_t&gt;(0x0400'0006)</td></tr>
 <tr class="separator:a19170761668bfb39314c4c6a2b436035"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a288c622f42c2d2379e355b9d7dcbb55b"><td class="memItemLeft" align="right" valign="top">static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1architecture_1_1registers_1_1display.html#a288c622f42c2d2379e355b9d7dcbb55b">bg0_control</a> = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;std::bitset&lt;16&gt;&gt;(0x0400'0008)</td></tr>
-<tr class="separator:a288c622f42c2d2379e355b9d7dcbb55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aceb5c536ac7ba51daa9f5788fae1e0fb"><td class="memItemLeft" align="right" valign="top">static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1architecture_1_1registers_1_1display.html#aceb5c536ac7ba51daa9f5788fae1e0fb">bg1_control</a> = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;std::bitset&lt;16&gt;&gt;(0x0400'000a)</td></tr>
-<tr class="separator:aceb5c536ac7ba51daa9f5788fae1e0fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a913a7520d325da8b94dd8eee3db85794"><td class="memItemLeft" align="right" valign="top">static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1architecture_1_1registers_1_1display.html#a913a7520d325da8b94dd8eee3db85794">bg2_control</a> = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;std::bitset&lt;16&gt;&gt;(0x0400'000c)</td></tr>
-<tr class="separator:a913a7520d325da8b94dd8eee3db85794"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9dfa868c73898d2279bd5cf3629b7d6"><td class="memItemLeft" align="right" valign="top">static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1architecture_1_1registers_1_1display.html#aa9dfa868c73898d2279bd5cf3629b7d6">bg3_control</a> = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;std::bitset&lt;16&gt;&gt;(0x0400'000e)</td></tr>
-<tr class="separator:aa9dfa868c73898d2279bd5cf3629b7d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaacd8ae8e33b35b694916cf91ab1874f"><td class="memItemLeft" align="right" valign="top">static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1architecture_1_1registers_1_1display.html#aaacd8ae8e33b35b694916cf91ab1874f">bg_controls</a> = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;std::array&lt;uint16_t, 4&gt;&gt;(0x0400'0008)</td></tr>
+<tr class="separator:aaacd8ae8e33b35b694916cf91ab1874f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45b20e5b3c291b20254f5d74a968eac6"><td class="memItemLeft" align="right" valign="top">static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1architecture_1_1registers_1_1display.html#a45b20e5b3c291b20254f5d74a968eac6">bg0_x_offset</a> = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;uint16_t&gt;(0x0400'0010)</td></tr>
 <tr class="separator:a45b20e5b3c291b20254f5d74a968eac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbe12efbc0e4f184518f4e8c5ac56ba4"><td class="memItemLeft" align="right" valign="top">static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1architecture_1_1registers_1_1display.html#abbe12efbc0e4f184518f4e8c5ac56ba4">bg0_y_offset</a> = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;uint16_t&gt;(0x0400'0012)</td></tr>
@@ -163,7 +157,7 @@ static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>window_o
 static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>mosaic_size</b> = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;uint16_t&gt;(0x0400'004c)</td></tr>
 <tr class="separator:a6b1c25fe03214e547b942fd449d9004c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c0eee9f8a5b1f2c455ffa4fc45c1a64"><td class="memItemLeft" align="right" valign="top"><a id="a4c0eee9f8a5b1f2c455ffa4fc45c1a64"></a>
-static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>effect_control</b> = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;uint16_t&gt;(0x0400'0050)</td></tr>
+static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>effect_control</b> = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;std::bitset&lt;16&gt;&gt;(0x0400'0050)</td></tr>
 <tr class="separator:a4c0eee9f8a5b1f2c455ffa4fc45c1a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58401a7c0fe3443d542563a98b5bc8fd"><td class="memItemLeft" align="right" valign="top"><a id="a58401a7c0fe3443d542563a98b5bc8fd"></a>
 static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>blend_a</b> = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;uint8_t&gt;(0x0400'0052)</td></tr>
@@ -174,55 +168,13 @@ static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>blend_b<
 <tr class="memitem:a8fb7abb798de6590d9722976368cd8c9"><td class="memItemLeft" align="right" valign="top"><a id="a8fb7abb798de6590d9722976368cd8c9"></a>
 static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>brightness</b> = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;uint16_t&gt;(0x0400'0056)</td></tr>
 <tr class="separator:a8fb7abb798de6590d9722976368cd8c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb9751a0982eb43893dcc2b7acb83458"><td class="memItemLeft" align="right" valign="top"><a id="aeb9751a0982eb43893dcc2b7acb83458"></a>
+static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>bg_palette</b> = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;std::array&lt;uint16_t, 256&gt;&gt;(0x0500'0000)</td></tr>
+<tr class="separator:aeb9751a0982eb43893dcc2b7acb83458"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Display Registers. </p>
 </div><h2 class="groupheader">Variable Documentation</h2>
-<a id="a288c622f42c2d2379e355b9d7dcbb55b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a288c622f42c2d2379e355b9d7dcbb55b">&#9670;&nbsp;</a></span>bg0_control</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto&amp; gba::architecture::registers::display::bg0_control = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;std::bitset&lt;16&gt;&gt;(0x0400'0008)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>BG0 layer control register.</p>
-<table class="doxtable">
-<tr>
-<th>Bit </th><th>Explanation  </th></tr>
-<tr>
-<td>0-1 </td><td>Priority. </td></tr>
-<tr>
-<td>2-3 </td><td>Character base block. </td></tr>
-<tr>
-<td>4-5 </td><td>Unused (must be 0). </td></tr>
-<tr>
-<td>6 </td><td>Mosaic enabled. </td></tr>
-<tr>
-<td>7 </td><td>Palette depth. 0: 16 colors, 1: 256 colors. </td></tr>
-<tr>
-<td>8-12 </td><td>Screen base block (in units of 2 KB). </td></tr>
-<tr>
-<td>13 </td><td>Display area overflow method. <dl class="section see"><dt>See also</dt><dd>Overflow </dd></dl>
-</td></tr>
-<tr>
-<td>14-15 </td><td>Screen size. <dl class="section see"><dt>See also</dt><dd>ScreenSize </dd></dl>
-</td></tr>
-</table>
-
-</div>
-</div>
 <a id="a45b20e5b3c291b20254f5d74a968eac6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a45b20e5b3c291b20254f5d74a968eac6">&#9670;&nbsp;</a></span>bg0_x_offset</h2>
 
@@ -266,30 +218,6 @@ static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>brightne
 </table>
 </div><div class="memdoc">
 <p>BG0 layer's reference <code>Y</code> starting point. Higher values makes the layer seems to have "moved up", while lower values makes the layer seems to have "moved down". </p>
-
-</div>
-</div>
-<a id="aceb5c536ac7ba51daa9f5788fae1e0fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aceb5c536ac7ba51daa9f5788fae1e0fb">&#9670;&nbsp;</a></span>bg1_control</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto&amp; gba::architecture::registers::display::bg1_control = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;std::bitset&lt;16&gt;&gt;(0x0400'000a)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>BG1 layer control register. Works exactly like BG0 control.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacegba_1_1architecture_1_1registers_1_1display.html#a288c622f42c2d2379e355b9d7dcbb55b">bg0_control</a> </dd></dl>
 
 </div>
 </div>
@@ -339,30 +267,6 @@ static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>brightne
 
 </div>
 </div>
-<a id="a913a7520d325da8b94dd8eee3db85794"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a913a7520d325da8b94dd8eee3db85794">&#9670;&nbsp;</a></span>bg2_control</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto&amp; gba::architecture::registers::display::bg2_control = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;std::bitset&lt;16&gt;&gt;(0x0400'000c)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>BG2 layer control register. Works exactly like BG0 control.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacegba_1_1architecture_1_1registers_1_1display.html#a288c622f42c2d2379e355b9d7dcbb55b">bg0_control</a> </dd></dl>
-
-</div>
-</div>
 <a id="ace66cd573f3a5efcca646334f8f238eb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ace66cd573f3a5efcca646334f8f238eb">&#9670;&nbsp;</a></span>bg2_x_offset</h2>
 
@@ -409,30 +313,6 @@ static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>brightne
 
 </div>
 </div>
-<a id="aa9dfa868c73898d2279bd5cf3629b7d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9dfa868c73898d2279bd5cf3629b7d6">&#9670;&nbsp;</a></span>bg3_control</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">auto&amp; gba::architecture::registers::display::bg3_control = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;std::bitset&lt;16&gt;&gt;(0x0400'000e)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>BG3 layer control register. Works exactly like BG0 control.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacegba_1_1architecture_1_1registers_1_1display.html#a288c622f42c2d2379e355b9d7dcbb55b">bg0_control</a> </dd></dl>
-
-</div>
-</div>
 <a id="a9c4d1d530c19db13afad8dadc8202eda"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9c4d1d530c19db13afad8dadc8202eda">&#9670;&nbsp;</a></span>bg3_x_offset</h2>
 
@@ -476,6 +356,51 @@ static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>brightne
 </table>
 </div><div class="memdoc">
 <p>BG3 layer's reference <code>Y</code> starting point. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="namespacegba_1_1architecture_1_1registers_1_1display.html#abbe12efbc0e4f184518f4e8c5ac56ba4">bg0_y_offset</a> </dd></dl>
+
+</div>
+</div>
+<a id="aaacd8ae8e33b35b694916cf91ab1874f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaacd8ae8e33b35b694916cf91ab1874f">&#9670;&nbsp;</a></span>bg_controls</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto&amp; gba::architecture::registers::display::bg_controls = <a class="el" href="namespacegba_1_1architecture_1_1registers.html#a1d12aa323ad41d796299a7f3a15f75cb">at</a>&lt;std::array&lt;uint16_t, 4&gt;&gt;(0x0400'0008)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>BG[0-3] layer control registers.</p>
+<table class="doxtable">
+<tr>
+<th>Bit </th><th>Explanation  </th></tr>
+<tr>
+<td>0-1 </td><td>Priority. </td></tr>
+<tr>
+<td>2-3 </td><td>Character base block. </td></tr>
+<tr>
+<td>4-5 </td><td>Unused (must be 0). </td></tr>
+<tr>
+<td>6 </td><td>Mosaic enabled. </td></tr>
+<tr>
+<td>7 </td><td>Palette depth. 0: 16 colors, 1: 256 colors. </td></tr>
+<tr>
+<td>8-12 </td><td>Screen base block (in units of 2 KB). </td></tr>
+<tr>
+<td>13 </td><td>Display area overflow method. <dl class="section see"><dt>See also</dt><dd>Overflow </dd></dl>
+</td></tr>
+<tr>
+<td>14-15 </td><td>Screen size. <dl class="section see"><dt>See also</dt><dd>ScreenSize </dd></dl>
+</td></tr>
+</table>
 
 </div>
 </div>

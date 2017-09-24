@@ -21,50 +21,65 @@ void mosaic_obj_level(unsigned width, unsigned height);
  * Possible special color effects by hardware.
  */
 enum class SpecialEffect {
-    NONE, /**< No special effect. **/
-    ALPHA_BLEND, /**< Alpha blend effect. **/
-    BRIGHTNESS_WHITE, /**< Change brightness to a more lighter coloring. **/
-    BRIGHTNESS_BLACK, /**< Change brightness to a more shady coloring. **/
+    /**
+     * No special effect.
+     */
+    NONE,
+    /**
+     * Alpha blend effect.
+     */
+    ALPHA_BLEND,
+    /**
+     * Change brightness to a lighter coloring.
+     */
+    BRIGHTEN,
+    /**
+     * Change brightness to a more shady coloring.
+     */
+    DARKEN,
 };
 
 
 /**
- * Controls a register for color effect control.
+ * Enables layer as color effect's first target.
  */
-class ColorEffectRegister {
-public:
-    void first_target(Layer layer, bool enabled=true) {
-        data[utils::value_of(layer)] = enabled;
-    }
+void first_target(Layer layer, bool enabled=true);
 
-    void backdrop_first_target(bool enabled=true) {
-        data[5] = enabled;
-    }
+/**
+ * Enables backdrop as color effect's first target.
+ */
+void backdrop_first_target(bool enabled=true);
 
-    void second_target(Layer layer, bool enabled=true) {
-        data[utils::value_of(layer) + 8] = enabled;
-    }
 
-    void backdrop_second_target(bool enabled=true) {
-        data[13] = enabled;
-    }
+/**
+ * Enables layer as color effect's second target.
+ */
+void second_target(Layer layer, bool enabled=true);
 
-    void select(SpecialEffect effect) {
-        data = (data.to_ulong() & ~(0b11u << 6)) | ((utils::value_of(effect) & 0b11u) << 6);
-    }
 
-private:
-    std::bitset<16> data;
-};
+/**
+ * Enables backdrop as color effect's second target.
+ */
+void backdrop_second_target(bool enabled=true);
 
-struct AlphaBlendStrength {
-    uint8_t first;
-    uint8_t second;
-};
+/**
+ * Changes current special effect.
+ */
+void select(SpecialEffect effect);
 
-static auto& color_effects = *new (reinterpret_cast<void*>(0x0400'0050)) ColorEffectRegister{};
-static auto& alphablend_strength = *new (reinterpret_cast<void*>(0x0400'0052)) AlphaBlendStrength{};
-static auto& brightness = *reinterpret_cast<uint16_t*>(0x0400'0054);
+/**
+ * AlphaBlend first target intensity.
+ */
+auto& blend_a_strength() {
+    return gba::architecture::registers::display::blend_a;
+}
+
+/**
+ * AlphaBlend second target intensity.
+ */
+auto& blend_b_strength() {
+    return gba::architecture::registers::display::blend_b;
+}
 
 }
 

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['vramdata',['VRAMData',['../uniongba_1_1display_1_1VRAMData.html',1,'gba::display']]]
+  ['windowcontrol',['WindowControl',['../classgba_1_1display_1_1WindowControl.html',1,'gba::display']]],
+  ['windowsize',['WindowSize',['../structgba_1_1display_1_1WindowSize.html',1,'gba::display']]]
 ];

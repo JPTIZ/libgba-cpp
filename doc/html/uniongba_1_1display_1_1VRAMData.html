@@ -71,19 +71,67 @@ $(function() {
 <div class="title">gba::display::VRAMData Union Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="video_8h_source.html">video.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aafd1333eb385409ac4594fae2c44be3d"><td class="memItemLeft" align="right" valign="top"><a id="aafd1333eb385409ac4594fae2c44be3d"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>s</b></td></tr>
+<tr class="memitem:aafd1333eb385409ac4594fae2c44be3d"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uniongba_1_1display_1_1VRAMData.html#aafd1333eb385409ac4594fae2c44be3d">s</a></td></tr>
 <tr class="separator:aafd1333eb385409ac4594fae2c44be3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2188d2604d9deffa71841a36fca4bc46"><td class="memItemLeft" align="right" valign="top"><a id="a2188d2604d9deffa71841a36fca4bc46"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>c</b> [2]</td></tr>
+<tr class="memitem:a2188d2604d9deffa71841a36fca4bc46"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uniongba_1_1display_1_1VRAMData.html#a2188d2604d9deffa71841a36fca4bc46">c</a> [2]</td></tr>
 <tr class="separator:a2188d2604d9deffa71841a36fca4bc46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a040877ce2ee881dd474bf349e2b5851c"><td class="memItemLeft" align="right" valign="top"><a id="a040877ce2ee881dd474bf349e2b5851c"></a>
-<a class="el" href="structgba_1_1display_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><b>color</b></td></tr>
+<tr class="memitem:a040877ce2ee881dd474bf349e2b5851c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgba_1_1display_1_1Color.html">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uniongba_1_1display_1_1VRAMData.html#a040877ce2ee881dd474bf349e2b5851c">color</a></td></tr>
 <tr class="separator:a040877ce2ee881dd474bf349e2b5851c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Single data from VRAM. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a2188d2604d9deffa71841a36fca4bc46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2188d2604d9deffa71841a36fca4bc46">&#9670;&nbsp;</a></span>c</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gba::display::VRAMData::c[2]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>VRAM data as two palette index consecutive values.</p>
+<dl class="section remark"><dt>Remarks</dt><dd>GBA VRAM is little-endian. </dd></dl>
+
+</div>
+</div>
+<a id="a040877ce2ee881dd474bf349e2b5851c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a040877ce2ee881dd474bf349e2b5851c">&#9670;&nbsp;</a></span>color</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgba_1_1display_1_1Color.html">Color</a> gba::display::VRAMData::color</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>VRAM data as color. </p>
+
+</div>
+</div>
+<a id="aafd1333eb385409ac4594fae2c44be3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafd1333eb385409ac4594fae2c44be3d">&#9670;&nbsp;</a></span>s</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t gba::display::VRAMData::s</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>VRAM data as pixel value. </p>
+
+</div>
+</div>
 <hr/>The documentation for this union was generated from the following file:<ul>
 <li>src/drivers/display/<a class="el" href="video_8h_source.html">video.h</a></li>
 </ul>

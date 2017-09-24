@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['green_5fswap',['green_swap',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a83ff7c5b0568ca79dab8d1f9dba0617a',1,'gba::architecture::registers::display']]]
+  ['c',['c',['../uniongba_1_1display_1_1VRAMData.html#a2188d2604d9deffa71841a36fca4bc46',1,'gba::display::VRAMData']]],
+  ['color',['color',['../uniongba_1_1display_1_1VRAMData.html#a040877ce2ee881dd474bf349e2b5851c',1,'gba::display::VRAMData']]]
 ];

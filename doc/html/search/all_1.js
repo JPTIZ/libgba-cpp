@@ -1,18 +1,22 @@
 var searchData=
 [
-  ['bg0_5fcontrol',['bg0_control',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a288c622f42c2d2379e355b9d7dcbb55b',1,'gba::architecture::registers::display']]],
+  ['backdrop_5ffirst_5ftarget',['backdrop_first_target',['../namespacegba_1_1display.html#a36e6ef7fd8ed3c7582f104e936d032db',1,'gba::display']]],
+  ['backdrop_5fsecond_5ftarget',['backdrop_second_target',['../namespacegba_1_1display.html#a093f211d41bddcd64f3ee8ffefe33019',1,'gba::display']]],
+  ['backgroundcontrol',['BackgroundControl',['../classgba_1_1display_1_1BackgroundControl.html',1,'gba::display']]],
   ['bg0_5fx_5foffset',['bg0_x_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a45b20e5b3c291b20254f5d74a968eac6',1,'gba::architecture::registers::display']]],
   ['bg0_5fy_5foffset',['bg0_y_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#abbe12efbc0e4f184518f4e8c5ac56ba4',1,'gba::architecture::registers::display']]],
-  ['bg1_5fcontrol',['bg1_control',['../namespacegba_1_1architecture_1_1registers_1_1display.html#aceb5c536ac7ba51daa9f5788fae1e0fb',1,'gba::architecture::registers::display']]],
   ['bg1_5fx_5foffset',['bg1_x_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a29ef2ae98762d0ba98672584f7d8b451',1,'gba::architecture::registers::display']]],
   ['bg1_5fy_5foffset',['bg1_y_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a1a2d7386ac2f86e3b8cb001849811c60',1,'gba::architecture::registers::display']]],
-  ['bg2_5fcontrol',['bg2_control',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a913a7520d325da8b94dd8eee3db85794',1,'gba::architecture::registers::display']]],
   ['bg2_5fx_5foffset',['bg2_x_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#ace66cd573f3a5efcca646334f8f238eb',1,'gba::architecture::registers::display']]],
   ['bg2_5fy_5foffset',['bg2_y_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a22480c59d276bb5aea88e1c6af5378f3',1,'gba::architecture::registers::display']]],
-  ['bg3_5fcontrol',['bg3_control',['../namespacegba_1_1architecture_1_1registers_1_1display.html#aa9dfa868c73898d2279bd5cf3629b7d6',1,'gba::architecture::registers::display']]],
   ['bg3_5fx_5foffset',['bg3_x_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a9c4d1d530c19db13afad8dadc8202eda',1,'gba::architecture::registers::display']]],
   ['bg3_5fy_5foffset',['bg3_y_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a5a37ce4d2538860033ec9d3ea28b48a3',1,'gba::architecture::registers::display']]],
-  ['bgcontrol',['BGControl',['../classgba_1_1display_1_1BGControl.html',1,'gba::display']]],
-  ['brightness_5fblack',['BRIGHTNESS_BLACK',['../namespacegba_1_1display.html#a244a3aa2d0d66724b5dc35ebfcf7fb86a56e3d31cac80f46a8eee2cc341c2355f',1,'gba::display']]],
-  ['brightness_5fwhite',['BRIGHTNESS_WHITE',['../namespacegba_1_1display.html#a244a3aa2d0d66724b5dc35ebfcf7fb86ad15aede8973ac57c9bf0afa3159b9c88',1,'gba::display']]]
+  ['bg_5fcontrols',['bg_controls',['../namespacegba_1_1architecture_1_1registers_1_1display.html#aaacd8ae8e33b35b694916cf91ab1874f',1,'gba::architecture::registers::display']]],
+  ['bg_5fox',['bg_ox',['../namespacegba_1_1display.html#ac35d4f3c2a5ffd3be2110ab116e4554f',1,'gba::display']]],
+  ['bg_5foy',['bg_oy',['../namespacegba_1_1display.html#af6ffb4df38525f35c0767b666c6fa095',1,'gba::display']]],
+  ['bgpriority',['BGPriority',['../namespacegba_1_1display.html#aac59e5d298649d563e499c814261dda2',1,'gba::display']]],
+  ['blend_5fa_5fstrength',['blend_a_strength',['../namespacegba_1_1display.html#ac7bee6fc7e254cb9cc0d675f64e0a270',1,'gba::display']]],
+  ['blend_5fb_5fstrength',['blend_b_strength',['../namespacegba_1_1display.html#ac3d097929126a710dfe037e762b1cc60',1,'gba::display']]],
+  ['bottom',['bottom',['../structgba_1_1display_1_1WindowPosition.html#a9f400285b2c5f363a4452daa64f7571a',1,'gba::display::WindowPosition']]],
+  ['brighten',['BRIGHTEN',['../namespacegba_1_1display.html#a244a3aa2d0d66724b5dc35ebfcf7fb86aa0774dcc68ad2cd249dc223cfbf6b538',1,'gba::display']]]
 ];

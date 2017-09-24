@@ -1,8 +1,10 @@
 #ifndef LIBGBACPP_DRIVERS_ARCHITECTURE_REGISTERS_H
 #define LIBGBACPP_DRIVERS_ARCHITECTURE_REGISTERS_H
 
+#include <array>
 #include <cstdint>
 #include <bitset>
+
 
 /**
  * Elements related to GBA's physical architecture.
@@ -59,7 +61,7 @@ static auto& lcd_status                = at<std::bitset<16>>(0x0400'0004);
 static volatile auto& vcount           = at<uint16_t>(0x0400'0006);
 
 /**
- * BG0 layer control register.
+ * BG[0-3] layer control registers.
  *
  * | Bit   | Explanation                                 |
  * |-------|---------------------------------------------|
@@ -72,28 +74,7 @@ static volatile auto& vcount           = at<uint16_t>(0x0400'0006);
  * | 13    | Display area overflow method. @see Overflow |
  * | 14-15 | Screen size. @see ScreenSize                |
  */
-static auto& bg0_control               = at<std::bitset<16>>(0x0400'0008);
-
-/**
- * BG1 layer control register. Works exactly like BG0 control.
- *
- * @see bg0_control
- */
-static auto& bg1_control               = at<std::bitset<16>>(0x0400'000a);
-
-/**
- * BG2 layer control register. Works exactly like BG0 control.
- *
- * @see bg0_control
- */
-static auto& bg2_control               = at<std::bitset<16>>(0x0400'000c);
-
-/**
- * BG3 layer control register. Works exactly like BG0 control.
- *
- * @see bg0_control
- */
-static auto& bg3_control               = at<std::bitset<16>>(0x0400'000e);
+static auto& bg_controls               = at<std::array<uint16_t, 4>>(0x0400'0008);
 
 /**
  * BG0 layer's reference `X` starting point. Higher values makes the layer
@@ -161,11 +142,12 @@ static auto& window_inside             = at<uint16_t>(0x0400'0048);
 static auto& window_outside            = at<uint16_t>(0x0400'004a);
 
 static auto& mosaic_size               = at<uint16_t>(0x0400'004c);
-static auto& effect_control            = at<uint16_t>(0x0400'0050);
+static auto& effect_control            = at<std::bitset<16>>(0x0400'0050);
 static auto& blend_a                   = at<uint8_t>(0x0400'0052);
 static auto& blend_b                   = at<uint8_t>(0x0400'0054);
 static auto& brightness                = at<uint16_t>(0x0400'0056);
 
+static auto& bg_palette                = at<std::array<uint16_t, 256>>(0x0500'0000);
 }
 
 /**

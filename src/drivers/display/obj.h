@@ -2,18 +2,34 @@
 #define GBA_DRIVERS_DISPLAY_OBJ_H
 
 #include "control.h"
+#include "video.h"
 
 namespace gba::display {
 
+/**
+ * Object mapping mode.
+ */
 enum class ObjectMapping {
-    MAP_1D,
-    MAP_2D,
+    /**
+     * Object data as unidimensional array.
+     */
+    MAP_ARRAY,
+    /**
+     * Object data as tile matrix.
+     */
+    MAP_TILE_MATRIX,
 };
 
-static auto& obj_palette = *new (reinterpret_cast<void*>(0x0500'0200)) std::array<Color, 256>{};
+/**
+ * Object Color Palette array.
+ */
+std::array<Color, 256>& obj_palette();
 
+/**
+ * Changes object mapping mode.
+ */
 inline void object_mapping(ObjectMapping map) {
-    lcd_control[6] = utils::value_of(map);
+    gba::architecture::registers::display::lcd_control[6] = utils::value_of(map);
 }
 
 }

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['handler',['Handler',['../structanonymous__namespace_02interrupts_8cpp_03_1_1Handler.html',1,'anonymous_namespace{interrupts.cpp}']]]
+  ['vramdata',['VRAMData',['../uniongba_1_1display_1_1VRAMData.html',1,'gba::display']]]
 ];

@@ -25,7 +25,6 @@ void copy_tiles() {
 }
 
 void gen_map() {
-
     for (auto i = 0; i < layer0.size(); ++i) {
         auto x = i % 8;
         auto y = i / 8;
