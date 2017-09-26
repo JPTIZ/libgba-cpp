@@ -1,4 +1,4 @@
-OUTPUT  := libgba
+OUTPUT  := gba-engine
 CPPSTD  := c++17
 OPTLV   := 0
 SOURCES := $(wildcard *.cpp)
