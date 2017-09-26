@@ -5,6 +5,9 @@ namespace gba::cpu {
 
 using handler_function_t = void(*)();
 
+/**
+ * Interrupt type.
+ */
 enum class Interrupt {
     VBLANK,
     HBLANK,
@@ -22,16 +25,63 @@ enum class Interrupt {
     CARTRIDGE,
 };
 
-void main_interrupt_switchboard();
+/**
+ * Interrupt switchboard.
+ */
+void __attribute__((interrupt ("IRQ"))) __attribute__((section(".iwram"))) main_interrupt_switchboard();
+
+/**
+ * Enables/disables hardware interrupts.
+ */
 void interrupts_enabled(bool flag);
+
+/**
+ * Enables/disables VBlank Interrupt.
+ *
+ * Raised when PPU reaches VBlank.
+ */
 void vblank_interrupt(bool enabled);
+
+/**
+ * Enables/disables HBlank Interrupt.
+ *
+ * Raised when PPU reaches HBlank.
+ */
 void hblank_interrupt(bool enabled);
+
+/**
+ * Enables/disables VCount Interrupt.
+ *
+ * Raised when PPU reaches selected value.
+ *
+ * @param value Scanline number to raise interrupt.
+ */
 void vcount_interrupt(bool enabled, unsigned value=0);
 
+/**
+ * Enables/disables Serial Interrupt.
+ *
+ * Raised when serial port finishes its operation.
+ */
 void serial_interrupt(bool enabled);
+
+/**
+ * Enables/disables Keypad Interrupt.
+ *
+ * Raised when player presses a key.
+ */
 void keypad_interrupt(bool enabled);
+
+/**
+ * Enables/disables Cartridge Interrupt.
+ *
+ * Raised when cartridge is removed.
+ */
 void cartridge_interrupt(bool enabled);
 
+/**
+ * Puts CPU to sleep.
+ */
 void halt();
 
 void interrupt_handler();

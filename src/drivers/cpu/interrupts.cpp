@@ -1,5 +1,6 @@
 #include "interrupts.h"
 
+#include "../architecture/registers.h"
 #include "../display/control.h"
 
 #include <array>
@@ -10,10 +11,8 @@ namespace {
 using gba::cpu::Interrupt;
 using gba::cpu::handler_function_t;
 
-auto& master_interrupt = *reinterpret_cast<bool*>(0x0400'0208);
-auto& ifbios = *reinterpret_cast<uint16_t*>(0x0300'7ff8);
-auto& if_reg = *reinterpret_cast<uint16_t*>(0x0400'0202);
-auto& interrupts = *new (reinterpret_cast<void*>(0x0400'0200)) std::bitset<16>{};
+using namespace gba::architecture::registers::bios;
+using namespace gba::architecture::registers::cpu;
 
 auto& main_handler = *reinterpret_cast<handler_function_t*>(0x0300'7ffc);
 auto& display_status = *new (reinterpret_cast<void*>(0x0400'0004)) std::bitset<8>{};
@@ -95,58 +94,60 @@ auto find_handler(uint16_t ie_if) {
 namespace gba {
 
 void cpu::interrupts_enabled(bool enabled) {
-    master_interrupt = enabled;
+    master_enable = enabled;
 }
 
-void __attribute__((interrupt ("IRQ"))) cpu::main_interrupt_switchboard() {
-    auto ie_reg = interrupts;
-    auto ie_if = ie_reg.to_ulong() & if_reg;
+void cpu::main_interrupt_switchboard() {
+    auto ie_reg = interrupt_enable;
 
-    if_reg = ie_if;
-    ifbios = ie_if;
+    auto if_reg = interrupt_request;
+    auto ie_if = ie_reg & if_reg;
 
-    const auto& handler = find_handler(ie_if);
+    interrupt_request = ie_if;
+    interrupt_check = ie_if;
+
+    const auto& handler = find_handler(interrupt_request);
 
     if (handler.function == nullptr) {
         return;
     }
 
-    auto old_master = master_interrupt;
-    master_interrupt = false;
-    interrupts &= ~ie_if;
+    auto old_master = master_enable;
+    master_enable = false;
+    interrupt_enable &= ~ie_if;
 
     handler.function();
 
-    interrupts = ie_reg;
-    master_interrupt = true;
+    interrupt_enable = ie_reg;
+    master_enable = true;
 }
 
 void cpu::vblank_interrupt(bool enabled) {
     display_status[0] = enabled;
-    interrupts[0] = enabled;
+    interrupt_enable[0] = enabled;
 }
 
 void cpu::hblank_interrupt(bool enabled) {
     display_status[1] = enabled;
-    interrupts[1] = enabled;
+    interrupt_enable[1] = enabled;
 }
 
 void cpu::vcount_interrupt(bool enabled, unsigned value) {
     vcount_desired = value;
     display_status[2] = enabled;
-    interrupts[2] = enabled;
+    interrupt_enable[2] = enabled;
 }
 
 void cpu::serial_interrupt(bool enabled) {
-    interrupts[7] = enabled;
+    interrupt_enable[7] = enabled;
 }
 
 void cpu::keypad_interrupt(bool enabled) {
-    interrupts[12] = enabled;
+    interrupt_enable[12] = enabled;
 }
 
 void cpu::cartridge_interrupt(bool enabled) {
-    interrupts[13] = enabled;
+    interrupt_enable[13] = enabled;
 }
 
 void cpu::interrupt_handler(handler_function_t function) {

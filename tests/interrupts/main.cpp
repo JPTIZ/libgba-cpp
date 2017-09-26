@@ -7,14 +7,15 @@ using namespace gba::display;
 using namespace gba::cpu;
 
 int main() {
-    setup_interrupts();
+    //setup_interrupts();
+
     vblank_interrupt(true);
-    bg_palette[0] = Color{0, 0x1f, 0};
+    bg_palette()[0] = Color{0, 0x1f, 0};
     auto frames = 0;
     while (true) {
         halt();
-        bg_palette[0] = Color{0, 0x1f, 0};
+        bg_palette()[0] = Color{0, 0x1f, 0};
         halt();
-        bg_palette[0] = Color{0x1f, 0, 0};
+        bg_palette()[0] = Color{0x1f, 0, 0};
     }
 }

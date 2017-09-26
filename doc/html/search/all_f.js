@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['win0',['WIN0',['../namespacegba_1_1display.html#a1204cba21fb25475a5768e68ebe106baacf1cbd54c1a9fdeb95bcc16a85a74462',1,'gba::display']]],
-  ['win1',['WIN1',['../namespacegba_1_1display.html#a1204cba21fb25475a5768e68ebe106baa7f349dddeed4db686a8c0b0e965c8dbd',1,'gba::display']]],
-  ['window',['Window',['../namespacegba_1_1display.html#a1204cba21fb25475a5768e68ebe106ba',1,'gba::display']]],
-  ['window0_5fenable',['window0_enable',['../classgba_1_1display_1_1WindowControl.html#abd77b226e72b5494951625b0f24b137f',1,'gba::display::WindowControl']]],
-  ['window1_5fenable',['window1_enable',['../classgba_1_1display_1_1WindowControl.html#afe93dcb09cbd1a4ae391ac973917330d',1,'gba::display::WindowControl']]],
-  ['window_5fvisible',['window_visible',['../namespacegba_1_1display.html#a22f1d2666387c18310870bff5bbc3666',1,'gba::display']]],
-  ['windowcontrol',['WindowControl',['../classgba_1_1display_1_1WindowControl.html',1,'gba::display']]],
-  ['windowposition',['WindowPosition',['../structgba_1_1display_1_1WindowPosition.html',1,'gba::display']]],
-  ['wraparound',['WRAPAROUND',['../namespacegba_1_1display.html#a67327bde70898e1a090ec6567dc955dda0c3b7b782beaf10de27377526e33cc37',1,'gba::display']]]
+  ['value_5fof',['value_of',['../namespaceutils.html#aa5247b12c5ea4bb13163ae4e938dde71',1,'utils']]],
+  ['vcount',['vcount',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a19170761668bfb39314c4c6a2b436035',1,'gba::architecture::registers::display::vcount()'],['../namespacegba_1_1display.html#ad27529221e3c90b4e9df36312fd7bad0',1,'gba::display::vcount()']]],
+  ['vram',['vram',['../namespacegba_1_1display_1_1mode3.html#ad324f789401b237c51cfcfd06ec22bfd',1,'gba::display::mode3::vram(int x, int y)'],['../namespacegba_1_1display_1_1mode3.html#ac4c3fe9cd878968b01761e21afc8f924',1,'gba::display::mode3::vram(int index)'],['../namespacegba_1_1display_1_1mode4.html#a774bfc87c27b2cf31a2057d1c5a97ea2',1,'gba::display::mode4::vram(int x, int y)'],['../namespacegba_1_1display_1_1mode4.html#a07506016d27ff854db074dbd81117fd6',1,'gba::display::mode4::vram(int index)'],['../namespacegba_1_1display_1_1mode5.html#a8210f35a282a459963691b163cd47c8a',1,'gba::display::mode5::vram(int x, int y)'],['../namespacegba_1_1display_1_1mode5.html#abacbf325cc064ebd9bfb1a6390e9d9cb',1,'gba::display::mode5::vram(int index)']]],
+  ['vram_5fdata',['vram_data',['../namespacegba_1_1display.html#a34ae5af6f2a59bf934a3c224b8909422',1,'gba::display']]],
+  ['vramdata',['VRAMData',['../uniongba_1_1display_1_1VRAMData.html',1,'gba::display']]],
+  ['vsync',['vsync',['../namespacegba_1_1display.html#a46f00fe016011953fd075a239ef10990',1,'gba::display']]]
 ];

@@ -169,6 +169,13 @@ private:
 };
 
 /**
+ * Gets layer's background control.
+ *
+ * @remarks Using Layer::OBJ is UB.
+ */
+BackgroundControl& bg_control(Layer layer);
+
+/**
  * Changes background X offset.
  */
 inline auto& bg_ox(Layer layer) {

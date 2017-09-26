@@ -11,6 +11,7 @@ namespace gba::display {
  * Pixel in GBA Color format.
  */
 class Color {
+public:
     /**
      * Constructs black color.
      */
@@ -120,7 +121,7 @@ namespace mode3 {
      *
      * @returns Pixel color in given coordinates.
      */
-    auto& vram(int x, int y) {
+    inline auto& vram(int x, int y) {
         return vram_data()[x + screen_width * y].color;
     }
 
@@ -131,7 +132,7 @@ namespace mode3 {
      *
      * @returns Pixel color in given VRAM index.
      */
-    auto& vram(int index) {
+    inline auto& vram(int index) {
         return vram_data()[index].color;
     }
 }
@@ -157,7 +158,7 @@ namespace mode4 {
      *
      * @returns Palette index in given coordinates.
      */
-    auto& vram(int x, int y) {
+    inline auto& vram(int x, int y) {
         return vram_data()[x + screen_width * y / 2].c[y & 1];
     }
 
@@ -168,7 +169,7 @@ namespace mode4 {
      *
      * @returns Palette index in given VRAM index.
      */
-    auto& vram(int index) {
+    inline auto& vram(int index) {
         return vram_data()[index].c;
     }
 }
@@ -194,7 +195,7 @@ namespace mode5 {
      *
      * @returns Color value in given coordinates.
      */
-    auto& vram(int x, int y) {
+    inline auto& vram(int x, int y) {
         return vram_data()[x + screen_width * y].s;
     }
 
@@ -205,7 +206,7 @@ namespace mode5 {
      *
      * @returns Color value in given index.
      */
-    auto& vram(int index) {
+    inline auto& vram(int index) {
         return vram_data()[index].s;
     }
 }
@@ -217,6 +218,8 @@ inline void vsync() {
     while (vcount() >= 160) {}
     while (vcount() < 160) {}
 }
+
+std::array<Color, 256>& bg_palette();
 
 }
 
