@@ -17,6 +17,12 @@ requirements are:
 - GCC 7.1 or above;
 - DevKitPro (to compile for GBA ARMv4 ISA and ARM7TDMI processor).
 
+To-Do's
+-------
+
+1. Allow non-Read-Only graphics API (currently all data must be `const`/in ROM,
+   or else we couldn't have bitmaps bigger than 32KB).
+
 Bibliography
 ------------
 

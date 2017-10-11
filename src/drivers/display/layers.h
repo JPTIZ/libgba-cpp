@@ -3,9 +3,10 @@
 
 #include <array>
 
+#include "../architecture/registers.h"
+#include "../geometry.h"
 #include "control.h"
 #include "video.h"
-#include "../architecture/registers.h"
 
 
 namespace gba::display {
@@ -60,9 +61,9 @@ enum class Overflow {
 };
 
 /**
- * Screen size (in pixels).
+ * Map size (in pixels).
  */
-enum class ScreenSize {
+enum class MapSize {
     /**
      * 256x256 map (in Text Mode).
      */
@@ -83,7 +84,7 @@ enum class ScreenSize {
     /**
      * 128x128 map (in Rotation/Scaling Mode).
      */
-    ROTSCAL_128X128 = 0,
+    ROTSCAL_128X128 = 10,
     /**
      * 256x256 map (in Rotation/Scaling Mode).
      */
@@ -97,6 +98,26 @@ enum class ScreenSize {
      */
     ROTSCAL_1024X1024,
 };
+
+constexpr geometry::Size extract_size(MapSize size) {
+    switch (size) {
+        case MapSize::TEXT_256X256:
+            return {256, 256};
+        case MapSize::TEXT_256X512:
+            return {256, 512};
+        case MapSize::TEXT_512X256:
+            return {512, 256};
+        case MapSize::ROTSCAL_128X128:
+            return {128, 128};
+        case MapSize::ROTSCAL_256X256:
+            return {256, 256};
+        case MapSize::TEXT_512X512:
+        case MapSize::ROTSCAL_512X512:
+            return {512, 512};
+        case MapSize::ROTSCAL_1024X1024:
+            return {1024, 1024};
+    }
+}
 
 /**
  * Controls properties of a background.
@@ -158,10 +179,10 @@ public:
      *
      * @param size_ New background size.
      *
-     * @see ScreenSize
+     * @see MapSize
      */
-    void size(gba::display::ScreenSize size_) {
-        data = (data & (~(0b11u << 14))) | utils::value_of(size_);
+    void size(gba::display::MapSize size_) {
+        data = (data & (~(0b11u << 14))) | (utils::value_of(size_) & 0b11u);
     }
 
 private:
