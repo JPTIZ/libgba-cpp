@@ -98,6 +98,7 @@ void cpu::interrupts_enabled(bool enabled) {
 }
 
 void cpu::main_interrupt_switchboard() {
+    /*
     auto ie_reg = interrupt_enable;
 
     auto if_reg = interrupt_request;
@@ -120,6 +121,7 @@ void cpu::main_interrupt_switchboard() {
 
     interrupt_enable = ie_reg;
     master_enable = true;
+    */
 }
 
 void cpu::vblank_interrupt(bool enabled) {
