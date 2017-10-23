@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['b',['b',['../classgba_1_1display_1_1Color.html#ac3604d8b56fb4490457b13d2f1afb7f7',1,'gba::display::Color']]],
   ['backdrop_5ffirst_5ftarget',['backdrop_first_target',['../namespacegba_1_1display.html#a36e6ef7fd8ed3c7582f104e936d032db',1,'gba::display']]],
   ['backdrop_5fsecond_5ftarget',['backdrop_second_target',['../namespacegba_1_1display.html#a093f211d41bddcd64f3ee8ffefe33019',1,'gba::display']]],
   ['backgroundcontrol',['BackgroundControl',['../classgba_1_1display_1_1BackgroundControl.html',1,'gba::display']]],
@@ -11,6 +12,7 @@ var searchData=
   ['bg2_5fy_5foffset',['bg2_y_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a22480c59d276bb5aea88e1c6af5378f3',1,'gba::architecture::registers::display']]],
   ['bg3_5fx_5foffset',['bg3_x_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a9c4d1d530c19db13afad8dadc8202eda',1,'gba::architecture::registers::display']]],
   ['bg3_5fy_5foffset',['bg3_y_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a5a37ce4d2538860033ec9d3ea28b48a3',1,'gba::architecture::registers::display']]],
+  ['bg_5fcontrol',['bg_control',['../namespacegba_1_1display.html#a714398f01bbe4d7fc5f57c2e3c458ddd',1,'gba::display']]],
   ['bg_5fcontrols',['bg_controls',['../namespacegba_1_1architecture_1_1registers_1_1display.html#aaacd8ae8e33b35b694916cf91ab1874f',1,'gba::architecture::registers::display']]],
   ['bg_5fox',['bg_ox',['../namespacegba_1_1display.html#ac35d4f3c2a5ffd3be2110ab116e4554f',1,'gba::display']]],
   ['bg_5foy',['bg_oy',['../namespacegba_1_1display.html#af6ffb4df38525f35c0767b666c6fa095',1,'gba::display']]],

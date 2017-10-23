@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['windowcontrol',['WindowControl',['../classgba_1_1display_1_1WindowControl.html',1,'gba::display']]],
-  ['windowposition',['WindowPosition',['../structgba_1_1display_1_1WindowPosition.html',1,'gba::display']]]
+  ['size',['Size',['../structgba_1_1geometry_1_1Size.html',1,'gba::geometry']]]
 ];

@@ -1,7 +1,7 @@
-#include "sound.h"
+#include <drivers/sound/sound.h>
 
-#include "../architecture/registers.h"
-#include "../utility.h"
+#include <drivers/arch/registers.h>
+#include <drivers/utility.h>
 
 using utils::value_of;
 using namespace gba::architecture::registers::sound;

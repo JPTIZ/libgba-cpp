@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['window0_5fenable',['window0_enable',['../classgba_1_1display_1_1WindowControl.html#abd77b226e72b5494951625b0f24b137f',1,'gba::display::WindowControl']]],
-  ['window1_5fenable',['window1_enable',['../classgba_1_1display_1_1WindowControl.html#afe93dcb09cbd1a4ae391ac973917330d',1,'gba::display::WindowControl']]],
-  ['window_5fvisible',['window_visible',['../namespacegba_1_1display.html#a22f1d2666387c18310870bff5bbc3666',1,'gba::display']]]
+  ['tilemap',['tilemap',['../namespacegba_1_1display_1_1map.html#ab0c8d13d8435271d36e68c0279b282c9',1,'gba::display::map']]],
+  ['tileset',['tileset',['../namespacegba_1_1display_1_1map.html#a8926614e622b41a0836776cc2e605da8',1,'gba::display::map']]]
 ];

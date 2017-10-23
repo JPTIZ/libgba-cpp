@@ -1,7 +1,7 @@
-#include "interrupts.h"
+#include <drivers/cpu/interrupts.h>
 
-#include "../architecture/registers.h"
-#include "../display/control.h"
+#include <drivers/arch/registers.h>
+#include <drivers/display/control.h>
 
 #include <array>
 #include <bitset>

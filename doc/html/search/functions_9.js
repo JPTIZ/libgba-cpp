@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['tilemap',['tilemap',['../namespacegba_1_1display_1_1map.html#ab0c8d13d8435271d36e68c0279b282c9',1,'gba::display::map']]],
-  ['tileset',['tileset',['../namespacegba_1_1display_1_1map.html#a8926614e622b41a0836776cc2e605da8',1,'gba::display::map']]]
+  ['r',['r',['../classgba_1_1display_1_1Color.html#ac745f2b0d3db7b1f8f185ba7a2aef450',1,'gba::display::Color']]]
 ];

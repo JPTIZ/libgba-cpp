@@ -3,10 +3,10 @@
 
 #include <array>
 
-#include "../architecture/registers.h"
-#include "../geometry.h"
-#include "control.h"
-#include "video.h"
+#include <drivers/arch/registers.h>
+#include <drivers/display/control.h>
+#include <drivers/display/video.h>
+#include <drivers/geometry.h>
 
 
 namespace gba::display {

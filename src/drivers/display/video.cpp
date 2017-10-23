@@ -1,4 +1,4 @@
-#include "video.h"
+#include <drivers/display/video.h>
 
 namespace {
 

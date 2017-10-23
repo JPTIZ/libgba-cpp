@@ -1,6 +1,6 @@
-#include "effects.h"
+#include <drivers/display/effects.h>
 
-#include "../architecture/registers.h"
+#include <drivers/arch/registers.h>
 
 
 namespace {

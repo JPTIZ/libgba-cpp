@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vramdata',['VRAMData',['../uniongba_1_1display_1_1VRAMData.html',1,'gba::display']]]
+  ['tile',['Tile',['../structgba_1_1display_1_1map_1_1Tile.html',1,'gba::display::map']]]
 ];

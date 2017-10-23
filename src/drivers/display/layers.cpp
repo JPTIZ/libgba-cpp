@@ -1,7 +1,7 @@
-#include "layers.h"
+#include <drivers/display/layers.h>
 
-#include "../architecture/registers.h"
-#include "../utility.h"
+#include <drivers/arch/registers.h>
+#include <drivers/utility.h>
 
 namespace {
 

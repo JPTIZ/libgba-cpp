@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tile',['Tile',['../structgba_1_1display_1_1map_1_1Tile.html',1,'gba::display::map']]]
+  ['point',['Point',['../structgba_1_1geometry_1_1Point.html',1,'gba::geometry']]]
 ];

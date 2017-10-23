@@ -146,19 +146,19 @@ Enumerations</h2></td></tr>
 <a class="el" href="namespacegba_1_1display.html#a67327bde70898e1a090ec6567dc955dda0c3b7b782beaf10de27377526e33cc37">Overflow::WRAPAROUND</a>
  }</td></tr>
 <tr class="separator:a67327bde70898e1a090ec6567dc955dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a606e25a89603ac05bf9ac672e9f3cfe3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1display.html#a606e25a89603ac05bf9ac672e9f3cfe3">ScreenSize</a> { <br />
-&#160;&#160;<a class="el" href="namespacegba_1_1display.html#a606e25a89603ac05bf9ac672e9f3cfe3a21d3815644a49168bc6086d3c43e09bd">ScreenSize::TEXT_256X256</a> = 0, 
-<a class="el" href="namespacegba_1_1display.html#a606e25a89603ac05bf9ac672e9f3cfe3ad7ee6fece94a51521826cf5c9ca9d4b4">ScreenSize::TEXT_512X256</a>, 
-<a class="el" href="namespacegba_1_1display.html#a606e25a89603ac05bf9ac672e9f3cfe3a35c940eb5508e8bf8944e80edb078a67">ScreenSize::TEXT_256X512</a>, 
-<a class="el" href="namespacegba_1_1display.html#a606e25a89603ac05bf9ac672e9f3cfe3a85633b2e627eb75b369f211e9d8502ef">ScreenSize::TEXT_512X512</a>, 
+<tr class="memitem:a00d525bf594fe4319d6e33dc3191186a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186a">MapSize</a> { <br />
+&#160;&#160;<a class="el" href="namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186aa21d3815644a49168bc6086d3c43e09bd">MapSize::TEXT_256X256</a> = 0, 
+<a class="el" href="namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186aad7ee6fece94a51521826cf5c9ca9d4b4">MapSize::TEXT_512X256</a>, 
+<a class="el" href="namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186aa35c940eb5508e8bf8944e80edb078a67">MapSize::TEXT_256X512</a>, 
+<a class="el" href="namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186aa85633b2e627eb75b369f211e9d8502ef">MapSize::TEXT_512X512</a>, 
 <br />
-&#160;&#160;<a class="el" href="namespacegba_1_1display.html#a606e25a89603ac05bf9ac672e9f3cfe3a49037467363bbf6750f2d10390ddba42">ScreenSize::ROTSCAL_128X128</a> = 0, 
-<a class="el" href="namespacegba_1_1display.html#a606e25a89603ac05bf9ac672e9f3cfe3a082c25e13f9220e214e20122c7145065">ScreenSize::ROTSCAL_256X256</a>, 
-<a class="el" href="namespacegba_1_1display.html#a606e25a89603ac05bf9ac672e9f3cfe3a5c624c25907f4761424ad16927d17534">ScreenSize::ROTSCAL_512X512</a>, 
-<a class="el" href="namespacegba_1_1display.html#a606e25a89603ac05bf9ac672e9f3cfe3ad3cd8e2eb6b4852206aae4890dfd895a">ScreenSize::ROTSCAL_1024X1024</a>
+&#160;&#160;<a class="el" href="namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186aa49037467363bbf6750f2d10390ddba42">MapSize::ROTSCAL_128X128</a> = 10, 
+<a class="el" href="namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186aa082c25e13f9220e214e20122c7145065">MapSize::ROTSCAL_256X256</a>, 
+<a class="el" href="namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186aa5c624c25907f4761424ad16927d17534">MapSize::ROTSCAL_512X512</a>, 
+<a class="el" href="namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186aad3cd8e2eb6b4852206aae4890dfd895a">MapSize::ROTSCAL_1024X1024</a>
 <br />
  }</td></tr>
-<tr class="separator:a606e25a89603ac05bf9ac672e9f3cfe3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a00d525bf594fe4319d6e33dc3191186a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2f26a1008f7c22d0ff79fe4d7e4666c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1display.html#af2f26a1008f7c22d0ff79fe4d7e4666c">ObjectMapping</a> { <a class="el" href="namespacegba_1_1display.html#af2f26a1008f7c22d0ff79fe4d7e4666ca6c6389a0551bc00395e7e92d9bfe8f97">ObjectMapping::MAP_ARRAY</a>, 
 <a class="el" href="namespacegba_1_1display.html#af2f26a1008f7c22d0ff79fe4d7e4666ca94df322dd057362a8215b0059fd48d03">ObjectMapping::MAP_TILE_MATRIX</a>
  }</td></tr>
@@ -199,6 +199,11 @@ Functions</h2></td></tr>
 <tr class="separator:ac7bee6fc7e254cb9cc0d675f64e0a270"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3d097929126a710dfe037e762b1cc60"><td class="memItemLeft" align="right" valign="top">auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1display.html#ac3d097929126a710dfe037e762b1cc60">blend_b_strength</a> ()</td></tr>
 <tr class="separator:ac3d097929126a710dfe037e762b1cc60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a993c54baf9b90ec78173fa3294eaf40f"><td class="memItemLeft" align="right" valign="top"><a id="a993c54baf9b90ec78173fa3294eaf40f"></a>
+constexpr <a class="el" href="structgba_1_1geometry_1_1Size.html">geometry::Size</a>&#160;</td><td class="memItemRight" valign="bottom"><b>extract_size</b> (<a class="el" href="namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186a">MapSize</a> size)</td></tr>
+<tr class="separator:a993c54baf9b90ec78173fa3294eaf40f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a714398f01bbe4d7fc5f57c2e3c458ddd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgba_1_1display_1_1BackgroundControl.html">BackgroundControl</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1display.html#a714398f01bbe4d7fc5f57c2e3c458ddd">bg_control</a> (<a class="el" href="namespacegba_1_1display.html#a922855a924b13d7954b7790e2eb46cdb">Layer</a> layer)</td></tr>
+<tr class="separator:a714398f01bbe4d7fc5f57c2e3c458ddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac35d4f3c2a5ffd3be2110ab116e4554f"><td class="memItemLeft" align="right" valign="top">auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1display.html#ac35d4f3c2a5ffd3be2110ab116e4554f">bg_ox</a> (<a class="el" href="namespacegba_1_1display.html#a922855a924b13d7954b7790e2eb46cdb">Layer</a> layer)</td></tr>
 <tr class="separator:ac35d4f3c2a5ffd3be2110ab116e4554f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6ffb4df38525f35c0767b666c6fa095"><td class="memItemLeft" align="right" valign="top">auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1display.html#af6ffb4df38525f35c0767b666c6fa095">bg_oy</a> (<a class="el" href="namespacegba_1_1display.html#a922855a924b13d7954b7790e2eb46cdb">Layer</a> layer)</td></tr>
@@ -213,6 +218,9 @@ Functions</h2></td></tr>
 <tr class="separator:a34ae5af6f2a59bf934a3c224b8909422"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46f00fe016011953fd075a239ef10990"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1display.html#a46f00fe016011953fd075a239ef10990">vsync</a> ()</td></tr>
 <tr class="separator:a46f00fe016011953fd075a239ef10990"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e260c901701d62bd357facc2654736a"><td class="memItemLeft" align="right" valign="top"><a id="a9e260c901701d62bd357facc2654736a"></a>
+std::array&lt; <a class="el" href="classgba_1_1display_1_1Color.html">Color</a>, 256 &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>bg_palette</b> ()</td></tr>
+<tr class="separator:a9e260c901701d62bd357facc2654736a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22f1d2666387c18310870bff5bbc3666"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1display.html#a22f1d2666387c18310870bff5bbc3666">window_visible</a> (<a class="el" href="namespacegba_1_1display.html#a1204cba21fb25475a5768e68ebe106ba">Window</a> window, bool visible=true)</td></tr>
 <tr class="separator:a22f1d2666387c18310870bff5bbc3666"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -274,6 +282,47 @@ static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>window_c
 </table>
 </div><div class="memdoc">
 <p>A map layer. </p>
+
+</div>
+</div>
+<a id="a00d525bf594fe4319d6e33dc3191186a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00d525bf594fe4319d6e33dc3191186a">&#9670;&nbsp;</a></span>MapSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186a">gba::display::MapSize</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Map size (in pixels). </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a00d525bf594fe4319d6e33dc3191186aa21d3815644a49168bc6086d3c43e09bd"></a>TEXT_256X256&#160;</td><td class="fielddoc"><p>256x256 map (in Text Mode). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a00d525bf594fe4319d6e33dc3191186aad7ee6fece94a51521826cf5c9ca9d4b4"></a>TEXT_512X256&#160;</td><td class="fielddoc"><p>512x256 map (in Text Mode). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a00d525bf594fe4319d6e33dc3191186aa35c940eb5508e8bf8944e80edb078a67"></a>TEXT_256X512&#160;</td><td class="fielddoc"><p>256x512 map (in Text Mode). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a00d525bf594fe4319d6e33dc3191186aa85633b2e627eb75b369f211e9d8502ef"></a>TEXT_512X512&#160;</td><td class="fielddoc"><p>512x512 map (in Text Mode). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a00d525bf594fe4319d6e33dc3191186aa49037467363bbf6750f2d10390ddba42"></a>ROTSCAL_128X128&#160;</td><td class="fielddoc"><p>128x128 map (in Rotation/Scaling Mode). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a00d525bf594fe4319d6e33dc3191186aa082c25e13f9220e214e20122c7145065"></a>ROTSCAL_256X256&#160;</td><td class="fielddoc"><p>256x256 map (in Rotation/Scaling Mode). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a00d525bf594fe4319d6e33dc3191186aa5c624c25907f4761424ad16927d17534"></a>ROTSCAL_512X512&#160;</td><td class="fielddoc"><p>512x512 map (in Rotation/Scaling Mode). </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a00d525bf594fe4319d6e33dc3191186aad3cd8e2eb6b4852206aae4890dfd895a"></a>ROTSCAL_1024X1024&#160;</td><td class="fielddoc"><p>1024x1024 map (in Rotation/Scaling Mode). </p>
+</td></tr>
+</table>
 
 </div>
 </div>
@@ -430,47 +479,6 @@ static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>window_c
 
 </div>
 </div>
-<a id="a606e25a89603ac05bf9ac672e9f3cfe3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a606e25a89603ac05bf9ac672e9f3cfe3">&#9670;&nbsp;</a></span>ScreenSize</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="namespacegba_1_1display.html#a606e25a89603ac05bf9ac672e9f3cfe3">gba::display::ScreenSize</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Screen size (in pixels). </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a606e25a89603ac05bf9ac672e9f3cfe3a21d3815644a49168bc6086d3c43e09bd"></a>TEXT_256X256&#160;</td><td class="fielddoc"><p>256x256 map (in Text Mode). </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a606e25a89603ac05bf9ac672e9f3cfe3ad7ee6fece94a51521826cf5c9ca9d4b4"></a>TEXT_512X256&#160;</td><td class="fielddoc"><p>512x256 map (in Text Mode). </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a606e25a89603ac05bf9ac672e9f3cfe3a35c940eb5508e8bf8944e80edb078a67"></a>TEXT_256X512&#160;</td><td class="fielddoc"><p>256x512 map (in Text Mode). </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a606e25a89603ac05bf9ac672e9f3cfe3a85633b2e627eb75b369f211e9d8502ef"></a>TEXT_512X512&#160;</td><td class="fielddoc"><p>512x512 map (in Text Mode). </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a606e25a89603ac05bf9ac672e9f3cfe3a49037467363bbf6750f2d10390ddba42"></a>ROTSCAL_128X128&#160;</td><td class="fielddoc"><p>128x128 map (in Rotation/Scaling Mode). </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a606e25a89603ac05bf9ac672e9f3cfe3a082c25e13f9220e214e20122c7145065"></a>ROTSCAL_256X256&#160;</td><td class="fielddoc"><p>256x256 map (in Rotation/Scaling Mode). </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a606e25a89603ac05bf9ac672e9f3cfe3a5c624c25907f4761424ad16927d17534"></a>ROTSCAL_512X512&#160;</td><td class="fielddoc"><p>512x512 map (in Rotation/Scaling Mode). </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a606e25a89603ac05bf9ac672e9f3cfe3ad3cd8e2eb6b4852206aae4890dfd895a"></a>ROTSCAL_1024X1024&#160;</td><td class="fielddoc"><p>1024x1024 map (in Rotation/Scaling Mode). </p>
-</td></tr>
-</table>
-
-</div>
-</div>
 <a id="a244a3aa2d0d66724b5dc35ebfcf7fb86"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a244a3aa2d0d66724b5dc35ebfcf7fb86">&#9670;&nbsp;</a></span>SpecialEffect</h2>
 
@@ -571,6 +579,26 @@ static auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>window_c
       </table>
 </div><div class="memdoc">
 <p>Enables backdrop as color effect's second target. </p>
+
+</div>
+</div>
+<a id="a714398f01bbe4d7fc5f57c2e3c458ddd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a714398f01bbe4d7fc5f57c2e3c458ddd">&#9670;&nbsp;</a></span>bg_control()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgba_1_1display_1_1BackgroundControl.html">BackgroundControl</a> &amp; gba::display::bg_control </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacegba_1_1display.html#a922855a924b13d7954b7790e2eb46cdb">Layer</a>&#160;</td>
+          <td class="paramname"><em>layer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Gets layer's background control.</p>
+<dl class="section remark"><dt>Remarks</dt><dd>Using Layer::OBJ is UB. </dd></dl>
 
 </div>
 </div>

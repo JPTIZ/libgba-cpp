@@ -2,6 +2,7 @@ var searchData=
 [
   ['map_5farray',['MAP_ARRAY',['../namespacegba_1_1display.html#af2f26a1008f7c22d0ff79fe4d7e4666ca6c6389a0551bc00395e7e92d9bfe8f97',1,'gba::display']]],
   ['map_5ftile_5fmatrix',['MAP_TILE_MATRIX',['../namespacegba_1_1display.html#af2f26a1008f7c22d0ff79fe4d7e4666ca94df322dd057362a8215b0059fd48d03',1,'gba::display']]],
+  ['mapsize',['MapSize',['../namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186a',1,'gba::display']]],
   ['mode',['Mode',['../namespacegba_1_1display.html#a66c8e286e5e5b3217f02083eece32b2b',1,'gba::display']]],
   ['mode0',['MODE0',['../namespacegba_1_1display.html#a66c8e286e5e5b3217f02083eece32b2ba6e762f191dd6d8a074059b4a9ba31331',1,'gba::display']]],
   ['mode1',['MODE1',['../namespacegba_1_1display.html#a66c8e286e5e5b3217f02083eece32b2baf70454a7ae988950695a7614896f8b76',1,'gba::display']]],
