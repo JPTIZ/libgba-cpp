@@ -6,6 +6,8 @@ subdirs   := $(wildcard */)
 sources   := $(wildcard *.cpp) $(wildcard $(addsuffix *.cpp,$(subdirs)))
 objects   := $(patsubst %.cpp,%.o,$(sources))
 
+OUTPUT    := $(BINDIR)/$(OUTPUT).a
+
 all: $(OUTPUT)
 
 $(objects) : %.o : %.cpp
@@ -18,7 +20,7 @@ cpu/interrupts.o : cpu/interrupts.cpp
 
 $(OUTPUT): cpu/interrupts.o $(objects)
 	@echo Generating $@
-	$(AR) rvs $@.a $^
+	$(AR) rvs $@ $^
 
 clean:
-	rm -f $(objects) $(OUTPUT).a
+	rm -f $(objects) $(BINDIR)/$(OUTPUT)
