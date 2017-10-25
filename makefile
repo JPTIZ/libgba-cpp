@@ -1,5 +1,5 @@
 # Directories
-export TESTDIR
+export TESTDIR    = $(CURDIR)/tests
 export BINDIR     = $(CURDIR)/bin
 export INCLUDEDIR = $(CURDIR)/include
 export DOCDIR     = $(CURDIR)/doc
@@ -19,14 +19,26 @@ export LD         = $(TOOLCHAIN)/arm-none-eabi-ld
 export AR         = $(TOOLCHAIN)/arm-none-eabi-ar
 
 # Base compiler flags
-export CFLAGS   = -I$(INCLUDEDIR)\
+export THUMB	  = -mthumb
+
+export ARM  	  = -marm
+
+export ARCH       = \
+	                -mthumb-interwork\
+	                -fomit-frame-pointer\
+					-ffast-math\
+					-fno-exceptions\
+					-fno-rtti
+
+export CFLAGS     = \
+	                -I$(INCLUDEDIR)\
 					-O$(OPTIMLEVEL)\
 					-Wall\
 					-Wextra\
 					-Werror
 
-export CXXFLAGS = $(CFLAGS)\
-					-std=$(CXXSTD)\
+export CXXFLAGS   = $(CFLAGS)\
+					-std=$(CXXSTD)
 
 ifeq ($(DEBUG), 1)
 	export CXXFLAGS += -g
@@ -49,7 +61,7 @@ tests:
 	@echo -e "\e[1mCompiling tests...\e[0;32m"
 	@echo -e "====================================================================\e[0m"
 	@echo
-	@$(MAKE) -C tests -f makefile
+	@$(MAKE) -C $(TESTDIR) -f makefile
 	@echo
 	@echo -e "\e[32m===================================================================="
 	@echo -e "\e[1mDone\e[0;32m"
@@ -60,8 +72,12 @@ docs:
 	@echo -e "\e[1mGenerating documentation...\e[0;32m"
 	@echo -e "====================================================================\e[0m"
 	@echo
-	@doxygen doc/doxy.conf
+	@doxygen $(DOCDIR)/doxy.conf
 	@echo
 	@echo -e "\e[32m===================================================================="
 	@echo -e "\e[1mDone\e[0;32m"
 	@echo -e "====================================================================\e[0m"
+
+clean:
+	rm -rf $(BINDIR)
+	@$(MAKE) -C $(TESTDIR) -f makefile clean

@@ -1,5 +1,13 @@
 all:
+	@echo -e "\e[32m--------------------------------------------------------------------"
 	@echo Compiling Drivers...
-	make -C drivers -f makefile
+	@echo -e "--------------------------------------------------------------------\e[0m"
+	@echo
+	@make -C drivers -f makefile
+	@echo
+	@echo -e "\e[32m--------------------------------------------------------------------"
 	@echo Compiling engine...
-	make -C engine -f makefile
+	@echo -e "--------------------------------------------------------------------\e[0m"
+	@echo
+	@make -C engine -f makefile
+	@echo

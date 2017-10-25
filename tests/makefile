@@ -8,4 +8,5 @@ $(SUBDIRS):
 	@echo
 	$(MAKE) -C $@
 
-.PHONY: all $(SUBDIRS)
+clean:
+	$(foreach dir, $(SUBDIRS), $(MAKE) -C $(dir) -f makefile clean;)
