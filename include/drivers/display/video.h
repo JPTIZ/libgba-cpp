@@ -195,9 +195,7 @@ namespace mode5 {
      *
      * @returns Color value in given coordinates.
      */
-    inline auto& vram(int x, int y) {
-        return vram_data()[x + screen_width * y].color;
-    }
+    Color& vram(int x, int y);
 
     /**
      * Gets video pixel at given VRAM index.
@@ -206,9 +204,17 @@ namespace mode5 {
      *
      * @returns Color value in given index.
      */
-    inline auto& vram(int index) {
-        return vram_data()[index].color;
-    }
+    Color& vram(int index);
+
+    /**
+     * Gets current selected page.
+     */
+    Page page();
+
+    /**
+     * Toggles current selected page.
+     */
+    void flip_pages();
 }
 
 /**
