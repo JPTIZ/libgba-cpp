@@ -3,7 +3,7 @@
 
 #include <array>
 
-#include <display/tilemap.h>
+#include <drivers/display/tilemap.h>
 
 namespace resources::maps {
 

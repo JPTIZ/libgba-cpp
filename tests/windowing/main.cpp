@@ -1,7 +1,7 @@
-#include <display/layers.h>
-#include <display/control.h>
-#include <display/effects.h>
-#include <display/window.h>
+#include <drivers/display/layers.h>
+#include <drivers/display/control.h>
+#include <drivers/display/effects.h>
+#include <drivers/display/window.h>
 
 #include "sample_tiles.h"
 #include "sample_map.h"
@@ -13,26 +13,26 @@ using namespace resources::maps;
 using namespace test;
 
 void copy_palette() {
-    for (auto i = 0; i < sample_palette.size(); ++i) {
+    for (auto i = 0u; i < sample_palette.size(); ++i) {
         bg_palette()[i + 1] = sample_palette[i];
     }
 }
 
 void copy_tiles() {
-    for (auto i = 0; i < sample_tiles.size(); ++i) {
+    for (auto i = 0u; i < sample_tiles.size(); ++i) {
         tileset()[i + 1] = sample_tiles[i];
     }
 }
 
 void gen_map() {
-    for (auto i = 0; i < layer0.size(); ++i) {
+    for (auto i = 0u; i < layer0.size(); ++i) {
         auto x = i % 8;
         auto y = i / 8;
-        map::tilemap()[x + 32 * y] = layer0[i];
+        tilemap()[x + 32 * y] = layer0[i];
     }
 
-    for (auto i = 0; i < layer1.size(); ++i) {
-        map::tilemap()[i + 3 + 32 * 3 + 0x400] = layer1[i];
+    for (auto i = 0u; i < layer1.size(); ++i) {
+        tilemap()[i + 3 + 32 * 3 + 0x400] = layer1[i];
     }
 }
 
@@ -51,6 +51,9 @@ int main() {
     bg_control(Layer::BG2).priority(BGPriority::HIGH);
     bg_control(Layer::BG3).priority(BGPriority::HIGHEST);
 
+    bg_ox(Layer::BG0) = -64;
+    bg_oy(Layer::BG0) = -16;
+
     bg_ox(Layer::BG1) = 16;
     bg_oy(Layer::BG1) = -16;
 
@@ -62,23 +65,22 @@ int main() {
 
     gen_map();
 
-    auto i = 0;
+    window0.left = 0;
+    window0.right = 128;
+    window0.top = 4;
+    window0.bottom = 120;
 
+    window1.left = 0;
+    window1.right = 240;
+    window1.top = 0;
+    window1.bottom = 160;
+
+
+    auto i = 0;
     while (true) {
         vsync();
 
         bg_ox(Layer::BG1) = -i;
-
-        window0.left = 0;
-        window0.right = 128;
-        window0.top = 4;
-        window0.bottom = 120;
-
-        window1.left = 0;
-        window1.right = 240;
-        window1.top = 0;
-        window1.bottom = 160;
-
         ++i;
     }
 }

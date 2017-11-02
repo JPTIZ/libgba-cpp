@@ -22,7 +22,7 @@ public:
     {}
 
     void operator=(unsigned value) {
-        data = (data & (~0xf << index)) | ((value & 0xf) << index);
+        data = (data & (~0xfu << index)) | ((value & 0xfu) << index);
     }
 
 private:
@@ -58,13 +58,13 @@ class Tileset {
 public:
     template <std::size_t N>
     Tileset(const std::array<Tile, N> tiles):
-        tiles_{reinterpret_cast<const Tile*>(tiles.data())},
-        count_{N}
+        count_{N},
+        tiles_{reinterpret_cast<const Tile*>(tiles.data())}
     {}
 
     Tileset(const Tile tiles[], int count):
-        tiles_{tiles},
-        count_{count}
+        count_{count},
+        tiles_{tiles}
     {}
 
     auto length() const {
@@ -90,8 +90,8 @@ private:
 class Tilemap {
 public:
     Tilemap(const uint16_t tiles[], int count):
-        tiles_{tiles},
-        count_{count}
+        count_{count},
+        tiles_{tiles}
     {}
 
     const auto length() const {

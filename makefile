@@ -6,6 +6,9 @@ export DOCDIR     = $(CURDIR)/doc
 
 # Compiler options
 export OPTIMLEVEL = 2
+ifeq ($(DEBUG), 1)
+	export OPTIMLEVEL = 0
+endif
 
 # C++ configuration
 export CXXSTD     = c++17
@@ -15,8 +18,10 @@ export TOOLCHAIN  = $(DEVKITARM)/bin
 
 export CC         = $(TOOLCHAIN)/arm-none-eabi-gcc
 export CXX	      = $(TOOLCHAIN)/arm-none-eabi-g++
-export LD         = $(TOOLCHAIN)/arm-none-eabi-ld
+export LD         = $(TOOLCHAIN)/arm-none-eabi-g++
 export AR         = $(TOOLCHAIN)/arm-none-eabi-ar
+export OBJCOPY	  = $(TOOLCHAIN)/arm-none-eabi-objcopy
+export GBAFIX	  = $(TOOLCHAIN)/gbafix
 
 # Base compiler flags
 export THUMB	  = -mthumb
@@ -40,11 +45,16 @@ export CFLAGS     = \
 export CXXFLAGS   = $(CFLAGS)\
 					-std=$(CXXSTD)
 
+export LDFLAGS    = $(CXXFLAGS)\
+	                -specs=gba.specs
+
 ifeq ($(DEBUG), 1)
 	export CXXFLAGS += -g
 endif
 
 # Build rules
+.PHONY: libgba tests docs
+
 all: libgba tests docs
 
 libgba:

@@ -15,14 +15,14 @@ class Palette {
 public:
     template <std::size_t N>
     Palette(const std::array<Color, N> palette):
-        palette_{palette.data()},
-        size_{N}
+        size_{N},
+        palette_{palette.data()}
     {}
 
     template <std::size_t N>
     Palette(const std::array<uint16_t, N> palette):
-        palette_{palette.data()},
-        size_{N}
+        size_{N},
+        palette_{palette.data()}
     {}
 
     /**
@@ -32,8 +32,8 @@ public:
     Palette(const uint16_t palette[],
             std::size_t size
     ):
-        palette_{reinterpret_cast<const Color*>(palette)},
-        size_{size}
+        size_{size},
+        palette_{reinterpret_cast<const Color*>(palette)}
     {}
 
     const auto& colors() const {

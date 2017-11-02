@@ -1,4 +1,4 @@
-#include "../../src/engine/graphics/tilemap.h"
+#include <engine/graphics/tilemap.h>
 
 #include "sample_tiles.h"
 

@@ -26,13 +26,18 @@ namespace gba::architecture::registers {
  * @returns Instantiated data in given address.
  */
 template <typename T>
-inline auto& at(unsigned address) {
+inline T& at(unsigned address) {
     return *new (reinterpret_cast<void*>(address)) T{};
 }
 
 template <>
-inline auto& at<uint16_t>(unsigned address) {
+inline uint16_t& at<uint16_t>(unsigned address) {
     return *reinterpret_cast<uint16_t*>(address);
+}
+
+template <>
+inline volatile const uint16_t& at<volatile const uint16_t>(unsigned address) {
+    return *reinterpret_cast<volatile const uint16_t*>(address);
 }
 
 /**
@@ -58,7 +63,7 @@ static auto& lcd_status                 = at<std::bitset<16>>(0x0400'0004);
 /**
  * Number of scanline currently being processed by PPU.
  */
-static volatile auto& vcount            = at<uint16_t>(0x0400'0006);
+static volatile const auto& vcount      = at<volatile const uint16_t>(0x0400'0006);
 
 /**
  * BG[0-3] layer control registers.
@@ -242,14 +247,14 @@ static auto& serial_third               = at<uint16_t>(0x0400'0126);
 static auto& serial_control             = at<uint16_t>(0x0400'0128);
 static auto& serial_send_data           = at<uint8_t>(0x0400'012a);
 
-static auto& keypad_status              = at<std::bitset<16>>(0x0400'00130);
-static auto& keypad_interrupt           = at<std::bitset<16>>(0x0400'00132);
+static volatile const auto& keypad_status = at<volatile const std::bitset<16>>(0x0400'0130);
+static auto& keypad_interrupt           = at<std::bitset<16>>(0x0400'0132);
 
-static auto& serial_mode                = at<std::bitset<16>>(0x0400'00134);
-static auto& serial_joy_control         = at<std::bitset<16>>(0x0400'00140);
-static auto& serial_joy_receive_data    = at<uint32_t>(0x0400'00150);
-static auto& serial_joy_transmit_data   = at<uint32_t>(0x0400'00154);
-static auto& serial_joy_receive_status  = at<std::bitset<32>>(0x0400'00158);
+static auto& serial_mode                = at<std::bitset<16>>(0x0400'0134);
+static auto& serial_joy_control         = at<std::bitset<16>>(0x0400'0140);
+static auto& serial_joy_receive_data    = at<uint32_t>(0x0400'0150);
+static auto& serial_joy_transmit_data   = at<uint32_t>(0x0400'0154);
+static auto& serial_joy_receive_status  = at<std::bitset<32>>(0x0400'0158);
 
 }
 

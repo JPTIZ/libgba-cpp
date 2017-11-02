@@ -196,7 +196,7 @@ namespace mode5 {
      * @returns Color value in given coordinates.
      */
     inline auto& vram(int x, int y) {
-        return vram_data()[x + screen_width * y].s;
+        return vram_data()[x + screen_width * y].color;
     }
 
     /**
@@ -207,7 +207,7 @@ namespace mode5 {
      * @returns Color value in given index.
      */
     inline auto& vram(int index) {
-        return vram_data()[index].s;
+        return vram_data()[index].color;
     }
 }
 

@@ -3,8 +3,8 @@
 
 #include <array>
 
-#include "../../src/engine/graphics/tilemap.h"
-#include "../../src/engine/graphics/palette.h"
+#include <engine/graphics/tilemap.h>
+#include <engine/graphics/palette.h>
 
 namespace resources::maps {
 

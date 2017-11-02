@@ -36,7 +36,7 @@ enum class Page {
  *
  * @return Current scanline number processed by PPU.
  */
-inline volatile auto& vcount() {
+inline volatile const auto& vcount() {
     return gba::architecture::registers::display::vcount;
 }
 

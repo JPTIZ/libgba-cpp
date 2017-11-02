@@ -1,7 +1,7 @@
-#include <cpu/interrupts.h>
+#include <drivers/cpu/interrupts.h>
 
-#include <display/video.h>
-#include <display/layers.h>
+#include <drivers/display/video.h>
+#include <drivers/display/layers.h>
 
 using namespace gba::display;
 using namespace gba::cpu;
@@ -11,7 +11,6 @@ int main() {
 
     vblank_interrupt(true);
     bg_palette()[0] = Color{0, 0x1f, 0};
-    auto frames = 0;
     while (true) {
         halt();
         bg_palette()[0] = Color{0, 0x1f, 0};

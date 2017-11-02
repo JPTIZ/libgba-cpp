@@ -142,7 +142,7 @@ public:
      * Enables mosaic effect for background.
      */
     void mosaic(bool flag) {
-        data = (data & ~0b100000) | (flag << 6);
+        data = (data & ~0b100000u) | (flag << 6);
     }
 
     /**
@@ -160,7 +160,7 @@ public:
      * Changes background's screen block base index.
      */
     void screen_base_block(unsigned base) {
-        data = (data & (~0x1fu << 8)) | ((base & 0x1f) << 8);
+        data = (data & (~0x1fu << 8)) | ((base & 0x1fu) << 8);
     }
 
     /**
