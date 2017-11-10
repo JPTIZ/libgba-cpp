@@ -14,13 +14,13 @@ namespace gba::graphics {
 class Palette {
 public:
     template <std::size_t N>
-    Palette(const std::array<Color, N> palette):
+    Palette(const std::array<Color, N>& palette):
         size_{N},
         palette_{palette.data()}
     {}
 
     template <std::size_t N>
-    Palette(const std::array<uint16_t, N> palette):
+    Palette(const std::array<uint16_t, N>& palette):
         size_{N},
         palette_{palette.data()}
     {}

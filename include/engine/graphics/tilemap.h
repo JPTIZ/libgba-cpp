@@ -5,51 +5,16 @@
 #include <cstdint>
 #include <utility>
 
+#include <drivers/display/tilemap.h>
+#include "palette.h"
+
 #include "graphics.h"
 
 namespace gba::graphics {
 
-namespace details {
+using MapSize = gba::display::MapSize;
 
-/**
- * A pair of tile pixels.
- */
-class TileIndex {
-public:
-    TileIndex(uint32_t& data, int index):
-        data{data},
-        index{index}
-    {}
-
-    void operator=(unsigned value) {
-        data = (data & (~0xfu << index)) | ((value & 0xfu) << index);
-    }
-
-private:
-    uint32_t& data;
-    const int index;
-};
-
-}
-
-/**
- * A single 8x8 tile.
- */
-class Tile {
-public:
-    Tile() = default;
-
-    Tile(std::array<uint32_t, 8> rows):
-        rows_{move(rows)}
-    {}
-
-    auto operator()(unsigned x, unsigned y) {
-        return details::TileIndex(rows_[y], x << 2);
-    }
-
-private:
-    std::array<uint32_t, 8> rows_{};
-};
+using Tile = gba::display::map::Tile;
 
 /**
  * Sequence of tiles for tilemap filling.
@@ -57,12 +22,17 @@ private:
 class Tileset {
 public:
     template <std::size_t N>
-    Tileset(const std::array<Tile, N> tiles):
+    Tileset(const Palette& palette,
+            const std::array<Tile, N>& tiles):
+        palette_{palette},
         count_{N},
         tiles_{reinterpret_cast<const Tile*>(tiles.data())}
     {}
 
-    Tileset(const Tile tiles[], int count):
+    Tileset(const Palette& palette,
+            const Tile tiles[],
+            unsigned count):
+        palette_{palette},
         count_{count},
         tiles_{tiles}
     {}
@@ -71,16 +41,21 @@ public:
         return count_;
     }
 
-    const auto data() const {
+    const auto& data() const {
         return tiles_;
     }
 
-    const auto operator[](int i) const {
+    const auto& palette() const {
+        return palette_;
+    }
+
+    const auto& operator[](int i) const {
         return tiles_[i];
     }
 
 private:
-    const int count_;
+    const Palette& palette_;
+    const unsigned count_;
     const Tile* tiles_;
 };
 
@@ -89,7 +64,13 @@ private:
  */
 class Tilemap {
 public:
-    Tilemap(const uint16_t tiles[], int count):
+    template <std::size_t N>
+    Tilemap(const std::array<uint16_t, N>& tiles):
+        count_{N},
+        tiles_{reinterpret_cast<const uint16_t*>(tiles.data())}
+    {}
+
+    Tilemap(const uint16_t tiles[], unsigned count):
         count_{count},
         tiles_{tiles}
     {}
@@ -98,14 +79,76 @@ public:
         return count_;
     }
 
-    const auto tiles() const {
+    const auto& tiles() const {
         return tiles_;
     }
 
+    const auto& operator[](int i) const {
+        return tiles_[i];
+    }
+
 private:
-    const int count_;
+    const unsigned count_;
     const uint16_t* tiles_;
 };
+
+
+class Map {
+public:
+    Map(const Tileset& tileset,
+        const Tilemap& tilemap,
+        MapSize size):
+        tileset_{tileset},
+        tilemap_{tilemap},
+        size_{size}
+    {}
+
+    const auto& tileset() const {
+        return tileset_;
+    }
+
+    const auto& tilemap() const {
+        return tilemap_;
+    }
+
+    auto size() const {
+        return size_;
+    }
+
+    auto width() const {
+        return extract_size(size_).width;
+    }
+
+    auto height() const {
+        return extract_size(size_).height;
+    }
+
+private:
+    const Tileset& tileset_;
+    const Tilemap& tilemap_;
+    MapSize size_;
+};
+
+/**
+ * Setups memory with given tilemap.
+ */
+inline void load_map(const Map& map) {
+    const auto& tileset = map.tileset();
+    const auto& tilemap = map.tilemap();
+
+    const auto& palette = tileset.palette();
+    for (auto i = 0u; i < 10u; ++i) {
+        display::bg_palette()[i + 1] = palette[i];
+    }
+
+    for (auto i = 0u; i < tileset.length(); ++i) {
+        display::map::tileset()[i + 1] = tileset[i];
+    }
+
+    for (auto i = 0u; i < tilemap.length(); ++i) {
+        display::map::tilemap()[i] = tilemap[i];
+    }
+}
 
 }
 

@@ -9,14 +9,50 @@
  */
 namespace gba::display::map {
 
+
+namespace details {
+
 /**
- * A single tile.
+ * A pair of tile pixels.
  */
-struct Tile {
+class TileIndex {
+public:
+    TileIndex(uint32_t& data, int index):
+        data{data},
+        index{index}
+    {}
+
+    void operator=(unsigned value) {
+        data = (data & (~0xfu << index)) | ((value & 0xfu) << index);
+    }
+
+private:
+    uint32_t& data;
+    const int index;
+};
+
+}
+
+/**
+ * A single 8x8 tile.
+ */
+class Tile {
+public:
+    Tile() = default;
+
+    Tile(std::array<uint32_t, 8> rows):
+        rows_{move(rows)}
+    {}
+
     /**
      * Row of palette indexes in tile.
      */
-    std::array<uint32_t, 8> rows;
+    auto operator()(unsigned x, unsigned y) {
+        return details::TileIndex(rows_[y], x << 2);
+    }
+
+private:
+    std::array<uint32_t, 8> rows_{};
 };
 
 /**
