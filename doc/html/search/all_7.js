@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['map',['Map',['../classgba_1_1graphics_1_1Map.html',1,'gba::graphics']]],
   ['map_5farray',['MAP_ARRAY',['../namespacegba_1_1display.html#af2f26a1008f7c22d0ff79fe4d7e4666ca6c6389a0551bc00395e7e92d9bfe8f97',1,'gba::display']]],
   ['map_5ftile_5fmatrix',['MAP_TILE_MATRIX',['../namespacegba_1_1display.html#af2f26a1008f7c22d0ff79fe4d7e4666ca94df322dd057362a8215b0059fd48d03',1,'gba::display']]],
   ['mapsize',['MapSize',['../namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186a',1,'gba::display']]],
