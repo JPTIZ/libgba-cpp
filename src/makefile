@@ -11,3 +11,7 @@ all:
 	@echo
 	@make -C engine -f makefile
 	@echo
+
+clean:
+	@$(MAKE) -C drivers -f makefile clean
+	@$(MAKE) -C engine -f makefile clean

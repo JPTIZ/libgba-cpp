@@ -23,7 +23,7 @@ const std::array<Color, 7> raw_sample_palette = {
     Color{0x1f, 0x1f, 0x1f},
 };
 
-std::array<Tile, 8> sample_tiles = {
+const std::array<Tile, 8> sample_tiles = {
     Tile{
      {0x33333333,
       0x33333333,

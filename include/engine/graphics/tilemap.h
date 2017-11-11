@@ -130,6 +130,15 @@ private:
 };
 
 /**
+ * Loads tileset into tile memory.
+ */
+inline void load_tileset(const Tileset& tileset) {
+    for (auto i = 0u; i < tileset.length(); ++i) {
+        display::map::tileset()[i + 1] = tileset[i];
+    }
+}
+
+/**
  * Setups memory with given tilemap.
  */
 inline void load_map(const Map& map) {
@@ -137,17 +146,12 @@ inline void load_map(const Map& map) {
     const auto& tilemap = map.tilemap();
 
     const auto& palette = tileset.palette();
-    for (auto i = 0u; i < 10u; ++i) {
-        display::bg_palette()[i + 1] = palette[i];
-    }
-
-    for (auto i = 0u; i < tileset.length(); ++i) {
-        display::map::tileset()[i + 1] = tileset[i];
-    }
+    load_tileset(map.tileset());
 
     for (auto i = 0u; i < tilemap.length(); ++i) {
         display::map::tilemap()[i] = tilemap[i];
     }
+    bg_control(display::Layer::BG0).screen_base_block(1);
 }
 
 }

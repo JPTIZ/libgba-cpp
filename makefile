@@ -3,6 +3,7 @@ export TESTDIR    = $(CURDIR)/tests
 export BINDIR     = $(CURDIR)/bin
 export INCLUDEDIR = $(CURDIR)/include
 export DOCDIR     = $(CURDIR)/doc
+export SRCDIR     = $(CURDIR)/src
 
 # Compiler options
 export OPTIMLEVEL = 2
@@ -63,7 +64,7 @@ libgba:
 	@echo -e "====================================================================\e[0m"
 	@echo
 	@mkdir -p $(BINDIR)
-	@$(MAKE) -C src -f makefile
+	@$(MAKE) -C $(SRCDIR) -f makefile
 	@echo
 
 tests:
@@ -90,4 +91,5 @@ docs:
 
 clean:
 	rm -rf $(BINDIR)
+	@$(MAKE) -C $(SRCDIR) -f makefile clean
 	@$(MAKE) -C $(TESTDIR) -f makefile clean

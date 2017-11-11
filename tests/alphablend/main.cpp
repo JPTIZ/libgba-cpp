@@ -22,7 +22,7 @@ void copy_tiles() {
         tileset()[i + 1] = sample_tiles[i];
     }
 
-    tileset()[11] = {
+    tileset()[11] = {{
         0x77777777,
         0x77777777,
         0x77777777,
@@ -31,7 +31,7 @@ void copy_tiles() {
         0x77777777,
         0x77777777,
         0x77777777,
-    };
+    }};
 }
 
 void gen_map() {

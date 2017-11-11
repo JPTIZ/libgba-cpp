@@ -66,6 +66,11 @@ private:
     const Color* palette_;
 };
 
+/**
+ * Loads palette into memory.
+ */
+void load_palette(const Palette&);
+
 }
 
 #endif
