@@ -14,7 +14,7 @@ $(objects) : %.o : %.cpp
 
 $(OUTPUT): $(objects)
 	@echo Generating $@
-	$(AR) rvs $@.a $^
+	$(AR) rvs $@ $^
 
 clean:
-	rm -f $(objects) $(OUTPUT).a
+	rm -f $(objects) $(OUTPUT)

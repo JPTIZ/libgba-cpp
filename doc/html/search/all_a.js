@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['page',['Page',['../namespacegba_1_1display.html#a584ce1ca960960f132b232b3780c7292',1,'gba::display']]],
+  ['page',['page',['../namespacegba_1_1display_1_1mode5.html#a489e8184bf7d4a5a73c4769c277b7350',1,'gba::display::mode5::page()'],['../namespacegba_1_1display.html#a584ce1ca960960f132b232b3780c7292',1,'gba::display::Page()']]],
   ['page0',['PAGE0',['../namespacegba_1_1display.html#a584ce1ca960960f132b232b3780c7292ada8b5f7591fcacf22b0b5f3cd3df7274',1,'gba::display']]],
   ['page1',['PAGE1',['../namespacegba_1_1display.html#a584ce1ca960960f132b232b3780c7292a3f710e769a0ae706342108341bef1981',1,'gba::display']]],
   ['palette',['Palette',['../classgba_1_1graphics_1_1Palette.html',1,'gba::graphics::Palette'],['../classgba_1_1graphics_1_1Palette.html#ae1109af357dd9e88dbf98e15fcd99edf',1,'gba::graphics::Palette::Palette()']]],

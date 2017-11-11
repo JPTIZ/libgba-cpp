@@ -14,7 +14,7 @@ $(objects) : %.o : %.cpp
 	@echo Compiling $^
 	$(CXX) -o $@ -c $^ $(LDFLAGS)
 
-$(OUTPUT): $(objects) $(BINDIR)/libgba.a
+$(OUTPUT): $(objects) $(BINDIR)/gba-engine.a $(BINDIR)/libgba.a
 	@echo Generating $@.elf
 	$(LD) -o $@.elf $^ $(LDFLAGS)
 	@echo Generating $@.gba

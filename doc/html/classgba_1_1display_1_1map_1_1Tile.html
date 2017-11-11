@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>LibGBA-CPP: gba::display::map Namespace Reference</title>
+<title>LibGBA-CPP: gba::display::map::Tile Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -60,69 +60,71 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>gba</b></li><li class="navelem"><a class="el" href="namespacegba_1_1display.html">display</a></li><li class="navelem"><a class="el" href="namespacegba_1_1display_1_1map.html">map</a></li>  </ul>
+<li class="navelem"><b>gba</b></li><li class="navelem"><a class="el" href="namespacegba_1_1display.html">display</a></li><li class="navelem"><a class="el" href="namespacegba_1_1display_1_1map.html">map</a></li><li class="navelem"><a class="el" href="classgba_1_1display_1_1map_1_1Tile.html">Tile</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classgba_1_1display_1_1map_1_1Tile-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gba::display::map Namespace Reference</div>  </div>
+<div class="title">gba::display::map::Tile Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="drivers_2display_2tilemap_8h_source.html">tilemap.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgba_1_1display_1_1map_1_1Tile.html">Tile</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a0e52190297dd9abb7f3d1832015973fc"><td class="memItemLeft" align="right" valign="top">std::array&lt; <a class="el" href="classgba_1_1display_1_1map_1_1Tile.html">Tile</a>, 0x40 &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1display_1_1map.html#a0e52190297dd9abb7f3d1832015973fc">tileset</a> ()</td></tr>
-<tr class="separator:a0e52190297dd9abb7f3d1832015973fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a437994e47b5736897cea7d05e3a71bdb"><td class="memItemLeft" align="right" valign="top">std::array&lt; uint16_t, 1024 &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegba_1_1display_1_1map.html#a437994e47b5736897cea7d05e3a71bdb">tilemap</a> ()</td></tr>
-<tr class="separator:a437994e47b5736897cea7d05e3a71bdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a8e91cdc6817929ebbcddedb14604e9a5"><td class="memItemLeft" align="right" valign="top"><a id="a8e91cdc6817929ebbcddedb14604e9a5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Tile</b> (std::array&lt; uint32_t, 8 &gt; rows)</td></tr>
+<tr class="separator:a8e91cdc6817929ebbcddedb14604e9a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf35ce7ea6ee0de659f0db3e30510fc9"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgba_1_1display_1_1map_1_1Tile.html#abf35ce7ea6ee0de659f0db3e30510fc9">operator()</a> (unsigned x, unsigned y)</td></tr>
+<tr class="separator:abf35ce7ea6ee0de659f0db3e30510fc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Map manipulation elements. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a id="a437994e47b5736897cea7d05e3a71bdb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a437994e47b5736897cea7d05e3a71bdb">&#9670;&nbsp;</a></span>tilemap()</h2>
+<div class="textblock"><p>A single 8x8 tile. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="abf35ce7ea6ee0de659f0db3e30510fc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf35ce7ea6ee0de659f0db3e30510fc9">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::array&lt;uint16_t, 1024&gt;&amp; gba::display::map::tilemap </td>
+          <td class="memname">auto gba::display::map::Tile::operator() </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-<p>The game map. </p>
-
-</div>
-</div>
-<a id="a0e52190297dd9abb7f3d1832015973fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e52190297dd9abb7f3d1832015973fc">&#9670;&nbsp;</a></span>tileset()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">std::array&lt;<a class="el" href="classgba_1_1display_1_1map_1_1Tile.html">Tile</a>, 0x40&gt;&amp; gba::display::map::tileset </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Tiles to fill maps with. </p>
+<p>Row of palette indexes in tile. </p>
 
 </div>
 </div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>include/drivers/display/<a class="el" href="drivers_2display_2tilemap_8h_source.html">tilemap.h</a></li>
+</ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

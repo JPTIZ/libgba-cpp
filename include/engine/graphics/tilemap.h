@@ -96,10 +96,16 @@ private:
 class Map {
 public:
     Map(const Tileset& tileset,
-        const Tilemap& tilemap,
+        const Tilemap& layer0,
+        const Tilemap& layer1,
+        const Tilemap& layer2,
+        const Tilemap& layer3,
         MapSize size):
         tileset_{tileset},
-        tilemap_{tilemap},
+        layer0_{layer0},
+        layer1_{layer1},
+        layer2_{layer2},
+        layer3_{layer3},
         size_{size}
     {}
 
@@ -107,8 +113,14 @@ public:
         return tileset_;
     }
 
-    const auto& tilemap() const {
-        return tilemap_;
+    const auto& layer(gba::display::Layer layer) const {
+        switch (layer) {
+            case display::Layer::BG0: return layer0_;
+            case display::Layer::BG1: return layer1_;
+            case display::Layer::BG2: return layer2_;
+            case display::Layer::BG3: return layer3_;
+            default: return layer0_;
+        }
     }
 
     auto size() const {
@@ -125,9 +137,21 @@ public:
 
 private:
     const Tileset& tileset_;
-    const Tilemap& tilemap_;
+    const Tilemap& layer0_;
+    const Tilemap& layer1_;
+    const Tilemap& layer2_;
+    const Tilemap& layer3_;
     MapSize size_;
 };
+
+/**
+ * Loads map into map memory.
+ */
+inline void load_tilemap(const Tilemap& tilemap, int screenblock) {
+    for (auto i = 0u; i < tilemap.length(); ++i) {
+        display::map::tilemap()[i + 0x400 * screenblock] = tilemap[i];
+    }
+}
 
 /**
  * Loads tileset into tile memory.
@@ -139,18 +163,19 @@ inline void load_tileset(const Tileset& tileset) {
 }
 
 /**
- * Setups memory with given tilemap.
+ * Setup and load map into memory.
  */
 inline void load_map(const Map& map) {
     const auto& tileset = map.tileset();
-    const auto& tilemap = map.tilemap();
 
-    const auto& palette = tileset.palette();
+    display::layer_visible(display::Layer::BG0);
+
+    load_palette(tileset.palette());
     load_tileset(map.tileset());
 
-    for (auto i = 0u; i < tilemap.length(); ++i) {
-        display::map::tilemap()[i] = tilemap[i];
-    }
+    using gba::display::Layer;
+    load_tilemap(map.layer(Layer::BG0), 0);
+
     bg_control(display::Layer::BG0).screen_base_block(1);
 }
 

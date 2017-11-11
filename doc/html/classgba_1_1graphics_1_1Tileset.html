@@ -76,22 +76,25 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae2dfab6ebeea54ed35cb88a9810d6682"><td class="memTemplParams" colspan="2"><a id="ae2dfab6ebeea54ed35cb88a9810d6682"></a>
+<tr class="memitem:a218ba3ba7c4a7435840dab1176d351e0"><td class="memTemplParams" colspan="2"><a id="a218ba3ba7c4a7435840dab1176d351e0"></a>
 template&lt;std::size_t N&gt; </td></tr>
-<tr class="memitem:ae2dfab6ebeea54ed35cb88a9810d6682"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Tileset</b> (const std::array&lt; <a class="el" href="classgba_1_1graphics_1_1Tile.html">Tile</a>, N &gt; tiles)</td></tr>
-<tr class="separator:ae2dfab6ebeea54ed35cb88a9810d6682"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52e69d14c12ceab5cfb79def54d9cbe2"><td class="memItemLeft" align="right" valign="top"><a id="a52e69d14c12ceab5cfb79def54d9cbe2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Tileset</b> (const <a class="el" href="classgba_1_1graphics_1_1Tile.html">Tile</a> tiles[], int count)</td></tr>
-<tr class="separator:a52e69d14c12ceab5cfb79def54d9cbe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a218ba3ba7c4a7435840dab1176d351e0"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Tileset</b> (const <a class="el" href="classgba_1_1graphics_1_1Palette.html">Palette</a> &amp;palette, const std::array&lt; <a class="el" href="classgba_1_1display_1_1map_1_1Tile.html">Tile</a>, N &gt; &amp;tiles)</td></tr>
+<tr class="separator:a218ba3ba7c4a7435840dab1176d351e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7dab503c45270a104a2ba6a1a287e26"><td class="memItemLeft" align="right" valign="top"><a id="aa7dab503c45270a104a2ba6a1a287e26"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Tileset</b> (const <a class="el" href="classgba_1_1graphics_1_1Palette.html">Palette</a> &amp;palette, const <a class="el" href="classgba_1_1display_1_1map_1_1Tile.html">Tile</a> tiles[], unsigned count)</td></tr>
+<tr class="separator:aa7dab503c45270a104a2ba6a1a287e26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7beba04d79886780310ab3ba6c272d2d"><td class="memItemLeft" align="right" valign="top"><a id="a7beba04d79886780310ab3ba6c272d2d"></a>
 auto&#160;</td><td class="memItemRight" valign="bottom"><b>length</b> () const</td></tr>
 <tr class="separator:a7beba04d79886780310ab3ba6c272d2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b505048fe86cd8a95cdf3d740a22e48"><td class="memItemLeft" align="right" valign="top"><a id="a4b505048fe86cd8a95cdf3d740a22e48"></a>
-const auto&#160;</td><td class="memItemRight" valign="bottom"><b>data</b> () const</td></tr>
-<tr class="separator:a4b505048fe86cd8a95cdf3d740a22e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a684072902b6d484207c68eeb2191503f"><td class="memItemLeft" align="right" valign="top"><a id="a684072902b6d484207c68eeb2191503f"></a>
-const auto&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (int i) const</td></tr>
-<tr class="separator:a684072902b6d484207c68eeb2191503f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00ab4a0466780811557a7734f386ea54"><td class="memItemLeft" align="right" valign="top"><a id="a00ab4a0466780811557a7734f386ea54"></a>
+const auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>data</b> () const</td></tr>
+<tr class="separator:a00ab4a0466780811557a7734f386ea54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e77f4ccec7053519995d1deced63d3c"><td class="memItemLeft" align="right" valign="top"><a id="a2e77f4ccec7053519995d1deced63d3c"></a>
+const auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>palette</b> () const</td></tr>
+<tr class="separator:a2e77f4ccec7053519995d1deced63d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81367d1a541e8bd80dcfeffb0efa9d61"><td class="memItemLeft" align="right" valign="top"><a id="a81367d1a541e8bd80dcfeffb0efa9d61"></a>
+const auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (int i) const</td></tr>
+<tr class="separator:a81367d1a541e8bd80dcfeffb0efa9d61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Sequence of tiles for tilemap filling. </p>

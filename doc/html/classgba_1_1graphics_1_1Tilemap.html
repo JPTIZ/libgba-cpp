@@ -76,15 +76,22 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aef035a84db6ac942dbf0bed683fa42f5"><td class="memItemLeft" align="right" valign="top"><a id="aef035a84db6ac942dbf0bed683fa42f5"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Tilemap</b> (const uint16_t tiles[], int count)</td></tr>
-<tr class="separator:aef035a84db6ac942dbf0bed683fa42f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36f455d45790c2acef80694d118593b9"><td class="memTemplParams" colspan="2"><a id="a36f455d45790c2acef80694d118593b9"></a>
+template&lt;std::size_t N&gt; </td></tr>
+<tr class="memitem:a36f455d45790c2acef80694d118593b9"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Tilemap</b> (const std::array&lt; uint16_t, N &gt; &amp;tiles)</td></tr>
+<tr class="separator:a36f455d45790c2acef80694d118593b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5689a0f7a2f5487555e504ea42cfcdbf"><td class="memItemLeft" align="right" valign="top"><a id="a5689a0f7a2f5487555e504ea42cfcdbf"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Tilemap</b> (const uint16_t tiles[], unsigned count)</td></tr>
+<tr class="separator:a5689a0f7a2f5487555e504ea42cfcdbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a178da756aa9ed4ffaec87818546b7950"><td class="memItemLeft" align="right" valign="top"><a id="a178da756aa9ed4ffaec87818546b7950"></a>
 const auto&#160;</td><td class="memItemRight" valign="bottom"><b>length</b> () const</td></tr>
 <tr class="separator:a178da756aa9ed4ffaec87818546b7950"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a369c861010464d55403f9b7f3379d207"><td class="memItemLeft" align="right" valign="top"><a id="a369c861010464d55403f9b7f3379d207"></a>
-const auto&#160;</td><td class="memItemRight" valign="bottom"><b>tiles</b> () const</td></tr>
-<tr class="separator:a369c861010464d55403f9b7f3379d207"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65f810206f63725fb1d66fec1d3d70ba"><td class="memItemLeft" align="right" valign="top"><a id="a65f810206f63725fb1d66fec1d3d70ba"></a>
+const auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>tiles</b> () const</td></tr>
+<tr class="separator:a65f810206f63725fb1d66fec1d3d70ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a741f7cf0fa8cccaa6584b47ebf3e3373"><td class="memItemLeft" align="right" valign="top"><a id="a741f7cf0fa8cccaa6584b47ebf3e3373"></a>
+const auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (int i) const</td></tr>
+<tr class="separator:a741f7cf0fa8cccaa6584b47ebf3e3373"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A single mapping of indexes to tiles. </p>
