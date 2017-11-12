@@ -8,6 +8,6 @@ var searchData=
   ['left',['left',['../structgba_1_1display_1_1WindowPosition.html#a9af812325ff84634d39472f900a0d5e5',1,'gba::display::WindowPosition']]],
   ['load_5fmap',['load_map',['../namespacegba_1_1graphics.html#a0efb67edd37becadd4810439eac2ba43',1,'gba::graphics']]],
   ['load_5fpalette',['load_palette',['../namespacegba_1_1graphics.html#a6618262c18b51e7d75f3b49ec4c2a23c',1,'gba::graphics']]],
-  ['load_5ftilemap',['load_tilemap',['../namespacegba_1_1graphics.html#a3b0241f2ce39cef32d604ecccc1d245a',1,'gba::graphics']]],
+  ['load_5ftilemap',['load_tilemap',['../namespacegba_1_1graphics.html#ab8d7a21b9f95d1d30623e0a315bf1d80',1,'gba::graphics']]],
   ['load_5ftileset',['load_tileset',['../namespacegba_1_1graphics.html#a85c6fb9b6f9e50585d8cefca5bdd0f25',1,'gba::graphics']]]
 ];

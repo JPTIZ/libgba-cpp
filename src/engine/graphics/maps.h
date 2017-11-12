@@ -25,16 +25,12 @@ public:
         return MapLength;
     }
 
-    auto& operator[](int i) {
-        return contents[i];
-    }
-
     const auto& operator[](int i) const {
         return contents[i];
     }
 
 private:
-    contents_t& contents;
+    const contents_t& contents;
 };
 
 

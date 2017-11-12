@@ -40,19 +40,21 @@ class Tile {
 public:
     Tile() = default;
 
-    Tile(std::array<uint32_t, 8> rows):
+    Tile(std::array<uint32_t, 16> rows):
         rows_{move(rows)}
     {}
 
     /**
      * Row of palette indexes in tile.
      */
+    /*
     auto operator()(unsigned x, unsigned y) {
         return details::TileIndex(rows_[y], x << 2);
     }
+    */
 
 private:
-    std::array<uint32_t, 8> rows_{};
+    std::array<uint32_t, 16> rows_{};
 };
 
 /**
@@ -63,7 +65,7 @@ std::array<Tile, 0x40>& tileset();
 /**
  * The game map.
  */
-std::array<uint16_t, 1024>& tilemap();
+std::array<uint16_t, 0x9000>& tilemap();
 
 }
 

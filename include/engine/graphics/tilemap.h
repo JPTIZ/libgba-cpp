@@ -83,7 +83,7 @@ public:
         return tiles_;
     }
 
-    const auto& operator[](int i) const {
+    const auto operator[](int i) const {
         return tiles_[i];
     }
 
@@ -100,7 +100,7 @@ public:
         const Tilemap& layer1,
         const Tilemap& layer2,
         const Tilemap& layer3,
-        MapSize size):
+        const MapSize size):
         tileset_{tileset},
         layer0_{layer0},
         layer1_{layer1},
@@ -113,7 +113,7 @@ public:
         return tileset_;
     }
 
-    const auto& layer(gba::display::Layer layer) const {
+    const auto& layer(const gba::display::Layer layer) const {
         switch (layer) {
             case display::Layer::BG0: return layer0_;
             case display::Layer::BG1: return layer1_;
@@ -135,21 +135,26 @@ public:
         return extract_size(size_).height;
     }
 
+    const auto& layer0() const {
+        return layer0_;
+    }
+
 private:
     const Tileset& tileset_;
     const Tilemap& layer0_;
     const Tilemap& layer1_;
     const Tilemap& layer2_;
     const Tilemap& layer3_;
-    MapSize size_;
+    const MapSize size_;
 };
 
 /**
  * Loads map into map memory.
  */
-inline void load_tilemap(const Tilemap& tilemap, int screenblock) {
+inline void load_tilemap(const Tilemap& tilemap, int screenblock, int charblock) {
+    const auto base = 0x400 * screenblock + 0x2000 * charblock;
     for (auto i = 0u; i < tilemap.length(); ++i) {
-        display::map::tilemap()[i + 0x400 * screenblock] = tilemap[i];
+        display::map::tilemap()[i + base] = tilemap[i];
     }
 }
 
@@ -158,7 +163,7 @@ inline void load_tilemap(const Tilemap& tilemap, int screenblock) {
  */
 inline void load_tileset(const Tileset& tileset) {
     for (auto i = 0u; i < tileset.length(); ++i) {
-        display::map::tileset()[i + 1] = tileset[i];
+        display::map::tileset()[i] = tileset[i];
     }
 }
 
@@ -166,17 +171,37 @@ inline void load_tileset(const Tileset& tileset) {
  * Setup and load map into memory.
  */
 inline void load_map(const Map& map) {
-    const auto& tileset = map.tileset();
+    using gba::display::Layer;
+    using gba::display::BGPriority;
+    using gba::display::PaletteMode;
 
-    display::layer_visible(display::Layer::BG0);
+    /* load the palette from the image into palette memory*/
+    load_palette(map.tileset().palette());
 
-    load_palette(tileset.palette());
+    /* load the image into char block 0 (16 bits at a time) */
     load_tileset(map.tileset());
 
-    using gba::display::Layer;
-    load_tilemap(map.layer(Layer::BG0), 0);
+    /* set all control the bits in this register */
+    auto itlayer = std::begin({Layer::BG0, Layer::BG1, Layer::BG2, Layer::BG3});
+    auto priority = std::begin({
+        BGPriority::LOWEST,
+        BGPriority::LOW,
+        BGPriority::HIGH,
+        BGPriority::HIGHEST});
+    for (auto i = 0u; i < 4; ++i) {
+        const auto layer = *itlayer;
 
-    bg_control(display::Layer::BG0).screen_base_block(1);
+        auto control = bg_control(layer);
+        control.screen_base_block(16 + i);
+        control.priority(*priority);
+        control.palette_mode(PaletteMode::PALETTE_256);
+        bg_control(layer) = control;
+
+        gba::graphics::load_tilemap(map.layer(layer), 16 + i, 0);
+
+        ++itlayer;
+        ++priority;
+    }
 }
 
 }

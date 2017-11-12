@@ -15,8 +15,8 @@ using gba::graphics::Palette;
 
 const std::array<Color, ${n_colors}> raw_${name}_palette = {
     Color
-%% for color in colors
-    {${color.r}, ${color.g}, ${color.b}},
+%% for left, right in colors|chunks(2)
+    {${'%2d' % left.r}, ${'%2d' % left.g}, ${'%2d' % left.b}}, {${'%2d' % right.r}, ${'%2d' % right.g}, ${'%2d' % right.b}},
 %% endfor
 };
 
@@ -24,8 +24,8 @@ const std::array<Tile, ${n_tiles}> ${name}_tiles = {
     Tile
 %% for tile in tiles
     {{
-    %% for row in tile
-        ${'0x%0x' % row},
+    %% for left, right in tile|chunks(2)
+        ${'0x%0x' % left}, ${'0x%0x' % right},
     %% endfor
     }},
 %% endfor

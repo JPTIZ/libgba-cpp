@@ -153,14 +153,14 @@ public:
      * @see PaletteMode
      */
     void palette_mode(gba::display::PaletteMode mode) {
-        data = (data & ~0b1000000) | (utils::value_of(mode) << 7);
+        data = (data & (~0b1000000u)) | (utils::value_of(mode) << 7);
     }
 
     /**
      * Changes background's screen block base index.
      */
     void screen_base_block(unsigned base) {
-        data = (data & (~0x1fu << 8)) | ((base & 0x1fu) << 8);
+        data = (data & ~0b111110000000u) | ((base & 0b11111u) << 8);
     }
 
     /**
@@ -181,7 +181,7 @@ public:
      *
      * @see MapSize
      */
-    void size(gba::display::MapSize size_) {
+    void resize(gba::display::MapSize size_) {
         data = (data & (~(0b11u << 14))) | (utils::value_of(size_) & 0b11u);
     }
 

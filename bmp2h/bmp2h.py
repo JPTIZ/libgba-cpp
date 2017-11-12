@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from os.path import abspath
 from typing import NamedTuple, List
 
@@ -14,12 +15,22 @@ class Color(NamedTuple):
 
 class MapData(NamedTuple):
     name: str
+    namespace: str
     colors: List[Color]
     tiles: List[List[List[int]]]
 
 
-def export(data, output='output.h'):
-    latex_env = Environment(
+def chunks(x, n):
+    it = iter(x)
+    while True:
+        t = tuple(next(it) for _ in range(n))
+        if len(t) != n:
+            return
+        yield t
+
+
+def export(data, template='template.h', output='output.h'):
+    env = Environment(
                     block_start_string='$block{',
                     block_end_string='}',
                     variable_start_string='${',
@@ -32,18 +43,24 @@ def export(data, output='output.h'):
                     autoescape=False,
                     loader=FileSystemLoader(abspath('.'))
                 )
-    tiles = [
-        [sum(v << (i * 8) for i, v in enumerate(row))
-            for row in tile] for tile in data.tiles]
+    env.filters['chunks'] = chunks
     with open(output, 'w') as f:
-        template = latex_env.get_template('template.h')
+        template = env.get_template(template)
         f.write(template.render(
-            namespace='resources',
+            namespace=data.namespace,
             name=data.name,
             n_colors=len(data.colors),
-            n_tiles=len(tiles),
+            n_tiles=len(data.tiles),
             colors=data.colors,
-            tiles=tiles))
+            tiles=data.tiles))
+
+
+def extract_colors(palette):
+    return list(filter(lambda c: c != Color(0, 0, 0),
+                       [Color(r // 8,
+                              g // 8,
+                              b // 8)
+                        for r, g, b in chunks(palette, 3)]))[:256]
 
 
 def extract_tiles(image, pixels):
@@ -66,33 +83,33 @@ def extract_tiles(image, pixels):
                     row.append(pixels[x, y] + 1)
                 tile.append(row)
             tiles.append(tile)
-    return tiles
+    return [[sum(v << (i * 8) for i, v in enumerate(row))
+             for row in tile] for tile in tiles]
 
 
 @command
 def main(bitmap: 'Bitmap file to be read.',
-         template: 'Template header file.' = 'template.h'):
+         template: 'Template header file.' = 'template.h',
+         output: 'Output file.' = 'output.h',
+         namespace: 'Main namespace to place data.' = 'resources',
+         name: 'Tileset name. Will be used for variable naming.' = 'sample'):
+
     image = Image.open(bitmap).convert(
                 mode='P',
                 palette=Image.ADAPTIVE,
                 colors=255)
 
-    palette = image.palette.palette
-    colors = [Color(0, 0, 0)] + [
-                Color(palette[i + 0] // 8,
-                      palette[i + 1] // 8,
-                      palette[i + 2] // 8)
-                for i in range(0, len(palette), 3)]
+    colors = extract_colors(image.palette.palette)
+    tiles = extract_tiles(image, image.load())
 
-    pixels = image.load()
-    tiles = extract_tiles(image, pixels)
     data = MapData(
-            name='sample',
-            colors=colors,
+            name=name,
+            colors=[Color(0, 0, 0)] + colors,
             tiles=tiles,
+            namespace=namespace,
             )
 
-    export(data)
+    export(data, template=template, output=output)
 
 
 if __name__ == '__main__':
