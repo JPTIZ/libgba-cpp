@@ -27,11 +27,7 @@ int main() {
 
     force_blank(false);
 
-    auto i = 0u;
     while (true) {
-        bg_oy(Layer::BG1) = -i;
         vsync();
-
-        ++i;
     }
 }

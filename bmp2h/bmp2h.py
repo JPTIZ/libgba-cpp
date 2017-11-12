@@ -70,6 +70,7 @@ def extract_colors(palette):
 
 
 def extract_tiles(image, pixels):
+    transparent = pixels[0, 0]
     tiles = []
     # for each 8x8 block
     for block_y in range(0, image.height, 8):
@@ -81,12 +82,19 @@ def extract_tiles(image, pixels):
                 row = []
                 # first integer
                 for x in range(block_x, block_x + 4):
-                    row.append(pixels[x, y] + 1)
+                    pixel = pixels[x, y]
+                    if pixel == transparent:
+                        row.append(0)
+                    else:
+                        row.append(pixels[x, y] + 1)
                 tile.append(row)
                 row = []
                 # second integer
                 for x in range(block_x + 4, block_x + 8):
-                    row.append(pixels[x, y] + 1)
+                    if pixel == transparent:
+                        row.append(0)
+                    else:
+                        row.append(pixels[x, y] + 1)
                 tile.append(row)
             tiles.append(tile)
     return [[sum(v << (i * 8) for i, v in enumerate(row))
@@ -102,9 +110,10 @@ def main(bitmap: 'Bitmap file to be read.',
     image = Image.open(bitmap).convert(
                 mode='P',
                 palette=Image.ADAPTIVE,
-                colors=255)
+                colors=256)
 
     colors = extract_colors(image.palette.palette)
+
     tiles = extract_tiles(image, image.load())
 
     data = MapData(
