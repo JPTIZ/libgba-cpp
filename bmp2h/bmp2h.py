@@ -6,15 +6,6 @@ from jinja2 import Environment, FileSystemLoader
 from PIL import Image
 
 
-def lookahead(iterable):
-    it = iter(iterable)
-    prev = next(it)
-    for val in it:
-        yield prev, True
-        prev = val
-    yield prev, False
-
-
 class Color(NamedTuple):
     r: int
     g: int
@@ -41,7 +32,6 @@ def export(data, output='output.h'):
                     autoescape=False,
                     loader=FileSystemLoader(abspath('.'))
                 )
-    latex_env.filters['lookahead'] = lookahead
     tiles = [
         [sum(v << (i * 8) for i, v in enumerate(row))
             for row in tile] for tile in data.tiles]
