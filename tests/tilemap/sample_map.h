@@ -2,7 +2,7 @@
 
 #include <engine/graphics/tilemap.h>
 
-#include "output.h"
+#include "sample.h"
 
 namespace resources::maps {
 

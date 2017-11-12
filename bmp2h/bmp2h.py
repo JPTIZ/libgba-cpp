@@ -29,7 +29,18 @@ def chunks(x, n):
         yield t
 
 
-def export(data, template='template.h', output='output.h'):
+def render(f, template, env, data):
+    template = env.get_template(template)
+    f.write(template.render(
+        namespace=data.namespace,
+        name=data.name,
+        n_colors=len(data.colors),
+        n_tiles=len(data.tiles),
+        colors=data.colors,
+        tiles=data.tiles))
+
+
+def export(data, template='template'):
     env = Environment(
                     block_start_string='$block{',
                     block_end_string='}',
@@ -44,15 +55,10 @@ def export(data, template='template.h', output='output.h'):
                     loader=FileSystemLoader(abspath('.'))
                 )
     env.filters['chunks'] = chunks
-    with open(output, 'w') as f:
-        template = env.get_template(template)
-        f.write(template.render(
-            namespace=data.namespace,
-            name=data.name,
-            n_colors=len(data.colors),
-            n_tiles=len(data.tiles),
-            colors=data.colors,
-            tiles=data.tiles))
+    with open(f'{data.name}.h', 'w') as f:
+        render(f, f'{template}.h', env, data)
+    with open(f'{data.name}.cpp', 'w') as f:
+        render(f, f'{template}.cpp', env, data)
 
 
 def extract_colors(palette):
@@ -89,8 +95,7 @@ def extract_tiles(image, pixels):
 
 @command
 def main(bitmap: 'Bitmap file to be read.',
-         template: 'Template header file.' = 'template.h',
-         output: 'Output file.' = 'output.h',
+         template: 'Template header file.' = 'template',
          namespace: 'Main namespace to place data.' = 'resources',
          name: 'Tileset name. Will be used for variable naming.' = 'sample'):
 
@@ -109,7 +114,7 @@ def main(bitmap: 'Bitmap file to be read.',
             namespace=namespace,
             )
 
-    export(data, template=template, output=output)
+    export(data, template=template)
 
 
 if __name__ == '__main__':

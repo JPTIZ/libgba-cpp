@@ -1,17 +1,10 @@
-#ifndef RESOURCES_MAPS_SAMPLE_H
-#define RESOURCES_MAPS_SAMPLE_H
+#include "sample.h"
 
-#include <array>
-
-#include <engine/graphics/tilemap.h>
-#include <engine/graphics/palette.h>
-
-namespace resources::maps {
-
+namespace {
 using gba::graphics::Color;
+using gba::graphics::Palette;
 using gba::graphics::Tile;
 using gba::graphics::Tileset;
-using gba::graphics::Palette;
 
 const std::array<Color, 53> raw_sample_palette = {
     Color
@@ -1327,9 +1320,11 @@ const std::array<Tile, 128> sample_tiles = {
     }},
 };
 
-const Palette sample_palette{raw_sample_palette};
-const Tileset sample_tileset{sample_palette, sample_tiles};
-
 }
 
-#endif
+const Palette resources::maps::sample_palette{raw_sample_palette};
+
+const Tileset resources::maps::sample_tileset{
+    sample_palette,
+    sample_tiles
+};
