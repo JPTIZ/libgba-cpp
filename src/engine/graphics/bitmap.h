@@ -5,36 +5,11 @@
 #include <experimental/array>
 
 #include <drivers/display/video.h>
+#include <engine/graphics/palette.h>
 
 #include "geometry.h"
 
-namespace gba::engine::graphics {
-
-static display::Color empty_colors[] = {
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,};
-
-class Palette {
-    using Color = display::Color;
-
-public:
-    Palette(Color colors[]):
-        colors{colors}
-    {}
-private:
-    Color* colors;
-};
-
-static Palette EMPTY_PALETTE = Palette(empty_colors);
+namespace gba::graphics {
 
 template <std::size_t W, std::size_t H>
 class Bitmap {
@@ -47,10 +22,10 @@ public:
         size{size}
     {}
 
-    Bitmap(Palette& palette,
+    Bitmap(Palette& palette);
 
 private:
-    Palette& palette = EMPTY_PALETTE;
+    Palette& palette = Palette::EMPTY;
     contents_t& contents;
     Size size;
 };

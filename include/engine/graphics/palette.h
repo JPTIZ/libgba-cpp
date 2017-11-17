@@ -61,6 +61,7 @@ public:
         return size_;
     }
 
+    static const Palette EMPTY;
 private:
     std::size_t size_;
     const Color* palette_;
