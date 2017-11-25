@@ -1,6 +1,7 @@
 **/.venv
 **/*.log
 **/*.sav
+**/__pycache__
 
 # Prerequisites
 *.d
