@@ -1,7 +1,9 @@
 from PyQt5.QtCore import (
         pyqtSignal,
         QEvent,
+        QRect,
         QObject,
+        Qt,
         )
 
 from PyQt5.QtWidgets import (
@@ -13,9 +15,13 @@ from PyQt5.QtWidgets import (
         QWidget,
         )
 
-from PyQt5.QtCore import Qt
+from PyQt5.QtGui import (
+        QColor,
+        QImage,
+        QPixmap,
+        QPainter,
+        )
 
-from PyQt5.QtGui import QImage, QPixmap
 
 def clickable(widget):
     class Filter(QObject):
@@ -32,14 +38,14 @@ def clickable(widget):
     widget.installEventFilter(filtered)
     return filtered.clicked
 
+
 class MapEditor(QWidget):
     def __init__(self, *args, tileset=None, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.tileset = TilesetSelector(self, tileset=tileset)
 
-        you = QLabel()
-        you.setText('')
+        self.tilemap = TilemapEditor(self.tileset)
 
         contents = QHBoxLayout(self)
 
@@ -49,7 +55,7 @@ class MapEditor(QWidget):
         left.setStyleSheet('background: url(\'square.png\') repeat;')
 
         right = QScrollArea()
-        right.setWidget(you)
+        right.setWidget(self.tilemap)
 
         contents.addWidget(left)
         contents.addWidget(right)
@@ -70,6 +76,8 @@ class TilesetSelector(QLabel):
         self.tileset = tileset
         self.width = self.tile_size*8
 
+        self.tile_index = 0
+
         if tileset:
             self.setPixmap(
                     QPixmap(tileset).scaledToWidth(self.width))
@@ -80,4 +88,47 @@ class TilesetSelector(QLabel):
     def onclick(self, event):
         pos = event.pos()
         x, y = pos.x() // self.tile_size, pos.y() // self.tile_size
-        print(f'clicked in ({x}, {y})')
+        self.tile_index = x + y * 8
+        self.repaint()
+
+
+    def paintEvent(self, e):
+        super().paintEvent(e)
+
+        if self.tile_index < 0:
+            return
+
+        painter = QPainter(self)
+        painter.setPen(QColor(255, 255, 255))
+
+        x, y = self.tile_index % 8, self.tile_index // 8
+
+        painter.drawRect(QRect(x * self.tile_size, y * self.tile_size, self.tile_size - 1, self.tile_size - 1))
+        painter.end()
+
+
+class TilemapEditor(QLabel):
+    def __init__(self, tileset, *args, map_size=(32,32), **kwargs):
+        super().__init__(*args, **kwargs)
+        print('yay')
+
+        self.scaling = 4
+        self.tile_size = self.scaling * 8
+        self.map_size = (map_size[0] * self.tile_size, map_size[1] * self.tile_size)
+
+        self.tileset = tileset
+
+        self.image = QImage(*self.map_size, QImage.Format_ARGB32)
+
+        self.mousePressEvent = self.onclick
+
+
+    def onclick(self, e):
+        pos = event.pos()
+        x, y = pos.x() // self.tile_size, pos.y() // self.tile_size
+
+        data = self.image.bits()
+
+        bits[x + self.map_size[0] * y] = 255
+
+        self.setPixmap(QPixmap.fromImage(self.image))
