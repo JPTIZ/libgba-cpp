@@ -1,6 +1,7 @@
 from PyQt5.QtCore import (
         pyqtSignal,
         QEvent,
+        QPoint,
         QRect,
         QObject,
         Qt,
@@ -18,8 +19,8 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtGui import (
         QColor,
         QImage,
-        QPixmap,
         QPainter,
+        QPixmap,
         )
 
 
@@ -46,6 +47,7 @@ class MapEditor(QWidget):
         self.tileset = TilesetSelector(self, tileset=tileset)
 
         self.tilemap = TilemapEditor(self.tileset)
+        self.tilemap.setStyleSheet('background: url(\'square.png\') repeat;')
 
         contents = QHBoxLayout(self)
 
@@ -79,6 +81,7 @@ class TilesetSelector(QLabel):
         self.tile_index = 0
 
         if tileset:
+            self.image = QImage(self.tileset)
             self.setPixmap(
                     QPixmap(tileset).scaledToWidth(self.width))
 
@@ -120,15 +123,43 @@ class TilemapEditor(QLabel):
 
         self.image = QImage(*self.map_size, QImage.Format_ARGB32)
 
+        self.setPixmap(QPixmap.fromImage(self.image))
         self.mousePressEvent = self.onclick
+        self.mouseMoveEvent = self.onclick
 
 
     def onclick(self, e):
-        pos = event.pos()
+        pos = e.pos()
         x, y = pos.x() // self.tile_size, pos.y() // self.tile_size
+        print((x, y))
 
-        data = self.image.bits()
+        #bits = self.image.bits()
 
-        bits[x + self.map_size[0] * y] = 255
+        #bits[x + self.map_size[0] * y] = 255
+
+        tile_index = self.tileset.tile_index
+
+        x *= self.tile_size
+        y *= self.tile_size
+
+        tileset_width = self.tileset.image.width() // 8
+
+        print(f'tiles in row: {tileset_width}')
+
+        sx = tile_index % tileset_width
+        sy = tile_index // tileset_width
+
+        print(f'src: ({sx, sy})')
+
+        sx *= self.tile_size
+        sy *= self.tile_size
+
+        for px in range(self.tile_size):
+            for py in range(self.tile_size):
+                color = self.tileset.image.pixelColor(
+                        (sx + px) // self.scaling,
+                        (sy + py) // self.scaling
+                )
+                self.image.setPixelColor(QPoint(px + x, py + y), color)
 
         self.setPixmap(QPixmap.fromImage(self.image))

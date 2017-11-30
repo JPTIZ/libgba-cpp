@@ -20,7 +20,7 @@ class MapEditorWindow(QWidget):
         layout = QHBoxLayout(self)
         layout.addWidget(self.editor)
 
-        self.setContentsMargins(0, 0, 0, 0)
+        self.setContentsMargins(-6, -6, -6, -6)
 
 
     def show(self):
