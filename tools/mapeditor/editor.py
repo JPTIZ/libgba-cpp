@@ -1,7 +1,6 @@
 from PyQt5.QtCore import (
         pyqtSignal,
         QEvent,
-        QPoint,
         QRect,
         QObject,
         Qt,
@@ -20,8 +19,11 @@ from PyQt5.QtGui import (
         QColor,
         QImage,
         QPainter,
+        QPen,
         QPixmap,
         )
+
+from mapeditor.map import Tileset, Map
 
 
 def clickable(widget):
@@ -46,7 +48,7 @@ class MapEditor(QWidget):
 
         self.tileset = TilesetSelector(self, tileset=tileset)
 
-        self.tilemap = TilemapEditor(self.tileset)
+        self.tilemap = TilemapEditor(self.tileset.tileset)
         self.tilemap.setStyleSheet('background: url(\'square.png\') repeat;')
 
         contents = QHBoxLayout(self)
@@ -75,15 +77,12 @@ class TilesetSelector(QLabel):
         self.scaling = 4
         self.tile_size = self.scaling * 8
 
-        self.tileset = tileset
-        self.width = self.tile_size*8
+        self.tileset = Tileset(filename=tileset)
+        self.width = self.tile_size * 8
 
-        self.tile_index = 0
-
-        if tileset:
-            self.image = QImage(self.tileset)
-            self.setPixmap(
-                    QPixmap(tileset).scaledToWidth(self.width))
+        if self.tileset.image:
+            self.setPixmap(QPixmap.fromImage(self.tileset.image)
+                                  .scaledToWidth(self.width))
 
         self.mousePressEvent = self.onclick
 
@@ -91,75 +90,67 @@ class TilesetSelector(QLabel):
     def onclick(self, event):
         pos = event.pos()
         x, y = pos.x() // self.tile_size, pos.y() // self.tile_size
-        self.tile_index = x + y * 8
+        self.tileset.index = x + y * self.tileset.tile_size
         self.repaint()
 
 
     def paintEvent(self, e):
         super().paintEvent(e)
 
-        if self.tile_index < 0:
+        index = self.tileset.index
+
+        if index < 0:
             return
 
         painter = QPainter(self)
-        painter.setPen(QColor(255, 255, 255))
+        painter.setPen(QPen(QColor(0, 0, 0), 3))
 
-        x, y = self.tile_index % 8, self.tile_index // 8
+        x, y = index % 8, index // 8
+        rect = QRect(x * self.tile_size,
+                     y * self.tile_size,
+                     self.tile_size - 1,
+                     self.tile_size - 1)
 
-        painter.drawRect(QRect(x * self.tile_size, y * self.tile_size, self.tile_size - 1, self.tile_size - 1))
+        painter.drawRect(rect)
+        painter.setPen(QPen(QColor(255, 255, 255), 1))
+        painter.drawRect(rect)
         painter.end()
 
 
 class TilemapEditor(QLabel):
     def __init__(self, tileset, *args, map_size=(32,32), **kwargs):
         super().__init__(*args, **kwargs)
-        print('yay')
-
-        self.scaling = 4
-        self.tile_size = self.scaling * 8
-        self.map_size = (map_size[0] * self.tile_size, map_size[1] * self.tile_size)
 
         self.tileset = tileset
 
-        self.image = QImage(*self.map_size, QImage.Format_ARGB32)
+        self.scaling = 4
+        self.tile_size = self.tileset.tile_size
 
-        self.setPixmap(QPixmap.fromImage(self.image))
+        self.map = Map(
+                tileset=tileset,
+                size=(map_size[0] * self.tile_size,
+                      map_size[1] * self.tile_size),
+                tile_size=8
+                )
+
+        self.remake_image()
+
         self.mousePressEvent = self.onclick
         self.mouseMoveEvent = self.onclick
 
 
+    def remake_image(self):
+        self.setPixmap(QPixmap.fromImage(self.map.image)
+                              .scaledToWidth(
+                                  self.map.image.width() * self.scaling))
+
+
     def onclick(self, e):
+        if self.tileset.index < 0:
+            return
         pos = e.pos()
-        x, y = pos.x() // self.tile_size, pos.y() // self.tile_size
-        print((x, y))
+        scale = self.tile_size * self.scaling
+        x, y = pos.x() // scale, pos.y() // scale
 
-        #bits = self.image.bits()
-
-        #bits[x + self.map_size[0] * y] = 255
-
-        tile_index = self.tileset.tile_index
-
-        x *= self.tile_size
-        y *= self.tile_size
-
-        tileset_width = self.tileset.image.width() // 8
-
-        print(f'tiles in row: {tileset_width}')
-
-        sx = tile_index % tileset_width
-        sy = tile_index // tileset_width
-
-        print(f'src: ({sx, sy})')
-
-        sx *= self.tile_size
-        sy *= self.tile_size
-
-        for px in range(self.tile_size):
-            for py in range(self.tile_size):
-                color = self.tileset.image.pixelColor(
-                        (sx + px) // self.scaling,
-                        (sy + py) // self.scaling
-                )
-                self.image.setPixelColor(QPoint(px + x, py + y), color)
-
-        self.setPixmap(QPixmap.fromImage(self.image))
+        self.map.place_tile(x, y, self.tileset.index)
+        self.remake_image()
