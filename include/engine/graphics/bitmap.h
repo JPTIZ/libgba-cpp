@@ -9,17 +9,18 @@
 
 namespace gba::graphics {
 
+
 class PalettedBitmap {
 public:
     PalettedBitmap(
             int width,
             int height,
-            Palette& palette);
+            const Palette& palette);
 
     PalettedBitmap(
             int width,
             int height,
-            Palette& palette,
+            const Palette& palette,
             uint8_t data[]
     ):
         width_{width},
@@ -50,6 +51,7 @@ private:
     const Palette& palette_;
     const uint8_t* data_;
 };
+
 
 class TiledBitmap {
 public:
@@ -86,6 +88,7 @@ private:
     const Tileset& tileset_;
     const Tilemap& tilemap_;
 };
+
 
 }
 
