@@ -115,11 +115,9 @@ class TilesetSelector(QLabel):
     def ondrag(self, event):
         scale = self.scale()
 
-        x, y = self.origin
-
+        ox, oy = self.origin
         pos = event.pos()
         ex, ey = pos.x() // scale, pos.y() // scale
-        ox, oy = self.origin
 
         r1 = QRect(ox, oy, 1, 1)
         r2 = QRect(ex, ey, 1, 1)
@@ -132,8 +130,9 @@ class TilesetSelector(QLabel):
 
         pos = event.pos()
         x, y = self.scaled(pos.x(), pos.y())
+
         self.origin = x // scale, y // scale
-        self.sel_rect = QRect(x, y, scale, scale)
+        self.sel_rect = QRect(*self.origin, 1, 1)
         self.repaint()
 
     def paintEvent(self, e):
