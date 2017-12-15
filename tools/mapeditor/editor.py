@@ -134,12 +134,17 @@ class TilemapEditor(QLabel):
                                   self.map.pixel_width() * self.scaling))
 
     def onclick(self, e):
-        tileset = self.tileset_selector
-        if tileset.index < 0:
+        index = self.tileset_selector.index
+
+        if index < 0:
             return
+
         pos = e.pos()
         scale = self.map.tile_size * self.scaling
         x, y = pos.x() // scale, pos.y() // scale
 
-        self.current_layer().place_tile(x, y, tileset.index)
+        if not self.contentsRect().contains(pos.x(), pos.y()):
+            return
+
+        self.current_layer().place_tile(x, y, index)
         self.remake_image()
