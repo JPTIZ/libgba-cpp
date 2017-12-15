@@ -1,10 +1,19 @@
-from PyQt5.QtCore import (
-        QPoint,
-        )
-
 from PyQt5.QtGui import (
+        QColor,
         QImage,
         )
+
+
+def apply_transparency(image, tile_size):
+    image = image.convertToFormat(QImage.Format_ARGB32)
+    back = image.pixelColor(0, 0)
+    for x in range(image.width()):
+        for y in range(image.height()):
+            if x < tile_size and y < tile_size:
+                continue
+            if image.pixelColor(x, y) == back:
+                image.setPixelColor(x, y, QColor(0, 0, 0, 0))
+    return image
 
 
 class Tileset:
@@ -14,7 +23,7 @@ class Tileset:
 
         self.image = None
         if filename:
-            self.image = QImage(filename)
+            self.image = apply_transparency(QImage(filename), tile_size)
 
 
 class Layer:
@@ -43,7 +52,7 @@ class Layer:
                         (sx + px),
                         (sy + py)
                 )
-                self.image.setPixelColor(QPoint(px + x, py + y), color)
+                self.image.setPixelColor(px + x, py + y, color)
 
     def pixel_size(self):
         return (self.size[0] * self.tile_size,
