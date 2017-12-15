@@ -9,8 +9,6 @@ def apply_transparency(image, tile_size):
     back = image.pixelColor(0, 0)
     for x in range(image.width()):
         for y in range(image.height()):
-            if x < tile_size and y < tile_size:
-                continue
             if image.pixelColor(x, y) == back:
                 image.setPixelColor(x, y, QColor(0, 0, 0, 0))
     return image
