@@ -21,6 +21,15 @@ from PyQt5.QtGui import (
 from mapeditor.map import Tileset, Map, make_image
 
 
+def scaled(rect, scale):
+    rect = QRect(
+            rect.x() * scale,
+            rect.y() * scale,
+            rect.width() * scale,
+            rect.height() * scale)
+    return rect
+
+
 class MapEditor(QWidget):
     def __init__(self, *args, tileset=None, **kwargs):
         super().__init__(*args, **kwargs)
@@ -56,15 +65,18 @@ class MapEditor(QWidget):
 
         contents.setContentsMargins(0, 0, 0, 0)
 
+    def select_layer(self, index):
+        self.tilemap._current_layer = index
+
     def keyPressEvent(self, e):
         old_layer = self.tilemap._current_layer
 
         if e.key() == Qt.Key_F5:
-            self.tilemap._current_layer = 0
+            self.select_layer(0)
         elif e.key() == Qt.Key_F6:
-            self.tilemap._current_layer = 1
+            self.select_layer(1)
         elif e.key() == Qt.Key_F7:
-            self.tilemap._current_layer = 2
+            self.select_layer(2)
 
         curr_layer = self.tilemap._current_layer
         if old_layer != curr_layer:
@@ -78,40 +90,62 @@ class TilesetSelector(QLabel):
     def __init__(self, *args, tileset=None, tile_size=32, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.index = -1
         self.tileset = tileset
-        self.tile_size = 32
+        self.tile_size = self.tileset.tile_size
         self.width = 256
+        self.sel_rect = None
+
+        self.scaling = 4
+        self.tiles_per_row = self.width // (self.tile_size * self.scaling)
 
         if self.tileset.image:
             self.setPixmap(QPixmap.fromImage(self.tileset.image)
                                   .scaledToWidth(self.width))
 
         self.mousePressEvent = self.onclick
+        self.mouseMoveEvent = self.ondrag
+
+    def scale(self):
+        return self.tile_size * self.scaling
+
+    def scaled(self, x, y):
+        scale = self.scale()
+        return self.scale() * (x // scale), self.scale() * (y // scale)
+
+    def ondrag(self, event):
+        scale = self.scale()
+
+        x, y = self.origin
+
+        pos = event.pos()
+        ex, ey = pos.x() // scale, pos.y() // scale
+        ox, oy = self.origin
+
+        r1 = QRect(ox, oy, 1, 1)
+        r2 = QRect(ex, ey, 1, 1)
+        self.sel_rect = r1 | r2
+
+        self.repaint()
 
     def onclick(self, event):
+        scale = self.scale()
+
         pos = event.pos()
-        x, y = pos.x() // self.tile_size, pos.y() // self.tile_size
-        self.index = x + y * self.tileset.tile_size
+        x, y = self.scaled(pos.x(), pos.y())
+        self.origin = x // scale, y // scale
+        self.sel_rect = QRect(x, y, scale, scale)
         self.repaint()
 
     def paintEvent(self, e):
         super().paintEvent(e)
 
-        index = self.index
-
-        if index < 0:
+        if not self.sel_rect:
             return
 
         painter = QPainter(self)
         painter.setPen(QPen(QColor(0, 0, 0), 3))
 
-        x, y = index % 8, index // 8
-        rect = QRect(x * self.tile_size,
-                     y * self.tile_size,
-                     self.tile_size - 1,
-                     self.tile_size - 1)
-
+        rect = scaled(self.sel_rect, self.scale())
         painter.drawRect(rect)
         painter.setPen(QPen(QColor(255, 255, 255), 1))
         painter.drawRect(rect)
@@ -148,17 +182,16 @@ class TilemapEditor(QLabel):
                                   self.map.pixel_width() * self.scaling))
 
     def onclick(self, e):
-        index = self.tileset_selector.index
-
-        if index < 0:
-            return
+        scale = self.map.tile_size * self.scaling
 
         pos = e.pos()
-        scale = self.map.tile_size * self.scaling
         x, y = pos.x() // scale, pos.y() // scale
 
         if not self.contentsRect().contains(pos.x(), pos.y()):
             return
 
-        self.current_layer().place_tile(x, y, index)
+        tileset = self.map.tileset
+        rect = scaled(self.tileset_selector.sel_rect, self.map.tile_size)
+        pattern = tileset.image.copy(rect)
+        self.current_layer().place(x, y, pattern)
         self.remake_image()

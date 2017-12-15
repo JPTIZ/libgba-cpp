@@ -38,24 +38,24 @@ class Layer:
         self.image.fill(QColor(0, 0, 0, 0))
         self.scaling = 4
 
-    def place_tile(self, x, y, tile_index):
+    def place(self, x, y, pattern):
+        '''
+        Inserts pattern on coordinates
+
+        Args:
+            x(int): x on map coordinates (not pixel's!)
+            y(int): y on map coordinates (not pixel's!)
+        '''
         x *= self.tile_size
         y *= self.tile_size
 
-        tileset_width = self.tileset.image.width() // 8
-
-        sx = tile_index % tileset_width
-        sy = tile_index // tileset_width
-
-        sx *= self.tile_size
-        sy *= self.tile_size
-
-        for px in range(self.tile_size):
-            for py in range(self.tile_size):
-                color = self.tileset.image.pixelColor(
-                        (sx + px),
-                        (sy + py)
-                )
+        for px in range(pattern.width()):
+            for py in range(pattern.height()):
+                # color = self.tileset.image.pixelColor(
+                #         (sx + px),
+                #         (sy + py)
+                # )
+                color = pattern.pixelColor(px, py)
                 self.image.setPixelColor(px + x, py + y, color)
 
     def pixel_size(self):
@@ -86,4 +86,5 @@ def make_image(map):
     painter = QPainter(image)
     for layer in layers[1:]:
         painter.drawImage(QPoint(0, 0), layer.image)
+    painter.end()
     return image
