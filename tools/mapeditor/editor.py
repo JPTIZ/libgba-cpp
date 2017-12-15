@@ -56,6 +56,20 @@ class MapEditor(QWidget):
 
         contents.setContentsMargins(0, 0, 0, 0)
 
+    def keyPressEvent(self, e):
+        old_layer = self.tilemap._current_layer
+
+        if e.key() == Qt.Key_F5:
+            self.tilemap._current_layer = 0
+        elif e.key() == Qt.Key_F6:
+            self.tilemap._current_layer = 1
+        elif e.key() == Qt.Key_F7:
+            self.tilemap._current_layer = 2
+
+        curr_layer = self.tilemap._current_layer
+        if old_layer != curr_layer:
+            print(f'switched to layer {curr_layer}')
+
 
 class TilesetSelector(QLabel):
     '''

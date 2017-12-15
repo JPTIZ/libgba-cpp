@@ -1,6 +1,11 @@
+from PyQt5.QtCore import (
+        QPoint,
+        )
+
 from PyQt5.QtGui import (
         QColor,
         QImage,
+        QPainter,
         )
 
 
@@ -30,6 +35,7 @@ class Layer:
         self.tile_size = tile_size
         self.tileset = tileset
         self.image = QImage(*self.pixel_size(), QImage.Format_ARGB32)
+        self.image.fill(QColor(0, 0, 0, 0))
         self.scaling = 4
 
     def place_tile(self, x, y, tile_index):
@@ -62,7 +68,7 @@ class Map:
         self.size = size
         self.tile_size = tile_size
         self.tileset = tileset
-        self.layers = [Layer(tileset)] * layers
+        self.layers = [Layer(tileset) for i in range(layers)]
 
     def pixel_width(self):
         return self.pixel_size()[0]
@@ -75,4 +81,9 @@ class Map:
 
 
 def make_image(map):
-    return map.layers[0].image
+    layers = map.layers
+    image = QImage(layers[0].image)
+    painter = QPainter(image)
+    for layer in layers[1:]:
+        painter.drawImage(QPoint(0, 0), layer.image)
+    return image
