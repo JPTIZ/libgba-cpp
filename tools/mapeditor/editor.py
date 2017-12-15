@@ -145,6 +145,8 @@ class TilesetSelector(QLabel):
         painter.setPen(QPen(QColor(0, 0, 0), 3))
 
         rect = scaled(self.sel_rect, self.scale())
+        rect.setWidth(rect.width() - 1)
+        rect.setHeight(rect.height() - 1)
         painter.drawRect(rect)
         painter.setPen(QPen(QColor(255, 255, 255), 1))
         painter.drawRect(rect)
@@ -170,21 +172,22 @@ class TilemapEditor(QLabel):
         self.remake_image()
 
         self.mousePressEvent = self.onclick
-        self.mouseMoveEvent = self.onclick
+        self.mouseMoveEvent = self.ondrag
 
     def current_layer(self):
         return self.map.layers[self._current_layer]
 
     def remake_image(self):
+        width = self.map.pixel_width() * self.scaling
         self.setPixmap(QPixmap.fromImage(make_image(self.map))
-                              .scaledToWidth(
-                                  self.map.pixel_width() * self.scaling))
+                              .scaledToWidth(width))
 
     def onclick(self, e):
         scale = self.map.tile_size * self.scaling
 
         pos = e.pos()
         x, y = pos.x() // scale, pos.y() // scale
+        self.last_point = self.origin = x, y
 
         if not self.contentsRect().contains(pos.x(), pos.y()):
             return
@@ -194,3 +197,31 @@ class TilemapEditor(QLabel):
         pattern = tileset.image.copy(rect)
         self.current_layer().place(x, y, pattern)
         self.remake_image()
+
+    def ondrag(self, e):
+        scale = self.map.tile_size * self.scaling
+
+        pos = e.pos()
+        x, y = pos.x() // scale, pos.y() // scale
+        rect = self.tileset_selector.sel_rect
+
+        if (x, y) == self.last_point:
+            return
+
+        tileset = self.map.tileset
+        if True or y != self.last_point[1]:
+            xoffset = (x % rect.width())
+            yoffset = (y % rect.height())
+            reco = QRect(
+                    rect.x() + xoffset,
+                    rect.y() + yoffset,
+                    rect.width() - xoffset,
+                    rect.height() - yoffset
+                    )
+            pattern = tileset.image.copy(scaled(reco, self.map.tile_size))
+            self.current_layer().place(x, y, pattern)
+
+        # pattern = tileset.image.copy(rect)
+        # self.current_layer().place(x, y, pattern)
+        self.remake_image()
+        self.last_point = x, y
