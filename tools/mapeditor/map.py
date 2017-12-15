@@ -1,5 +1,3 @@
-from typing import Tuple, NamedTuple
-
 from PyQt5.QtCore import (
         QPoint,
         )
@@ -12,7 +10,6 @@ from PyQt5.QtGui import (
 class Tileset:
     def __init__(self, filename=None, tile_size=8):
         self.filename = filename
-        self.index = -1
         self.tile_size = tile_size
 
         self.image = None
@@ -20,12 +17,12 @@ class Tileset:
             self.image = QImage(filename)
 
 
-class Map():
+class Layer:
     def __init__(self, tileset, size=(32, 32), tile_size=8):
         self.size = size
         self.tile_size = tile_size
         self.tileset = tileset
-        self.image = QImage(*self.size, QImage.Format_ARGB32)
+        self.image = QImage(*self.pixel_size(), QImage.Format_ARGB32)
         self.scaling = 4
 
     def place_tile(self, x, y, tile_index):
@@ -34,12 +31,8 @@ class Map():
 
         tileset_width = self.tileset.image.width() // 8
 
-        print(f'tiles in row: {tileset_width}')
-
         sx = tile_index % tileset_width
         sy = tile_index // tileset_width
-
-        print(f'src: ({sx, sy})')
 
         sx *= self.tile_size
         sy *= self.tile_size
@@ -51,3 +44,28 @@ class Map():
                         (sy + py)
                 )
                 self.image.setPixelColor(QPoint(px + x, py + y), color)
+
+    def pixel_size(self):
+        return (self.size[0] * self.tile_size,
+                self.size[1] * self.tile_size)
+
+
+class Map:
+    def __init__(self, tileset, size=(32, 32), tile_size=8, layers=4):
+        self.size = size
+        self.tile_size = tile_size
+        self.tileset = tileset
+        self.layers = [Layer(tileset)] * layers
+
+    def pixel_width(self):
+        return self.pixel_size()[0]
+
+    def pixel_height(self):
+        return self.pixel_size()[1]
+
+    def pixel_size(self):
+        return (self.size[0] * self.tile_size, self.size[1] * self.tile_size)
+
+
+def make_image(map):
+    return map.layers[0].image
