@@ -30,6 +30,11 @@ def scaled(rect, scale):
     return rect
 
 
+def pos(event):
+    pos = event.pos()
+    return pos.x(), pos.y()
+
+
 class MapEditor(QWidget):
     def __init__(self, *args, tileset=None, **kwargs):
         super().__init__(*args, **kwargs)
@@ -66,21 +71,14 @@ class MapEditor(QWidget):
         contents.setContentsMargins(0, 0, 0, 0)
 
     def select_layer(self, index):
+        print(f'selected {index}')
+        for layer in self.map.layers:
+            layer.hidden = True
         self.tilemap._current_layer = index
+        self.map.layers[index].hidden = False
 
-    def keyPressEvent(self, e):
-        old_layer = self.tilemap._current_layer
-
-        if e.key() == Qt.Key_F5:
-            self.select_layer(0)
-        elif e.key() == Qt.Key_F6:
-            self.select_layer(1)
-        elif e.key() == Qt.Key_F7:
-            self.select_layer(2)
-
-        curr_layer = self.tilemap._current_layer
-        if old_layer != curr_layer:
-            print(f'switched to layer {curr_layer}')
+        self.tilemap.remake_image()
+        self.repaint()
 
 
 class TilesetSelector(QLabel):
@@ -168,11 +166,13 @@ class TilemapEditor(QLabel):
         self._current_layer = 0
         self.tileset_selector = tileset_selector
         self.scaling = 4
+        self.sel_rect = None
 
         self.remake_image()
 
         self.mousePressEvent = self.onclick
-        self.mouseMoveEvent = self.ondrag
+        self.mouseMoveEvent = self.onmousemove
+        self.setMouseTracking(True)
 
     def current_layer(self):
         return self.map.layers[self._current_layer]
@@ -183,6 +183,9 @@ class TilemapEditor(QLabel):
                               .scaledToWidth(width))
 
     def onclick(self, e):
+        sel_rect = self.tileset_selector.sel_rect
+        if sel_rect is None:
+            return
         scale = self.map.tile_size * self.scaling
 
         pos = e.pos()
@@ -193,10 +196,42 @@ class TilemapEditor(QLabel):
             return
 
         tileset = self.map.tileset
-        rect = scaled(self.tileset_selector.sel_rect, self.map.tile_size)
+        rect = scaled(sel_rect, self.map.tile_size)
         pattern = tileset.image.copy(rect)
         self.current_layer().place(x, y, pattern)
         self.remake_image()
+
+    def paintEvent(self, e):
+        super().paintEvent(e)
+
+        if not self.sel_rect:
+            return
+
+        painter = QPainter(self)
+        painter.setPen(QPen(QColor(0, 0, 0), 3))
+
+        scale = self.scaling * self.map.tile_size
+        rect = scaled(self.sel_rect, scale)
+        rect.setWidth(rect.width() - 1)
+        rect.setHeight(rect.height() - 1)
+        painter.drawRect(rect)
+        painter.setPen(QPen(QColor(255, 255, 255), 1))
+        painter.drawRect(rect)
+        painter.end()
+
+    def onmousemove(self, e):
+        scale = self.map.tile_size * self.scaling
+
+        rect = self.tileset_selector.sel_rect
+
+        if rect:
+            self.sel_rect = QRect(rect)
+            x, y = pos(e)
+            self.sel_rect.moveTo(x // scale, y // scale)
+            self.repaint()
+
+        if e.buttons() != Qt.NoButton:
+            self.ondrag(e)
 
     def ondrag(self, e):
         scale = self.map.tile_size * self.scaling
@@ -205,23 +240,22 @@ class TilemapEditor(QLabel):
         x, y = pos.x() // scale, pos.y() // scale
         rect = self.tileset_selector.sel_rect
 
-        if (x, y) == self.last_point:
+        if rect is None or (x, y) == self.last_point:
             return
 
         tileset = self.map.tileset
-        if True or y != self.last_point[1]:
-            xoffset = (x % rect.width())
-            yoffset = (y % rect.height())
+        ox, oy = self.origin
+        if y != self.last_point[1]:
+            xoffset = (x - ox) % rect.width()
+            yoffset = (y - oy) % rect.height()
             reco = QRect(
                     rect.x() + xoffset,
                     rect.y() + yoffset,
-                    rect.width() - xoffset,
-                    rect.height() - yoffset
+                    max(0, min(rect.width(), rect.width() - abs(x - self.last_point[0]))),
+                    min(rect.height(), abs(y - self.last_point[1]))
                     )
             pattern = tileset.image.copy(scaled(reco, self.map.tile_size))
             self.current_layer().place(x, y, pattern)
 
-        # pattern = tileset.image.copy(rect)
-        # self.current_layer().place(x, y, pattern)
         self.remake_image()
         self.last_point = x, y

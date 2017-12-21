@@ -49,14 +49,10 @@ class Layer:
         x *= self.tile_size
         y *= self.tile_size
 
-        for px in range(pattern.width()):
-            for py in range(pattern.height()):
-                # color = self.tileset.image.pixelColor(
-                #         (sx + px),
-                #         (sy + py)
-                # )
-                color = pattern.pixelColor(px, py)
-                self.image.setPixelColor(px + x, py + y, color)
+        painter = QPainter(self.image)
+        painter.setCompositionMode(QPainter.CompositionMode_Source)
+        painter.drawImage(QPoint(x, y), pattern)
+        painter.end()
 
     def pixel_size(self):
         return (self.size[0] * self.tile_size,
@@ -69,6 +65,8 @@ class Map:
         self.tile_size = tile_size
         self.tileset = tileset
         self.layers = [Layer(tileset) for i in range(layers)]
+        for layer in self.layers:
+            layer.hidden = False
 
     def pixel_width(self):
         return self.pixel_size()[0]
@@ -82,9 +80,14 @@ class Map:
 
 def make_image(map):
     layers = map.layers
-    image = QImage(layers[0].image)
+    image = layers[0].image
+    image = QImage(image.size(), image.format())
     painter = QPainter(image)
-    for layer in layers[1:]:
+    for layer in layers:
+        if not layer.hidden:
+            painter.setOpacity(1)
+        else:
+            painter.setOpacity(.5)
         painter.drawImage(QPoint(0, 0), layer.image)
     painter.end()
     return image
