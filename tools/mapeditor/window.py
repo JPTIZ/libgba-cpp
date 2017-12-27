@@ -1,57 +1,94 @@
 from PyQt5.QtCore import Qt
-
 from PyQt5.QtWidgets import (
         QAction,
+        QActionGroup,
         QHBoxLayout,
         QSizePolicy,
         QMainWindow,
         QWidget,
         )
-
 from PyQt5.QtGui import (
         QIcon,
         )
 
 from mapeditor.editor import MapEditor
+from mapeditor.map import export
 
 
 class MapEditorWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.build_menubar()
+        self.build_toolbar()
+
         self.editor = MapEditorWindowContents(self)
         self.setCentralWidget(self.editor)
 
+        self.select_layer(0)
+
+    def build_menubar(self):
+        bar = self.menuBar()
+        bar.setNativeMenuBar(True)
+        file_menu = bar.addMenu('&File')
+        file_menu.addAction(QAction('&New', self))
+
+        export_menu = file_menu.addMenu('E&xport')
+
+        export_all = QAction('&All', self)
+        export_all.triggered.connect(self.export_all)
+
+        export_cpp = QAction('.&cpp', self)
+        export_cpp.triggered.connect(self.export_cpp)
+
+        export_header = QAction('.&h', self)
+        export_header.triggered.connect(self.export_header)
+
+        export_menu.addAction(export_all)
+        export_menu.addAction(export_cpp)
+        export_menu.addAction(export_header)
+
+    def build_toolbar(self):
         self.toolbar = self.addToolBar('Layers')
+
+        self.build_layer_actions()
+
+        self.toolbar.addActions(self.layers_group.actions())
+
+    def build_layer_actions(self):
+        self.layers_group = QActionGroup(self)
         self.layer_actions = [QAction(
-                                QIcon(f'layer{i}_icon.png'),
+                                QIcon(f'mapeditor/layer{i}_icon.png'),
                                 f'Layer {i}',
                                 self) for i in range(4)]
+
+        shortcuts = [Qt.Key_F5,
+                     Qt.Key_F6,
+                     Qt.Key_F7,
+                     Qt.Key_F8, ]
+
         for i, action in enumerate(self.layer_actions):
             action.layer_index = i
             action.setCheckable(True)
-            action.triggered.connect(self.select_index)
-            self.toolbar.addAction(action)
-        self.select_layer(0)
+            action.triggered.connect(self.on_select_layer)
+            action.setShortcut(shortcuts[i])
+            self.layers_group.addAction(action)
 
-    def select_index(self, b):
-        action = self.sender()
-        action.setChecked(b)
-        self.select_layer(action.layer_index)
+    def on_select_layer(self, b):
+        self.select_layer(self.sender().layer_index)
 
     def select_layer(self, index):
-        for i, action in enumerate(self.layer_actions):
-            action.setChecked(i == index)
+        self.layer_actions[index].setChecked(True)
         self.editor.select_layer(index)
 
-    def keyPressEvent(self, e):
-        if e.key() == Qt.Key_F5:
-            self.select_layer(0)
-        elif e.key() == Qt.Key_F6:
-            self.select_layer(1)
-        elif e.key() == Qt.Key_F7:
-            self.select_layer(2)
-        elif e.key() == Qt.Key_F8:
-            self.select_layer(3)
+    def export_all(self, *args):
+        print('exporting all')
+
+    def export_cpp(self, *args):
+        print('exporting cpp')
+
+    def export_header(self, *args):
+        print('exporting header')
+        export(self.editor.editor.map, output='test')
 
 
 class MapEditorWindowContents(QWidget):

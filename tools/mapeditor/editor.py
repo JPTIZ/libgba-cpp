@@ -52,13 +52,13 @@ class MapEditor(QWidget):
         left = QScrollArea()
         left.setWidget(self.tileset_selector)
         left.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        left.setStyleSheet('background: url(\'square.png\') repeat;')
+        left.setStyleSheet('background: url(\'mapeditor/square.png\') repeat;')
 
         self.tilemap = TilemapEditor(
                 self.map,
                 tileset_selector=self.tileset_selector
                 )
-        self.tilemap.setStyleSheet('background: url(\'square.png\') repeat;')
+        self.tilemap.setStyleSheet('background: url(\'mapeditor/square.png\') repeat;')
         right = QScrollArea()
         right.setWidget(self.tilemap)
 
