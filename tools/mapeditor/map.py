@@ -15,11 +15,20 @@ from PyQt5.QtGui import (
 
 def export(data, output='output', template='template'):
     def render(f, template, env, data):
+        data.name = 'test'.lower()
+        data.namespace = 'test'.lower()
         data.tilemap = [randint(0, 100) for _ in range(100)]
+        data.map_size = 'gba::graphics::MapSize::TEXT_256X256'
+        data.tileset = 'test_tileset'
 
         template = env.get_template(template)
         f.write(template.render(
-            tilemap=data.tilemap))
+            name=data.name,
+            namespace=data.namespace,
+            layers=data.layers,
+            tilemap=data.tilemap,
+            tileset=data.tileset,
+            map_size=data.map_size))
     print(f'exporting to {output} (based on {template})')
     env = Environment(
                     trim_blocks=True,
@@ -27,6 +36,8 @@ def export(data, output='output', template='template'):
                     loader=FileSystemLoader(abspath('.'))
                 )
     env.filters['chunks'] = chunks
+    with open(f'{output}.cpp', 'w') as f:
+        render(f, f'mapeditor/{template}.cpp', env, data)
     with open(f'{output}.h', 'w') as f:
         render(f, f'mapeditor/{template}.h', env, data)
 
