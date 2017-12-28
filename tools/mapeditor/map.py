@@ -1,5 +1,8 @@
+from typing import NamedTuple
+
 from PyQt5.QtCore import (
         QPoint,
+        QRect,
         )
 from PyQt5.QtGui import (
         QColor,
@@ -17,6 +20,11 @@ def transparent(image, ref_color, tile_size):
     return image
 
 
+class TilePattern(NamedTuple):
+    region: QRect
+    image: QImage
+
+
 class Tileset:
     def __init__(self, filename=None, tile_size=8):
         self.filename = filename
@@ -27,6 +35,12 @@ class Tileset:
             image = QImage(filename)
             self.image = transparent(image, image.pixelColor(0, 0), tile_size)
 
+    def get(self, rect):
+        w = self.image.width() // self.tile_size
+        return [rect.x() + px + w * (rect.y() + py)
+                for py in range(rect.height())
+                for px in range(rect.width())]
+
 
 class Layer:
     def __init__(self, tileset, size=(32, 32), tile_size=8):
@@ -36,6 +50,7 @@ class Layer:
         self.image = QImage(*self.pixel_size(), QImage.Format_ARGB32)
         self.image.fill(QColor(0, 0, 0, 0))
         self.scaling = 4
+        self.data = [0] * size[0] * size[1]
 
     def place(self, x, y, pattern):
         '''
@@ -45,12 +60,25 @@ class Layer:
             x(int): x on map coordinates (not pixel's!)
             y(int): y on map coordinates (not pixel's!)
         '''
+        pattern_width = pattern.region.width()
+        pattern_height = pattern.region.height()
+        data = self.tileset.get(pattern.region)
+        w = self.size[0]
+        print(data)
+        print(self.data)
+        for py in range(pattern_height):
+            for px in range(pattern_width):
+                dx = px + x
+                dy = py + y
+                self.data[dx + w * dy] = data[px + pattern_width * py]
+                print(f'{px, py} -> {dx, dy}')
+
         x *= self.tile_size
         y *= self.tile_size
 
         painter = QPainter(self.image)
         painter.setCompositionMode(QPainter.CompositionMode_Source)
-        painter.drawImage(QPoint(x, y), pattern)
+        painter.drawImage(QPoint(x, y), pattern.image)
         painter.end()
 
     def pixel_size(self):

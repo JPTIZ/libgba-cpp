@@ -18,7 +18,7 @@ from PyQt5.QtGui import (
         QPixmap,
         )
 
-from mapeditor.map import Tileset, Map, make_image
+from mapeditor.map import TilePattern, Tileset, Map, make_image
 
 
 def scaled(rect, scale):
@@ -188,8 +188,8 @@ class TilemapEditor(QLabel):
         sel_rect = self.tileset_selector.sel_rect
         if sel_rect is None:
             return
-        scale = self.map.tile_size * self.scaling
 
+        scale = self.map.tile_size * self.scaling
         pos = e.pos()
         x, y = pos.x() // scale, pos.y() // scale
         self.last_point = self.origin = x, y
@@ -198,8 +198,11 @@ class TilemapEditor(QLabel):
             return
 
         tileset = self.map.tileset
+
         rect = scaled(sel_rect, self.map.tile_size)
-        pattern = tileset.image.copy(rect)
+        pattern = TilePattern(
+            region=sel_rect,
+            image=tileset.image.copy(rect))
         self.current_layer().place(x, y, pattern)
         self.remake_image()
 

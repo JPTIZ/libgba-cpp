@@ -5,8 +5,8 @@ namespace {{ namespace }}::maps {
 
 {% for layer in layers %}
 
-const std::array<uint16_t, {{ tilemap|length }}> {{ name }}_raw_layer{{ loop.index0 }} = {
-{% for row in tilemap|chunks(10) %}
+const std::array<uint16_t, {{ layer.data|length }}> {{ name }}_raw_layer{{ loop.index0 }} = {
+{% for row in layer.data|chunks(10) %}
     {% for elm in row -%}
         {{ '0x{0:02x}'.format(elm) }},
     {%- endfor %}

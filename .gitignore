@@ -37,3 +37,6 @@
 *.out
 *.app
 *.gba
+
+# Media
+*.xcf

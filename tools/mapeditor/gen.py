@@ -1,5 +1,4 @@
-from random import randint
-from os.path import abspath
+from os.path import abspath, basename, splitext
 
 from jinja2 import Environment, FileSystemLoader
 
@@ -13,23 +12,22 @@ def export(data,
         MAP_SIZES = {
             (32, 32): 'gba::graphics::MapSize::TEXT_256X256',
         }
-        size = data.size
-        data.tilemap = [randint(0, 100) for _ in range(size[0] * size[1])]
+        tileset, _ = splitext(basename(data.tileset.filename)
+                              .replace('-', '_'))
 
         template = env.get_template(template)
         f.write(template.render(
             name=data.name.lower(),
             namespace=namespace.lower(),
             layers=data.layers,
-            tilemap=data.tilemap,
-            tileset=data.tileset.filename,
+            tileset=tileset,
             map_size=MAP_SIZES[data.size]))
 
     env = Environment(
-                    trim_blocks=True,
-                    autoescape=False,
-                    loader=FileSystemLoader(abspath('.'))
-                )
+                trim_blocks=True,
+                autoescape=False,
+                loader=FileSystemLoader(abspath('.'))
+            )
     env.filters['chunks'] = chunks
     for ext in exts:
         print(f'exporting to {output}.{ext} (based on {template}.{ext})')
