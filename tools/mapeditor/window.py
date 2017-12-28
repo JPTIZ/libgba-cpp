@@ -12,7 +12,7 @@ from PyQt5.QtGui import (
         )
 
 from mapeditor.editor import MapEditor
-from mapeditor.map import export
+from mapeditor.gen import export
 
 
 class MapEditorWindow(QMainWindow):
@@ -82,13 +82,23 @@ class MapEditorWindow(QMainWindow):
 
     def export_all(self, *args):
         print('exporting all')
+        export(self.editor.editor.map,
+               namespace='test',
+               output='test')
 
     def export_cpp(self, *args):
         print('exporting cpp')
+        export(self.editor.editor.map,
+               namespace='test',
+               output='test',
+               exts=('cpp',))
 
     def export_header(self, *args):
         print('exporting header')
-        export(self.editor.editor.map, output='test')
+        export(self.editor.editor.map,
+               namespace='test',
+               output='test',
+               exts=('h',))
 
 
 class MapEditorWindowContents(QWidget):

@@ -40,6 +40,7 @@ class MapEditor(QWidget):
         super().__init__(*args, **kwargs)
 
         self.map = Map(
+                name='Map001',
                 tileset=Tileset(filename=tileset),
                 size=(32, 32),
                 tile_size=8,
@@ -58,7 +59,8 @@ class MapEditor(QWidget):
                 self.map,
                 tileset_selector=self.tileset_selector
                 )
-        self.tilemap.setStyleSheet('background: url(\'mapeditor/square.png\') repeat;')
+        self.tilemap.setStyleSheet(
+                'background: url(\'mapeditor/square.png\') repeat;')
         right = QScrollArea()
         right.setWidget(self.tilemap)
 
@@ -251,7 +253,9 @@ class TilemapEditor(QLabel):
             reco = QRect(
                     rect.x() + xoffset,
                     rect.y() + yoffset,
-                    max(0, min(rect.width(), rect.width() - abs(x - self.last_point[0]))),
+                    max(0,
+                        min(rect.width(),
+                            rect.width() - abs(x - self.last_point[0]))),
                     min(rect.height(), abs(y - self.last_point[1]))
                     )
             pattern = tileset.image.copy(scaled(reco, self.map.tile_size))
