@@ -72,6 +72,11 @@ class MapEditor(QWidget):
 
         contents.setContentsMargins(0, 0, 0, 0)
 
+    def load(self, data):
+        self.map = data
+        self.tileset_selector.change_tileset(self.map.tileset)
+        self.tilemap.change_map(self.map)
+
     def select_layer(self, index):
         print(f'selected {index}')
         for layer in self.map.layers:
@@ -90,20 +95,23 @@ class TilesetSelector(QLabel):
     def __init__(self, *args, tileset=None, tile_size=32, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.tileset = tileset
-        self.tile_size = self.tileset.tile_size
-        self.width = 256
+        self._width = 256
         self.sel_rect = None
-
         self.scaling = 4
-        self.tiles_per_row = self.width // (self.tile_size * self.scaling)
 
-        if self.tileset.image:
-            self.setPixmap(QPixmap.fromImage(self.tileset.image)
-                                  .scaledToWidth(self.width))
+        self.change_tileset(tileset)
 
         self.mousePressEvent = self.on_click
         self.mouseMoveEvent = self.on_drag
+
+    def change_tileset(self, tileset):
+        self.tileset = tileset
+        self.tile_size = self.tileset.tile_size
+        self.tiles_per_row = self._width // (self.tile_size * self.scaling)
+
+        if self.tileset.image:
+            self.setPixmap(QPixmap.fromImage(self.tileset.image)
+                                  .scaledToWidth(self._width))
 
     def scale(self):
         return self.tile_size * self.scaling
@@ -175,6 +183,10 @@ class TilemapEditor(QLabel):
         self.mousePressEvent = self.on_click
         self.mouseMoveEvent = self.on_mouse_move
         self.setMouseTracking(True)
+
+    def change_map(self, data):
+        self.map = data
+        self.remake_image()
 
     def current_layer(self):
         return self.map.layers[self._current_layer]

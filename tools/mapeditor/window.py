@@ -2,6 +2,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (
         QAction,
         QActionGroup,
+        QFileDialog,
         QHBoxLayout,
         QSizePolicy,
         QMainWindow,
@@ -12,7 +13,7 @@ from PyQt5.QtGui import (
         )
 
 from mapeditor.editor import MapEditor
-from mapeditor.gen import export
+from mapeditor.gen import export, save, load
 
 
 class MapEditorWindow(QMainWindow):
@@ -29,23 +30,56 @@ class MapEditorWindow(QMainWindow):
     def build_menubar(self):
         bar = self.menuBar()
         bar.setNativeMenuBar(True)
-        file_menu = bar.addMenu('&File')
-        file_menu.addAction(QAction('&New', self))
 
-        export_menu = file_menu.addMenu('E&xport')
+        menus = {
+                    '&File': {
+                        '&New': (self.new, 'Ctrl+N'),
+                        '&Open': (self.open, 'Ctrl+O'),
+                        '&Save': (self.save, 'Ctrl+S'),
+                        'E&xport': [
+                            ('&All', self.export_all),
+                            ('.&cpp', self.export_cpp),
+                            ('.&h', self.export_header),
+                        ],
+                    },
+                }
 
-        export_all = QAction('&All', self)
-        export_all.triggered.connect(self.export_all)
+        for name, items in menus.items():
+            menu = bar.addMenu(name)
+            for item, value in items.items():
+                if isinstance(value, list):
+                    submenu = menu.addMenu(item)
+                    for name, function in value:
+                        action = QAction(name, self)
+                        action.triggered.connect(function)
+                        submenu.addAction(action)
+                elif isinstance(value, tuple):
+                    function, shortcut = value
+                    action = QAction(item, self)
+                    action.setShortcut(shortcut)
+                    action.triggered.connect(function)
+                    menu.addAction(action)
+                else:
+                    action = QAction(item, self)
+                    action.triggered.connect(value)
+                    menu.addAction(action)
 
-        export_cpp = QAction('.&cpp', self)
-        export_cpp.triggered.connect(self.export_cpp)
+    def new(self):
+        print('new (not implemented)')
 
-        export_header = QAction('.&h', self)
-        export_header.triggered.connect(self.export_header)
+    def open(self):
+        dialog = QFileDialog(self, 'Open map')
+        dialog.setFileMode(QFileDialog.ExistingFile)
+        if dialog.exec():
+            filename, = dialog.selectedFiles()
+            self.editor.load(load(filename))
 
-        export_menu.addAction(export_all)
-        export_menu.addAction(export_cpp)
-        export_menu.addAction(export_header)
+    def save(self):
+        dialog = QFileDialog(self, 'Open map')
+        dialog.setAcceptMode(QFileDialog.AcceptSave)
+        if dialog.exec():
+            filename, = dialog.selectedFiles()
+            save(self.editor.editor.map, filename)
 
     def build_toolbar(self):
         self.toolbar = self.addToolBar('Layers')
@@ -81,20 +115,17 @@ class MapEditorWindow(QMainWindow):
         self.editor.select_layer(index)
 
     def export_all(self, *args):
-        print('exporting all')
         export(self.editor.editor.map,
                namespace='test',
                output='test')
 
     def export_cpp(self, *args):
-        print('exporting cpp')
         export(self.editor.editor.map,
                namespace='test',
                output='test',
                exts=('cpp',))
 
     def export_header(self, *args):
-        print('exporting header')
         export(self.editor.editor.map,
                namespace='test',
                output='test',
@@ -116,6 +147,9 @@ class MapEditorWindowContents(QWidget):
         layout.addWidget(self.editor)
 
         self.setContentsMargins(-6, -6, -6, -6)
+
+    def load(self, data):
+        self.editor.load(data)
 
     def select_layer(self, index):
         self.editor.select_layer(index)
