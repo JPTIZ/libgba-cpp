@@ -102,8 +102,8 @@ class TilesetSelector(QLabel):
             self.setPixmap(QPixmap.fromImage(self.tileset.image)
                                   .scaledToWidth(self.width))
 
-        self.mousePressEvent = self.onclick
-        self.mouseMoveEvent = self.ondrag
+        self.mousePressEvent = self.on_click
+        self.mouseMoveEvent = self.on_drag
 
     def scale(self):
         return self.tile_size * self.scaling
@@ -112,7 +112,7 @@ class TilesetSelector(QLabel):
         scale = self.scale()
         return self.scale() * (x // scale), self.scale() * (y // scale)
 
-    def ondrag(self, event):
+    def on_drag(self, event):
         scale = self.scale()
 
         ox, oy = self.origin
@@ -125,7 +125,7 @@ class TilesetSelector(QLabel):
 
         self.repaint()
 
-    def onclick(self, event):
+    def on_click(self, event):
         scale = self.scale()
 
         pos = event.pos()
@@ -172,8 +172,8 @@ class TilemapEditor(QLabel):
 
         self.remake_image()
 
-        self.mousePressEvent = self.onclick
-        self.mouseMoveEvent = self.onmousemove
+        self.mousePressEvent = self.on_click
+        self.mouseMoveEvent = self.on_mouse_move
         self.setMouseTracking(True)
 
     def current_layer(self):
@@ -184,7 +184,7 @@ class TilemapEditor(QLabel):
         self.setPixmap(QPixmap.fromImage(make_image(self.map))
                               .scaledToWidth(width))
 
-    def onclick(self, e):
+    def on_click(self, e):
         sel_rect = self.tileset_selector.sel_rect
         if sel_rect is None:
             return
@@ -221,7 +221,7 @@ class TilemapEditor(QLabel):
         painter.drawRect(rect)
         painter.end()
 
-    def onmousemove(self, e):
+    def on_mouse_move(self, e):
         scale = self.map.tile_size * self.scaling
 
         rect = self.tileset_selector.sel_rect
@@ -233,9 +233,9 @@ class TilemapEditor(QLabel):
             self.repaint()
 
         if e.buttons() != Qt.NoButton:
-            self.ondrag(e)
+            self.on_drag(e)
 
-    def ondrag(self, e):
+    def on_drag(self, e):
         scale = self.map.tile_size * self.scaling
 
         pos = e.pos()

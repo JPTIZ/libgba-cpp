@@ -106,8 +106,8 @@ class MapEditorWindowContents(QWidget):
         super().__init__(*args, **kwargs)
         self.setWindowTitle('Map editor')
         self.maximized = True
-        self.width, self.height = 800, 600
-        self.setMinimumSize(self.width, self.height)
+        self._width, self._height = 800, 600
+        self.setMinimumSize(self._width, self._height)
 
         self.editor = MapEditor(self, tileset='forest-tileset.bmp')
         self.editor.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
