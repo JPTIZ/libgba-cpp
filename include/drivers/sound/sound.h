@@ -3,8 +3,6 @@
 
 namespace gba::sound {
 
-
-
 /**
  * Must be on for registers to be accessed and for sound to play.
  */
