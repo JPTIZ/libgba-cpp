@@ -7,10 +7,12 @@ that I made -- not really _recommended_, just that they work) for GBA-dev:
 
 1. [Bitmap exporter](https://github.com/jptiz/bitmap-to-code)
    > **Description**
+   >
    > Used for exporting bitmap-files to any format given a template --
    > including .cpp and .h sources.
 
 2. [Map editor](https://github.com/jptiz/map-editor)
    > **Description**
+   >
    > Used for editing maps and exporting them to any format given a template --
    > including .cpp and .h.
