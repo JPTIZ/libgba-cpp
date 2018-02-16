@@ -3,9 +3,8 @@
 
 #include <cstdint>
 
-#include "graphics.h"
-#include "palette.h"
-#include "tilemap.h"
+#include <engine/graphics/tilemap.h>
+
 
 namespace gba::graphics {
 
