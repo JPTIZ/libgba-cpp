@@ -1,6 +1,9 @@
-**/.venv
+# Emulator temporaries
 **/*.log
 **/*.sav
+
+# Python environment
+**/.venv
 **/__pycache__
 
 # Prerequisites
@@ -21,10 +24,6 @@
 *.so
 *.dylib
 *.dll
-
-# Fortran module files
-*.mod
-*.smod
 
 # Compiled Static libraries
 *.lai
