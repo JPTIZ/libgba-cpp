@@ -1,5 +1,5 @@
-#include <drivers/display/video.h>
-#include <drivers/display/layers.h>
+#include <libgba-cpp/drivers/display/video.h>
+#include <libgba-cpp/drivers/display/layers.h>
 
 void fill_screen(const gba::display::Color& color) {
     for (auto i = 0u; i < 160*120; ++i) {

@@ -3,8 +3,8 @@
 
 #include <bitset>
 
-#include <drivers/arch/registers.h>
-#include <drivers/utility.h>
+#include <libgba-cpp/drivers/arch/registers.h>
+#include <libgba-cpp/drivers/utility.h>
 
 /**
  * Elements for GBA's display manipulation.

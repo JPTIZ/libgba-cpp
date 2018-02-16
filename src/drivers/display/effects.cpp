@@ -1,6 +1,6 @@
-#include <drivers/display/effects.h>
+#include <libgba-cpp/drivers/display/effects.h>
 
-#include <drivers/arch/registers.h>
+#include <libgba-cpp/drivers/arch/registers.h>
 
 
 namespace {

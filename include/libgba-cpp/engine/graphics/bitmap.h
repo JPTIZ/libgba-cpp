@@ -3,7 +3,7 @@
 
 #include <cstdint>
 
-#include <engine/graphics/tilemap.h>
+#include <libgba-cpp/engine/graphics/tilemap.h>
 
 
 namespace gba::graphics {
