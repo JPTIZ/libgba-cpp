@@ -1,7 +1,7 @@
-#include <drivers/display/layers.h>
+#include <libgba-cpp/drivers/display/layers.h>
 
-#include <drivers/arch/registers.h>
-#include <drivers/utility.h>
+#include <libgba-cpp/drivers/arch/registers.h>
+#include <libgba-cpp/drivers/utility.h>
 
 namespace {
 

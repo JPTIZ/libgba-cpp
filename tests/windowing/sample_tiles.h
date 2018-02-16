@@ -3,7 +3,7 @@
 
 #include <array>
 
-#include <drivers/display/tilemap.h>
+#include <libgba-cpp/drivers/display/tilemap.h>
 
 namespace resources::maps {
 

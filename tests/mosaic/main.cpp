@@ -1,6 +1,6 @@
-#include <drivers/display/layers.h>
-#include <drivers/display/control.h>
-#include <drivers/display/effects.h>
+#include <libgba-cpp/drivers/display/layers.h>
+#include <libgba-cpp/drivers/display/control.h>
+#include <libgba-cpp/drivers/display/effects.h>
 
 #include "sample_tiles.h"
 #include "sample_map.h"

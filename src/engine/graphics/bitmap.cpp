@@ -1,4 +1,4 @@
-#include <engine/graphics/palette.h>
+#include <libgba-cpp/engine/graphics/palette.h>
 
 namespace {
 

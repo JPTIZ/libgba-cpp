@@ -1,7 +1,7 @@
-#include <drivers/cpu/interrupts.h>
+#include <libgba-cpp/drivers/cpu/interrupts.h>
 
-#include <drivers/arch/registers.h>
-#include <drivers/display/control.h>
+#include <libgba-cpp/drivers/arch/registers.h>
+#include <libgba-cpp/drivers/display/control.h>
 
 #include <array>
 #include <bitset>

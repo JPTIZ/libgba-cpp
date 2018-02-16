@@ -3,8 +3,8 @@
 
 #include <array>
 
-#include <engine/graphics/tilemap.h>
-#include <engine/graphics/palette.h>
+#include <libgba-cpp/engine/graphics/tilemap.h>
+#include <libgba-cpp/engine/graphics/palette.h>
 
 namespace resources::maps {
 
