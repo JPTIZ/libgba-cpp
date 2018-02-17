@@ -1,7 +1,7 @@
 #include <libgba-cpp/drivers/sound/directsound.h>
 
 #include <libgba-cpp/drivers/arch/registers.h>
-#include <libgba-cpp/drivers/utility.h>
+#include <libgba-cpp/utility.h>
 
 using utils::value_of;
 using namespace gba::architecture::registers::sound;

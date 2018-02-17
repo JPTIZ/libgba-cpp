@@ -4,7 +4,7 @@
 #include <bitset>
 
 #include <libgba-cpp/drivers/arch/registers.h>
-#include <libgba-cpp/drivers/utility.h>
+#include <libgba-cpp/utility.h>
 
 /**
  * Elements for GBA's display manipulation.
