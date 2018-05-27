@@ -2,7 +2,7 @@
 export TESTDIR    = $(CURDIR)/tests
 export BINDIR     = $(CURDIR)/bin
 export INCLUDEDIR = $(CURDIR)/include
-export DOCDIR     = $(CURDIR)/doc
+export DOCDIR     = $(CURDIR)/docs
 export SRCDIR     = $(CURDIR)/src
 
 # Compiler options
