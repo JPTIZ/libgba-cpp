@@ -17,6 +17,11 @@ requirements are:
 - GCC 7.1 or above;
 - DevKitPro (to compile for GBA ARMv4 ISA and ARM7TDMI processor).
 
+Documentation
+-------------
+
+- [API Documentation](https://jptiz.github.io/libgba-cpp/html/index.html)
+
 To-Do's
 -------
 
