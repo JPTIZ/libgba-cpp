@@ -10,11 +10,11 @@ all: $(OUTPUT)
 
 $(objects) : %.o : %.cpp
 	@echo Compiling $^
-	$(CXX) -o $@ -c $^ $(ARCH) -std=$(CXXSTD) -O$(OPTLV) -I$(INCLUDEDIR)
+	$(CXX) -o $@ -c $^ $(ARCHFLAGS) $(CXXFLAGS)
 
 cpu/interrupts.o : cpu/interrupts.cpp
 	@echo Special compiling: $^
-	$(CXX) -o $@ -c $^ $(ARM) $(PROCFLAGS) -std=$(CXXSTD) -O$(OPTLV) -I$(INCLUDEDIR)
+	$(CXX) -o $@ -c $^ $(ARM) $(PROCFLAGS) $(CXXFLAGS)
 
 $(OUTPUT): cpu/interrupts.o $(objects)
 	@echo Generating $@

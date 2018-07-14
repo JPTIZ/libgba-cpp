@@ -1,20 +1,28 @@
+#==============================================================================
 # Directories
+#------------------------------------------------------------------------------
 export TESTDIR    = $(CURDIR)/tests
 export BINDIR     = $(CURDIR)/bin
 export INCLUDEDIR = $(CURDIR)/include
 export DOCDIR     = $(CURDIR)/docs
 export SRCDIR     = $(CURDIR)/src
 
+#------------------------------------------------------------------------------
 # Compiler options
+#------------------------------------------------------------------------------
 export OPTIMLEVEL = 2
 ifeq ($(DEBUG), 1)
 	export OPTIMLEVEL = 0
 endif
 
+#------------------------------------------------------------------------------
 # C++ configuration
+#------------------------------------------------------------------------------
 export CXXSTD     = c++17
 
+#------------------------------------------------------------------------------
 # Executables
+#------------------------------------------------------------------------------
 export TOOLCHAIN  = $(DEVKITARM)/bin
 
 export CC         = $(TOOLCHAIN)/arm-none-eabi-gcc
@@ -24,12 +32,14 @@ export AR         = $(TOOLCHAIN)/arm-none-eabi-ar
 export OBJCOPY	  = $(TOOLCHAIN)/arm-none-eabi-objcopy
 export GBAFIX	  = $(TOOLCHAIN)/gbafix
 
+#------------------------------------------------------------------------------
 # Base compiler flags
+#------------------------------------------------------------------------------
 export THUMB	  = -mthumb
 
 export ARM  	  = -marm
 
-export ARCH       = \
+export ARCHFLAGS  = \
 	                -mthumb-interwork\
 	                -fomit-frame-pointer\
 					-ffast-math\
@@ -53,7 +63,9 @@ ifeq ($(DEBUG), 1)
 	export CXXFLAGS += -g
 endif
 
+#==============================================================================
 # Build rules
+#------------------------------------------------------------------------------
 .PHONY: libgba tests docs
 
 all: libgba tests docs
