@@ -1,5 +1,5 @@
-#include <libgba/arch/display/video.h>
-#include <libgba/arch/display/layers.h>
+#include <libgba-cpp/arch/display/video.h>
+#include <libgba-cpp/arch/display/layers.h>
 
 void fill_screen(const gba::display::Color& color) {
     for (auto i = 0u; i < 160*120; ++i) {

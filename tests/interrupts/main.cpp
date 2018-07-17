@@ -1,7 +1,7 @@
-#include <libgba/arch/cpu/interrupts.h>
+#include <libgba-cpp/arch/cpu/interrupts.h>
 
-#include <libgba/arch/display/video.h>
-#include <libgba/arch/display/layers.h>
+#include <libgba-cpp/arch/display/video.h>
+#include <libgba-cpp/arch/display/layers.h>
 
 using namespace gba::display;
 using namespace gba::cpu;

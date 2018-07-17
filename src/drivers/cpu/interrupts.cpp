@@ -1,7 +1,7 @@
-#include <libgba/arch/cpu/interrupts.h>
+#include <libgba-cpp/arch/cpu/interrupts.h>
 
-#include <libgba/arch/registers.h>
-#include <libgba/arch/display/control.h>
+#include <libgba-cpp/arch/registers.h>
+#include <libgba-cpp/arch/display/control.h>
 
 #include <array>
 #include <bitset>

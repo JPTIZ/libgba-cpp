@@ -3,10 +3,10 @@
 
 #include <array>
 
-#include <libgba/arch/registers.h>
-#include <libgba/arch/display/control.h>
-#include <libgba/arch/display/video.h>
-#include <libgba/arch/geometry.h>
+#include <libgba-cpp/arch/registers.h>
+#include <libgba-cpp/arch/display/control.h>
+#include <libgba-cpp/arch/display/video.h>
+#include <libgba-cpp/arch/geometry.h>
 
 
 namespace gba::display {

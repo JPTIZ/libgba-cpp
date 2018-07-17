@@ -1,5 +1,5 @@
-#include <libgba/arch/registers.h>
-#include <libgba/arch/sound/sound.h>
+#include <libgba-cpp/arch/registers.h>
+#include <libgba-cpp/arch/sound/sound.h>
 
 void enable_dmas() {
     using namespace gba::arch::registers::io;

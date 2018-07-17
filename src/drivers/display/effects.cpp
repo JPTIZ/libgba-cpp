@@ -1,6 +1,6 @@
-#include <libgba/arch/display/effects.h>
+#include <libgba-cpp/arch/display/effects.h>
 
-#include <libgba/arch/registers.h>
+#include <libgba-cpp/arch/registers.h>
 
 
 namespace {
