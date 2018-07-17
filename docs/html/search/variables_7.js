@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vcount',['vcount',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a42b7b723efdd0023ae209fcc2f7e8aea',1,'gba::architecture::registers::display']]]
+  ['vcount',['vcount',['../namespacegba_1_1arch_1_1registers_1_1display.html#a0e84f7193d6a43d2f311f1bb1231785b',1,'gba::arch::registers::display']]]
 ];

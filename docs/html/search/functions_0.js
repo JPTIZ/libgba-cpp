@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['at',['at',['../namespacegba_1_1architecture_1_1registers.html#a74ca1843a05ee09705f9a5af66806589',1,'gba::architecture::registers']]]
+  ['at',['at',['../namespacegba_1_1arch_1_1registers.html#a2b90e335c92bd9b5ce405a817c72ceb4',1,'gba::arch::registers']]]
 ];
