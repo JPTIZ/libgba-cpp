@@ -68,7 +68,7 @@ void fit_handler(Interrupt which, handler_function_t function) {
 }
 
 void remove_handler(Interrupt which) {
-    auto i = 0;
+    auto i = 0u;
     for (auto& handler : handlers) {
         if (handler.type == which) {
             set_interrupt_bit(handler, false);
@@ -80,6 +80,7 @@ void remove_handler(Interrupt which) {
     }
 }
 
+/*
 auto find_handler(uint16_t ie_if) {
     for (const auto& handler: handlers) {
         if (utils::value_of(handler.type) & ie_if) {
@@ -88,6 +89,7 @@ auto find_handler(uint16_t ie_if) {
     }
     return Handler{Interrupt::VBLANK, nullptr};
 }
+*/
 
 }
 

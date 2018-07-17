@@ -1,7 +1,7 @@
 #ifndef LIBGBA_ENGINE_GRAPHICS_H
 #define LIBGBA_ENGINE_GRAPHICS_H
 
-#include "../../drivers/display/video.h"
+#include <libgba-cpp/arch/display/video.h>
 
 /**
  * Graphics API

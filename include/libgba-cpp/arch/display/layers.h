@@ -6,7 +6,7 @@
 #include <libgba-cpp/arch/registers.h>
 #include <libgba-cpp/arch/display/control.h>
 #include <libgba-cpp/arch/display/video.h>
-#include <libgba-cpp/arch/geometry.h>
+#include <libgba-cpp/utils/geometry.h>
 
 
 namespace gba::display {

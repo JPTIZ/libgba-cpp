@@ -1,7 +1,7 @@
 #include <libgba-cpp/arch/display/layers.h>
 
 #include <libgba-cpp/arch/registers.h>
-#include <libgba-cpp/arch/utility.h>
+#include <libgba-cpp/utils/general.h>
 
 namespace {
 

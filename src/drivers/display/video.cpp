@@ -1,5 +1,5 @@
 #include <libgba-cpp/arch/display/video.h>
-#include <libgba-cpp/arch/utility.h>
+#include <libgba-cpp/utils/general.h>
 
 namespace {
 
