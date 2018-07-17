@@ -1,12 +1,12 @@
-#include <libgba-cpp/drivers/display/layers.h>
+#include <libgba/arch/display/layers.h>
 
-#include <libgba-cpp/drivers/arch/registers.h>
-#include <libgba-cpp/drivers/utility.h>
+#include <libgba/arch/registers.h>
+#include <libgba/arch/utility.h>
 
 namespace {
 
 using gba::display::BackgroundControl;
-using gba::architecture::registers::display::bg_controls;
+using gba::arch::registers::display::bg_controls;
 
 }
 

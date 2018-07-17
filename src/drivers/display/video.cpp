@@ -1,5 +1,5 @@
-#include <libgba-cpp/drivers/display/video.h>
-#include <libgba-cpp/drivers/utility.h>
+#include <libgba/arch/display/video.h>
+#include <libgba/arch/utility.h>
 
 namespace {
 

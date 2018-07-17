@@ -71,14 +71,14 @@ void select(SpecialEffect effect);
  * AlphaBlend first target intensity.
  */
 inline auto& blend_a_strength() {
-    return gba::architecture::registers::display::blend_a;
+    return gba::arch::registers::display::blend_a;
 }
 
 /**
  * AlphaBlend second target intensity.
  */
 inline auto& blend_b_strength() {
-    return gba::architecture::registers::display::blend_b;
+    return gba::arch::registers::display::blend_b;
 }
 
 }

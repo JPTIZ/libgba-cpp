@@ -1,4 +1,4 @@
-#include <libgba-cpp/drivers/display/obj.h>
+#include <libgba/arch/display/obj.h>
 
 using gba::display::Color;
 

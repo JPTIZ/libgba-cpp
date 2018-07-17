@@ -1,7 +1,7 @@
-#include <libgba-cpp/drivers/cpu/interrupts.h>
+#include <libgba/arch/cpu/interrupts.h>
 
-#include <libgba-cpp/drivers/arch/registers.h>
-#include <libgba-cpp/drivers/display/control.h>
+#include <libgba/arch/registers.h>
+#include <libgba/arch/display/control.h>
 
 #include <array>
 #include <bitset>
@@ -11,8 +11,8 @@ namespace {
 using gba::cpu::Interrupt;
 using gba::cpu::handler_function_t;
 
-using namespace gba::architecture::registers::bios;
-using namespace gba::architecture::registers::cpu;
+using namespace gba::arch::registers::bios;
+using namespace gba::arch::registers::cpu;
 
 auto& main_handler = *reinterpret_cast<handler_function_t*>(0x0300'7ffc);
 auto& display_status = *new (reinterpret_cast<void*>(0x0400'0004)) std::bitset<8>{};

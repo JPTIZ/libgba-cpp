@@ -1,11 +1,11 @@
-#include <libgba-cpp/drivers/display/effects.h>
+#include <libgba/arch/display/effects.h>
 
-#include <libgba-cpp/drivers/arch/registers.h>
+#include <libgba/arch/registers.h>
 
 
 namespace {
 
-using namespace gba::architecture::registers::display;
+using namespace gba::arch::registers::display;
 auto mosaic_data = uint16_t{0u};
 
 }

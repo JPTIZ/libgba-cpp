@@ -105,7 +105,7 @@ static auto& window_control = *new (reinterpret_cast<void*>(0x0400'0048)) Window
  * @param visible True if visible, False if hidden.
  */
 inline void window_visible(Window window, bool visible=true) {
-    gba::architecture::registers::display
+    gba::arch::registers::display
         ::lcd_control[13 + utils::value_of(window)] = visible;
 }
 

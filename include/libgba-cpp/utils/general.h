@@ -1,5 +1,5 @@
-#ifndef GBA_UTILITY_H
-#define GBA_UTILITY_H
+#ifndef GBA_UTILS_GENERAL_H
+#define GBA_UTILS_GENERAL_H
 
 #include <type_traits>
 

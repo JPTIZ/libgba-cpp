@@ -9,12 +9,12 @@
 /**
  * Elements related to GBA's physical architecture.
  */
-namespace gba::architecture {}
+namespace gba::arch {}
 
 /**
  * Registers from GBA architecture.
  */
-namespace gba::architecture::registers {
+namespace gba::arch::registers {
 
 /**
  * Allocates and returns data from a register from a given address.

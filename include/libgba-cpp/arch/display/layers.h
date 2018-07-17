@@ -3,10 +3,10 @@
 
 #include <array>
 
-#include <libgba-cpp/drivers/arch/registers.h>
-#include <libgba-cpp/drivers/display/control.h>
-#include <libgba-cpp/drivers/display/video.h>
-#include <libgba-cpp/drivers/geometry.h>
+#include <libgba/arch/registers.h>
+#include <libgba/arch/display/control.h>
+#include <libgba/arch/display/video.h>
+#include <libgba/arch/geometry.h>
 
 
 namespace gba::display {
@@ -215,7 +215,7 @@ inline auto& bg_oy(Layer layer) {
  * Shows/hide layer.
  */
 inline void layer_visible(Layer layer, bool visible=true) {
-    auto& lcd_control = gba::architecture::registers::display::lcd_control;
+    auto& lcd_control = gba::arch::registers::display::lcd_control;
     lcd_control[8 + utils::value_of(layer)] = visible;
 }
 

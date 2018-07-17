@@ -29,7 +29,7 @@ std::array<Color, 256>& obj_palette();
  * Changes object mapping mode.
  */
 inline void object_mapping(ObjectMapping map) {
-    gba::architecture::registers::display::lcd_control[6] = utils::value_of(map);
+    gba::arch::registers::display::lcd_control[6] = utils::value_of(map);
 }
 
 }

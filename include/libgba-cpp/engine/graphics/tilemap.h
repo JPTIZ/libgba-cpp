@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <utility>
 
-#include <libgba-cpp/drivers/display/tilemap.h>
+#include <libgba/arch/display/tilemap.h>
 #include "palette.h"
 
 #include "graphics.h"

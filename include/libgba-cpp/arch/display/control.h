@@ -3,8 +3,8 @@
 
 #include <bitset>
 
-#include <libgba-cpp/drivers/arch/registers.h>
-#include <libgba-cpp/drivers/utility.h>
+#include <libgba-cpp/arch/registers.h>
+#include <libgba-cpp/utils/general.h>
 
 /**
  * Elements for GBA's display manipulation.
@@ -37,7 +37,7 @@ enum class Page {
  * @return Current scanline number processed by PPU.
  */
 inline volatile const auto& vcount() {
-    return gba::architecture::registers::display::vcount;
+    return gba::arch::registers::display::vcount;
 }
 
 /**
@@ -47,7 +47,7 @@ inline volatile const auto& vcount() {
  *          differently. Remember to update data when changing modes.
  */
 inline void change_mode(Mode mode) {
-    auto& lcd_control = gba::architecture::registers::display::lcd_control;
+    auto& lcd_control = gba::arch::registers::display::lcd_control;
     lcd_control = (lcd_control.to_ulong() & ~0b111u) | utils::value_of(mode);
 }
 
@@ -57,7 +57,7 @@ inline void change_mode(Mode mode) {
  * @param page The new page for PPU to read.
  */
 inline void select_page(Page page) {
-    auto& lcd_control = gba::architecture::registers::display::lcd_control;
+    auto& lcd_control = gba::arch::registers::display::lcd_control;
     lcd_control[4] = utils::value_of(page);
 }
 
@@ -67,7 +67,7 @@ inline void select_page(Page page) {
  * @param flag True if allow access, False otherwise.
  */
 inline void oam_in_hblank(bool flag) {
-    auto& lcd_control = gba::architecture::registers::display::lcd_control;
+    auto& lcd_control = gba::arch::registers::display::lcd_control;
     lcd_control[5] = flag;
 }
 
@@ -79,7 +79,7 @@ inline void oam_in_hblank(bool flag) {
  * @param flag True to force blank screen, False to disable.
  */
 inline void force_blank(bool flag) {
-    auto& lcd_control = gba::architecture::registers::display::lcd_control;
+    auto& lcd_control = gba::arch::registers::display::lcd_control;
     lcd_control[7] = flag;
 }
 

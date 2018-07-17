@@ -1,4 +1,4 @@
-#include <libgba-cpp/drivers/display/tilemap.h>
+#include <libgba/arch/display/tilemap.h>
 
 namespace {
 
