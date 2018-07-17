@@ -6,7 +6,7 @@ namespace gba::sound {
 /**
  * Must be on for registers to be accessed and for sound to play.
  */
-void enable(bool);
+void set_enabled(bool);
 
 /**
  * General
@@ -28,8 +28,8 @@ enum class Volume {
 void left_volume(unsigned);
 void right_volume(unsigned);
 
-void enable_left(Channel, bool enabled=true);
-void enable_right(Channel, bool enabled=true);
+void set_left(Channel, bool enabled=true);
+void set_right(Channel, bool enabled=true);
 
 void sweep_number(unsigned);
 

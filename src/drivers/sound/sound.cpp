@@ -8,15 +8,15 @@ using namespace gba::arch::registers::sound;
 
 namespace gba {
 
-void sound::enable(bool flag) {
+void sound::set_enabled(bool flag) {
     status[7] = flag;
 }
 
-void sound::enable_left(sound::Channel channel, bool enabled) {
+void sound::set_left(sound::Channel channel, bool enabled) {
     dmg_control[0x8 + value_of(channel)] = enabled;
 }
 
-void sound::enable_right(sound::Channel channel, bool enabled) {
+void sound::set_right(sound::Channel channel, bool enabled) {
     dmg_control[0xc + value_of(channel)] = enabled;
 }
 
