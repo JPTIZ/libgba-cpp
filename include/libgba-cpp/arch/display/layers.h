@@ -4,7 +4,6 @@
 #include <array>
 
 #include <libgba-cpp/arch/registers.h>
-#include <libgba-cpp/arch/display/control.h>
 #include <libgba-cpp/arch/display/video.h>
 #include <libgba-cpp/utils/geometry.h>
 
@@ -22,6 +21,7 @@ enum class Layer {
     OBJ,
 };
 
+
 /**
  * Backgroud priority. `HIGHEST` means the layer will be above all others.
  */
@@ -32,6 +32,7 @@ enum class BGPriority {
     LOWEST,
 };
 
+
 /**
  * Color palette mode.
  */
@@ -40,11 +41,13 @@ enum class PaletteMode {
      * 16 palettes with 16 colors each.
      */
     PALETTE_16,
+
     /**
      * 1 palette with 256 colors.
      */
     PALETTE_256,
 };
+
 
 /**
  * Map overflow behaviour.
@@ -54,11 +57,13 @@ enum class Overflow {
      * Hides map overflow area.
      */
     TRANSPARENT = 0,
+
     /**
      * Wraps overflowed map area trough screen.
      */
     WRAPAROUND,
 };
+
 
 /**
  * Map size (in pixels).
@@ -68,14 +73,17 @@ enum class MapSize {
      * 256x256 map (in Text Mode).
      */
     TEXT_256X256 = 0,
+
     /**
      * 512x256 map (in Text Mode).
      */
     TEXT_512X256,
+
     /**
      * 256x512 map (in Text Mode).
      */
     TEXT_256X512,
+
     /**
      * 512x512 map (in Text Mode).
      */
@@ -85,19 +93,23 @@ enum class MapSize {
      * 128x128 map (in Rotation/Scaling Mode).
      */
     ROTSCAL_128X128 = 10,
+
     /**
      * 256x256 map (in Rotation/Scaling Mode).
      */
     ROTSCAL_256X256,
+
     /**
      * 512x512 map (in Rotation/Scaling Mode).
      */
     ROTSCAL_512X512,
+
     /**
      * 1024x1024 map (in Rotation/Scaling Mode).
      */
     ROTSCAL_1024X1024,
 };
+
 
 constexpr geometry::Size extract_size(MapSize size) {
     switch (size) {
@@ -118,6 +130,7 @@ constexpr geometry::Size extract_size(MapSize size) {
             return {1024, 1024};
     }
 }
+
 
 /**
  * Controls properties of a background.
@@ -189,12 +202,14 @@ private:
     uint16_t data;
 };
 
+
 /**
  * Gets layer's background control.
  *
  * @remarks Using Layer::OBJ is UB.
  */
 BackgroundControl& bg_control(Layer layer);
+
 
 /**
  * Changes background X offset.
@@ -211,6 +226,7 @@ inline auto& bg_oy(Layer layer) {
     return *(reinterpret_cast<uint16_t*>(0x0400'0012) + 2 * utils::value_of(layer));
 }
 
+
 /**
  * Shows/hide layer.
  */
@@ -218,6 +234,9 @@ inline void layer_visible(Layer layer, bool visible=true) {
     auto& lcd_control = gba::arch::registers::display::lcd_control;
     lcd_control[8 + utils::value_of(layer)] = visible;
 }
+
+
+RawPalette<256>& bg_palette();
 
 }
 

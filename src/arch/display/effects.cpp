@@ -6,6 +6,9 @@
 namespace {
 
 using namespace gba::arch::registers::display;
+
+using gba::display::RawPalette;
+
 auto mosaic_data = uint16_t{0u};
 
 }
@@ -13,16 +16,16 @@ auto mosaic_data = uint16_t{0u};
 
 namespace gba {
 
-void display::first_target(Layer layer, bool enabled) {
+void display::set_first_target(Layer layer, bool enabled) {
     effect_control[utils::value_of(layer)] = enabled;
+}
+
+void display::set_second_target(Layer layer, bool enabled) {
+    effect_control[utils::value_of(layer) + 8] = enabled;
 }
 
 void display::backdrop_first_target(bool enabled) {
     effect_control[5] = enabled;
-}
-
-void display::second_target(Layer layer, bool enabled) {
-    effect_control[utils::value_of(layer) + 8] = enabled;
 }
 
 void display::backdrop_second_target(bool enabled) {
@@ -44,4 +47,3 @@ void display::mosaic_obj_level(unsigned width, unsigned height) {
 }
 
 }
-

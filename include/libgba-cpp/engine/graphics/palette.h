@@ -36,6 +36,9 @@ public:
         palette_{reinterpret_cast<const Color*>(palette)}
     {}
 
+    /**
+     * Accesses palette data.
+     */
     const auto& colors() const {
         return palette_;
     }
@@ -43,14 +46,14 @@ public:
     /**
      * Accesses a single entry at given index.
      */
-    auto operator[](std::size_t i) {
+    auto& operator[](std::size_t i) {
         return palette_[i];
     }
 
     /**
      * Reads a single entry at given index.
      */
-    const auto operator[](std::size_t i) const {
+    const auto& operator[](std::size_t i) const {
         return palette_[i];
     }
 

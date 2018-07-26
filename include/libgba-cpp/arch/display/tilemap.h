@@ -1,14 +1,13 @@
 #ifndef GBA_DRIVERS_DISPLAY_TILEMAP_H
 #define GBA_DRIVERS_DISPLAY_TILEMAP_H
 
-#include "control.h"
-#include "layers.h"
+#include <cstdint>
+#include <array>
 
 /**
  * Map manipulation elements.
  */
 namespace gba::display::map {
-
 
 namespace details {
 
@@ -40,7 +39,7 @@ class Tile {
 public:
     Tile() = default;
 
-    Tile(std::array<uint32_t, 16> rows):
+    explicit Tile(std::array<uint32_t, 16> rows):
         rows_{move(rows)}
     {}
 
@@ -57,10 +56,12 @@ private:
     std::array<uint32_t, 16> rows_{};
 };
 
+
 /**
  * Tiles to fill maps with.
  */
 std::array<Tile, 0x40>& tileset();
+
 
 /**
  * The game map.
