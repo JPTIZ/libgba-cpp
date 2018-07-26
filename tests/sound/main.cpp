@@ -1,8 +1,8 @@
-#include <libgba-cpp/drivers/arch/registers.h>
-#include <libgba-cpp/drivers/sound/sound.h>
+#include <libgba-cpp/arch/registers.h>
+#include <libgba-cpp/arch/sound/sound.h>
 
 void enable_dmas() {
-    using namespace gba::architecture::registers::io;
+    using namespace gba::arch::registers::io;
 
     dma1_control = (1 << 6) | // Fixed
                    (1 << 9) | // Repeat

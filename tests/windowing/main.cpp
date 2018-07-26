@@ -1,7 +1,7 @@
-#include <libgba-cpp/drivers/display/layers.h>
-#include <libgba-cpp/drivers/display/control.h>
-#include <libgba-cpp/drivers/display/effects.h>
-#include <libgba-cpp/drivers/display/window.h>
+#include <libgba-cpp/arch/display/layers.h>
+#include <libgba-cpp/arch/display/control.h>
+#include <libgba-cpp/arch/display/effects.h>
+#include <libgba-cpp/arch/display/window.h>
 
 #include "sample_tiles.h"
 #include "sample_map.h"

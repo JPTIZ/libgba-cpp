@@ -10,7 +10,7 @@ all: $(OUTPUT)
 
 $(objects) : %.o : %.cpp
 	@echo Compiling $^
-	$(CXX) -o $@ -c $^ $(ARCH) -std=$(CXXSTD) -O$(OPTLV) -I$(INCLUDEDIR)
+	$(CXX) -o $@ -c $^ $(ARCHFLAGS) $(CXXFLAGS)
 
 $(OUTPUT): $(objects)
 	@echo Generating $@

@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['bg0_5fx_5foffset',['bg0_x_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a45b20e5b3c291b20254f5d74a968eac6',1,'gba::architecture::registers::display']]],
-  ['bg0_5fy_5foffset',['bg0_y_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#abbe12efbc0e4f184518f4e8c5ac56ba4',1,'gba::architecture::registers::display']]],
-  ['bg1_5fx_5foffset',['bg1_x_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a29ef2ae98762d0ba98672584f7d8b451',1,'gba::architecture::registers::display']]],
-  ['bg1_5fy_5foffset',['bg1_y_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a1a2d7386ac2f86e3b8cb001849811c60',1,'gba::architecture::registers::display']]],
-  ['bg2_5fx_5foffset',['bg2_x_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#ace66cd573f3a5efcca646334f8f238eb',1,'gba::architecture::registers::display']]],
-  ['bg2_5fy_5foffset',['bg2_y_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a22480c59d276bb5aea88e1c6af5378f3',1,'gba::architecture::registers::display']]],
-  ['bg3_5fx_5foffset',['bg3_x_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a9c4d1d530c19db13afad8dadc8202eda',1,'gba::architecture::registers::display']]],
-  ['bg3_5fy_5foffset',['bg3_y_offset',['../namespacegba_1_1architecture_1_1registers_1_1display.html#a5a37ce4d2538860033ec9d3ea28b48a3',1,'gba::architecture::registers::display']]],
-  ['bg_5fcontrols',['bg_controls',['../namespacegba_1_1architecture_1_1registers_1_1display.html#aaacd8ae8e33b35b694916cf91ab1874f',1,'gba::architecture::registers::display']]],
+  ['bg0_5fx_5foffset',['bg0_x_offset',['../namespacegba_1_1arch_1_1registers_1_1display.html#a2618a53b67d21bce5027aaa7ed8afe05',1,'gba::arch::registers::display']]],
+  ['bg0_5fy_5foffset',['bg0_y_offset',['../namespacegba_1_1arch_1_1registers_1_1display.html#a6c9116b6d6989b126f957b3daae723fe',1,'gba::arch::registers::display']]],
+  ['bg1_5fx_5foffset',['bg1_x_offset',['../namespacegba_1_1arch_1_1registers_1_1display.html#a46aae9d08879d0339c35e02b90e889e1',1,'gba::arch::registers::display']]],
+  ['bg1_5fy_5foffset',['bg1_y_offset',['../namespacegba_1_1arch_1_1registers_1_1display.html#a4e6dfb2de4dc60dbbcafa2e171e86b39',1,'gba::arch::registers::display']]],
+  ['bg2_5fx_5foffset',['bg2_x_offset',['../namespacegba_1_1arch_1_1registers_1_1display.html#a6d9f4f33127334f576c6af16b0743647',1,'gba::arch::registers::display']]],
+  ['bg2_5fy_5foffset',['bg2_y_offset',['../namespacegba_1_1arch_1_1registers_1_1display.html#a553c5f399ed87846d2ca9b79b46e600b',1,'gba::arch::registers::display']]],
+  ['bg3_5fx_5foffset',['bg3_x_offset',['../namespacegba_1_1arch_1_1registers_1_1display.html#aeeb49a47def1726400915f4a31e1ded4',1,'gba::arch::registers::display']]],
+  ['bg3_5fy_5foffset',['bg3_y_offset',['../namespacegba_1_1arch_1_1registers_1_1display.html#a9cb67574ef8906bcafa1a3ff78c6b300',1,'gba::arch::registers::display']]],
+  ['bg_5fcontrols',['bg_controls',['../namespacegba_1_1arch_1_1registers_1_1display.html#ac02ee78092eb78943699aa4f7bec303d',1,'gba::arch::registers::display']]],
   ['bottom',['bottom',['../structgba_1_1display_1_1WindowPosition.html#a9f400285b2c5f363a4452daa64f7571a',1,'gba::display::WindowPosition']]]
 ];

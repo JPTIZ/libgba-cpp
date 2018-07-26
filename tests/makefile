@@ -11,4 +11,4 @@ $(SUBDIRS):
 	$(MAKE) -C $@ -f ../test_makefile
 
 clean:
-	$(foreach dir, $(SUBDIRS), $(MAKE) -C $(dir) -f ../test_makefile clean;)
+	@$(foreach dir, $(SUBDIRS), $(MAKE) -C $(dir) -f ../test_makefile clean;)

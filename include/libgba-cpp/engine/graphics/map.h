@@ -1,7 +1,7 @@
 #ifndef LIBGBA_ENGINE_MAP_H
 #define LIBGBA_ENGINE_MAP_H
 
-#include "../../drivers/display/layers.h"
+#include <libgba-cpp/arch/display/layers.h>
 #include "tilemap.h"
 
 namespace gba::graphics {
