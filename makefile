@@ -68,7 +68,7 @@ export MAKE       := $(MAKE) --no-print-directory
 #==============================================================================
 # Build rules
 #------------------------------------------------------------------------------
-.PHONY: libgba tests docs
+.PHONY: libgba examples tests docs
 
 all: libgba tests docs
 
@@ -79,6 +79,14 @@ libgba:
 	@echo
 	@mkdir -p $(BINDIR)
 	@$(MAKE) -C $(SRCDIR) -f makefile
+	@echo
+
+examples:
+	@echo -e "\e[32m===================================================================="
+	@echo -e "\e[1mCompiling Shooter...\e[0;32m"
+	@echo -e "--------------------------------------------------------------------\e[0m"
+	@echo
+	@$(MAKE) -C examples/shooter -f makefile
 	@echo
 
 tests:
