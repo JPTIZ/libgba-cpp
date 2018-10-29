@@ -39,6 +39,11 @@ To-Do's
 
 1. Allow non-Read-Only graphics API (currently all data must be `const`/in ROM,
    or else we couldn't have bitmaps bigger than 32KB).
+2. Add proper SFX support;
+3. Add proper Music support;
+4. Fix Mosaic effects;
+5. Add DMA support;
+6. Fix interrupt handling.
 
 Bibliography
 ------------
