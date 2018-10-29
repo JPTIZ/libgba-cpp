@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['darken',['DARKEN',['../namespacegba_1_1display.html#a244a3aa2d0d66724b5dc35ebfcf7fb86a99e415e053e93f45930e604abaeba485',1,'gba::display']]]
+  ['flip_5fpages',['flip_pages',['../namespacegba_1_1display_1_1mode5.html#a6ceb9e450a42ec64c762c874358ad45a',1,'gba::display::mode5']]]
 ];

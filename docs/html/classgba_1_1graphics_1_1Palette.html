@@ -89,13 +89,12 @@ template&lt;std::size_t N&gt; </td></tr>
 <tr class="separator:a404595c703130a12e138bc5cb40b0aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1109af357dd9e88dbf98e15fcd99edf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgba_1_1graphics_1_1Palette.html#ae1109af357dd9e88dbf98e15fcd99edf">Palette</a> (const uint16_t palette[], std::size_t <a class="el" href="classgba_1_1graphics_1_1Palette.html#a7438aab2b6380e4e05f939a7a2c7d371">size</a>)</td></tr>
 <tr class="separator:ae1109af357dd9e88dbf98e15fcd99edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c33b062d9f760f34c297eb6423d34a7"><td class="memItemLeft" align="right" valign="top"><a id="a1c33b062d9f760f34c297eb6423d34a7"></a>
-const auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>colors</b> () const</td></tr>
+<tr class="memitem:a1c33b062d9f760f34c297eb6423d34a7"><td class="memItemLeft" align="right" valign="top">const auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgba_1_1graphics_1_1Palette.html#a1c33b062d9f760f34c297eb6423d34a7">colors</a> () const</td></tr>
 <tr class="separator:a1c33b062d9f760f34c297eb6423d34a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fc49f1870fca640c77cbc175f888f9c"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgba_1_1graphics_1_1Palette.html#a3fc49f1870fca640c77cbc175f888f9c">operator[]</a> (std::size_t i)</td></tr>
-<tr class="separator:a3fc49f1870fca640c77cbc175f888f9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6b4b5c173e4d3f2acaf49af92f9c7d2"><td class="memItemLeft" align="right" valign="top">const auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgba_1_1graphics_1_1Palette.html#ad6b4b5c173e4d3f2acaf49af92f9c7d2">operator[]</a> (std::size_t i) const</td></tr>
-<tr class="separator:ad6b4b5c173e4d3f2acaf49af92f9c7d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a368f2c83139ac45d9d88173802e8ced1"><td class="memItemLeft" align="right" valign="top">auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgba_1_1graphics_1_1Palette.html#a368f2c83139ac45d9d88173802e8ced1">operator[]</a> (std::size_t i)</td></tr>
+<tr class="separator:a368f2c83139ac45d9d88173802e8ced1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c3eb0d343ae60e97e5df012c01ff361"><td class="memItemLeft" align="right" valign="top">const auto &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgba_1_1graphics_1_1Palette.html#a6c3eb0d343ae60e97e5df012c01ff361">operator[]</a> (std::size_t i) const</td></tr>
+<tr class="separator:a6c3eb0d343ae60e97e5df012c01ff361"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7438aab2b6380e4e05f939a7a2c7d371"><td class="memItemLeft" align="right" valign="top">auto&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgba_1_1graphics_1_1Palette.html#a7438aab2b6380e4e05f939a7a2c7d371">size</a> () const</td></tr>
 <tr class="separator:a7438aab2b6380e4e05f939a7a2c7d371"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -152,8 +151,8 @@ static const <a class="el" href="classgba_1_1graphics_1_1Palette.html">Palette</
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3fc49f1870fca640c77cbc175f888f9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3fc49f1870fca640c77cbc175f888f9c">&#9670;&nbsp;</a></span>operator[]() <span class="overload">[1/2]</span></h2>
+<a id="a1c33b062d9f760f34c297eb6423d34a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c33b062d9f760f34c297eb6423d34a7">&#9670;&nbsp;</a></span>colors()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -162,7 +161,33 @@ static const <a class="el" href="classgba_1_1graphics_1_1Palette.html">Palette</
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">auto gba::graphics::Palette::operator[] </td>
+          <td class="memname">const auto&amp; gba::graphics::Palette::colors </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Accesses palette data. </p>
+
+</div>
+</div>
+<a id="a368f2c83139ac45d9d88173802e8ced1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a368f2c83139ac45d9d88173802e8ced1">&#9670;&nbsp;</a></span>operator[]() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">auto&amp; gba::graphics::Palette::operator[] </td>
           <td>(</td>
           <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>i</em></td><td>)</td>
@@ -179,8 +204,8 @@ static const <a class="el" href="classgba_1_1graphics_1_1Palette.html">Palette</
 
 </div>
 </div>
-<a id="ad6b4b5c173e4d3f2acaf49af92f9c7d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6b4b5c173e4d3f2acaf49af92f9c7d2">&#9670;&nbsp;</a></span>operator[]() <span class="overload">[2/2]</span></h2>
+<a id="a6c3eb0d343ae60e97e5df012c01ff361"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c3eb0d343ae60e97e5df012c01ff361">&#9670;&nbsp;</a></span>operator[]() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,7 +214,7 @@ static const <a class="el" href="classgba_1_1graphics_1_1Palette.html">Palette</
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const auto gba::graphics::Palette::operator[] </td>
+          <td class="memname">const auto&amp; gba::graphics::Palette::operator[] </td>
           <td>(</td>
           <td class="paramtype">std::size_t&#160;</td>
           <td class="paramname"><em>i</em></td><td>)</td>

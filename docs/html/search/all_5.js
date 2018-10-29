@@ -1,15 +1,11 @@
 var searchData=
 [
-  ['arch',['arch',['../namespacegba_1_1arch.html',1,'gba']]],
-  ['display',['display',['../namespacegba_1_1arch_1_1registers_1_1display.html',1,'gba::arch::registers::display'],['../namespacegba_1_1display.html',1,'gba::display']]],
-  ['g',['g',['../classgba_1_1display_1_1Color.html#a54e843b1eb9c1395933860948adb6085',1,'gba::display::Color']]],
-  ['graphics',['graphics',['../namespacegba_1_1graphics.html',1,'gba']]],
-  ['green_5fswap',['green_swap',['../namespacegba_1_1arch_1_1registers_1_1display.html#afd5d6b3462671e59193a1a3698ae1e18',1,'gba::arch::registers::display']]],
-  ['io',['io',['../namespacegba_1_1arch_1_1registers_1_1io.html',1,'gba::arch::registers']]],
-  ['map',['map',['../namespacegba_1_1display_1_1map.html',1,'gba::display']]],
-  ['mode3',['mode3',['../namespacegba_1_1display_1_1mode3.html',1,'gba::display']]],
-  ['mode4',['mode4',['../namespacegba_1_1display_1_1mode4.html',1,'gba::display']]],
-  ['mode5',['mode5',['../namespacegba_1_1display_1_1mode5.html',1,'gba::display']]],
-  ['registers',['registers',['../namespacegba_1_1arch_1_1registers.html',1,'gba::arch']]],
-  ['sound',['sound',['../namespacegba_1_1arch_1_1registers_1_1sound.html',1,'gba::arch::registers']]]
+  ['libgba_20_2d_20cpp',['LibGBA - CPP',['../index.html',1,'']]],
+  ['lcd_5fcontrol',['lcd_control',['../namespacegba_1_1arch_1_1registers_1_1display.html#aa257e5efeabfa48043b4192b311ac119',1,'gba::arch::registers::display']]],
+  ['lcd_5fstatus',['lcd_status',['../namespacegba_1_1arch_1_1registers_1_1display.html#a8bc6a934bc0a9965261b74ea7464f6ad',1,'gba::arch::registers::display']]],
+  ['left',['left',['../structgba_1_1display_1_1WindowPosition.html#a9af812325ff84634d39472f900a0d5e5',1,'gba::display::WindowPosition']]],
+  ['load_5fmap',['load_map',['../namespacegba_1_1graphics.html#a0efb67edd37becadd4810439eac2ba43',1,'gba::graphics']]],
+  ['load_5fpalette',['load_palette',['../namespacegba_1_1graphics.html#a6618262c18b51e7d75f3b49ec4c2a23c',1,'gba::graphics']]],
+  ['load_5ftilemap',['load_tilemap',['../namespacegba_1_1graphics.html#ab8d7a21b9f95d1d30623e0a315bf1d80',1,'gba::graphics']]],
+  ['load_5ftileset',['load_tileset',['../namespacegba_1_1graphics.html#a85c6fb9b6f9e50585d8cefca5bdd0f25',1,'gba::graphics']]]
 ];

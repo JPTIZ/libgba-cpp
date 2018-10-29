@@ -1,7 +1,7 @@
 var searchData=
 [
   ['arch',['arch',['../namespacegba_1_1arch.html',1,'gba']]],
-  ['display',['display',['../namespacegba_1_1arch_1_1registers_1_1display.html',1,'gba::arch::registers::display'],['../namespacegba_1_1display.html',1,'gba::display']]],
+  ['display',['display',['../namespacegba_1_1arch_1_1registers_1_1display.html',1,'gba::arch::registers']]],
   ['graphics',['graphics',['../namespacegba_1_1graphics.html',1,'gba']]],
   ['io',['io',['../namespacegba_1_1arch_1_1registers_1_1io.html',1,'gba::arch::registers']]],
   ['map',['map',['../namespacegba_1_1display_1_1map.html',1,'gba::display']]],

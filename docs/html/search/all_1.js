@@ -1,8 +1,6 @@
 var searchData=
 [
   ['b',['b',['../classgba_1_1display_1_1Color.html#ac3604d8b56fb4490457b13d2f1afb7f7',1,'gba::display::Color']]],
-  ['backdrop_5ffirst_5ftarget',['backdrop_first_target',['../namespacegba_1_1display.html#a36e6ef7fd8ed3c7582f104e936d032db',1,'gba::display']]],
-  ['backdrop_5fsecond_5ftarget',['backdrop_second_target',['../namespacegba_1_1display.html#a093f211d41bddcd64f3ee8ffefe33019',1,'gba::display']]],
   ['backgroundcontrol',['BackgroundControl',['../classgba_1_1display_1_1BackgroundControl.html',1,'gba::display']]],
   ['bg0_5fx_5foffset',['bg0_x_offset',['../namespacegba_1_1arch_1_1registers_1_1display.html#a2618a53b67d21bce5027aaa7ed8afe05',1,'gba::arch::registers::display']]],
   ['bg0_5fy_5foffset',['bg0_y_offset',['../namespacegba_1_1arch_1_1registers_1_1display.html#a6c9116b6d6989b126f957b3daae723fe',1,'gba::arch::registers::display']]],
@@ -12,13 +10,6 @@ var searchData=
   ['bg2_5fy_5foffset',['bg2_y_offset',['../namespacegba_1_1arch_1_1registers_1_1display.html#a553c5f399ed87846d2ca9b79b46e600b',1,'gba::arch::registers::display']]],
   ['bg3_5fx_5foffset',['bg3_x_offset',['../namespacegba_1_1arch_1_1registers_1_1display.html#aeeb49a47def1726400915f4a31e1ded4',1,'gba::arch::registers::display']]],
   ['bg3_5fy_5foffset',['bg3_y_offset',['../namespacegba_1_1arch_1_1registers_1_1display.html#a9cb67574ef8906bcafa1a3ff78c6b300',1,'gba::arch::registers::display']]],
-  ['bg_5fcontrol',['bg_control',['../namespacegba_1_1display.html#aeedaa83c8e9f3895d0b86b98acde7f24',1,'gba::display']]],
   ['bg_5fcontrols',['bg_controls',['../namespacegba_1_1arch_1_1registers_1_1display.html#ac02ee78092eb78943699aa4f7bec303d',1,'gba::arch::registers::display']]],
-  ['bg_5fox',['bg_ox',['../namespacegba_1_1display.html#ac35d4f3c2a5ffd3be2110ab116e4554f',1,'gba::display']]],
-  ['bg_5foy',['bg_oy',['../namespacegba_1_1display.html#af6ffb4df38525f35c0767b666c6fa095',1,'gba::display']]],
-  ['bgpriority',['BGPriority',['../namespacegba_1_1display.html#aac59e5d298649d563e499c814261dda2',1,'gba::display']]],
-  ['blend_5fa_5fstrength',['blend_a_strength',['../namespacegba_1_1display.html#ac7bee6fc7e254cb9cc0d675f64e0a270',1,'gba::display']]],
-  ['blend_5fb_5fstrength',['blend_b_strength',['../namespacegba_1_1display.html#ac3d097929126a710dfe037e762b1cc60',1,'gba::display']]],
-  ['bottom',['bottom',['../structgba_1_1display_1_1WindowPosition.html#a9f400285b2c5f363a4452daa64f7571a',1,'gba::display::WindowPosition']]],
-  ['brighten',['BRIGHTEN',['../namespacegba_1_1display.html#a244a3aa2d0d66724b5dc35ebfcf7fb86aa0774dcc68ad2cd249dc223cfbf6b538',1,'gba::display']]]
+  ['bottom',['bottom',['../structgba_1_1display_1_1WindowPosition.html#a9f400285b2c5f363a4452daa64f7571a',1,'gba::display::WindowPosition']]]
 ];

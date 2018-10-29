@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['r',['r',['../classgba_1_1display_1_1Color.html#ac745f2b0d3db7b1f8f185ba7a2aef450',1,'gba::display::Color']]],
-  ['rect',['Rect',['../structgba_1_1geometry_1_1Rect.html',1,'gba::geometry']]],
-  ['resize',['resize',['../classgba_1_1display_1_1BackgroundControl.html#a0531e5361149a426fa034ad51d37d84d',1,'gba::display::BackgroundControl']]],
-  ['right',['right',['../structgba_1_1display_1_1WindowPosition.html#ad2395a2b0713119276f238869ffe6178',1,'gba::display::WindowPosition']]],
-  ['rotscal_5f1024x1024',['ROTSCAL_1024X1024',['../namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186aad3cd8e2eb6b4852206aae4890dfd895a',1,'gba::display']]],
-  ['rotscal_5f128x128',['ROTSCAL_128X128',['../namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186aa49037467363bbf6750f2d10390ddba42',1,'gba::display']]],
-  ['rotscal_5f256x256',['ROTSCAL_256X256',['../namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186aa082c25e13f9220e214e20122c7145065',1,'gba::display']]],
-  ['rotscal_5f512x512',['ROTSCAL_512X512',['../namespacegba_1_1display.html#a00d525bf594fe4319d6e33dc3191186aa5c624c25907f4761424ad16927d17534',1,'gba::display']]]
+  ['tile',['Tile',['../classgba_1_1display_1_1map_1_1Tile.html',1,'gba::display::map']]],
+  ['tiledbitmap',['TiledBitmap',['../classgba_1_1graphics_1_1TiledBitmap.html',1,'gba::graphics']]],
+  ['tileindex',['TileIndex',['../classgba_1_1display_1_1map_1_1details_1_1TileIndex.html',1,'gba::display::map::details']]],
+  ['tilemap',['Tilemap',['../classgba_1_1graphics_1_1Tilemap.html',1,'gba::graphics::Tilemap'],['../namespacegba_1_1display_1_1map.html#a178a7cad95ee8a06e5388b795a35e152',1,'gba::display::map::tilemap()']]],
+  ['tileset',['Tileset',['../classgba_1_1graphics_1_1Tileset.html',1,'gba::graphics::Tileset'],['../namespacegba_1_1display_1_1map.html#a0e52190297dd9abb7f3d1832015973fc',1,'gba::display::map::tileset()']]],
+  ['top',['top',['../structgba_1_1display_1_1WindowPosition.html#ac3f4c1be1b061cba282d054a37a137f7',1,'gba::display::WindowPosition']]]
 ];
