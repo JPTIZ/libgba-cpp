@@ -39,7 +39,7 @@ class Tile {
 public:
     Tile() = default;
 
-    explicit Tile(std::array<uint32_t, 16> rows):
+    explicit Tile(std::array<uint32_t, 8> rows):
         rows_{move(rows)}
     {}
 
@@ -53,7 +53,7 @@ public:
     */
 
 private:
-    std::array<uint32_t, 16> rows_{};
+    std::array<uint32_t, 8> rows_{};
 };
 
 

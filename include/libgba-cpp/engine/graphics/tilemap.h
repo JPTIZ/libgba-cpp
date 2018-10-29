@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <utility>
 
+#include <libgba-cpp/arch/display/layers.h>
 #include <libgba-cpp/arch/display/tilemap.h>
 #include "palette.h"
 
