@@ -4,6 +4,7 @@
 #include <array>
 
 #include <libgba-cpp/arch/display/tilemap.h>
+#include <libgba-cpp/arch/display/video.h>
 
 namespace resources::maps {
 
@@ -21,8 +22,7 @@ static std::array<Color, 7> sample_palette = {
 };
 
 static std::array<Tile, 11> sample_tiles = {
-    Tile
-    {{0x33333333,
+    Tile{{0x33333333,
       0x33333333,
       0x33333333,
       0x33333333,
@@ -31,7 +31,7 @@ static std::array<Tile, 11> sample_tiles = {
       0x33333333,
       0x33333333}},
 
-    {{0x11111111,
+    Tile{{0x11111111,
       0x12222222,
       0x12111111,
       0x12111111,
@@ -40,7 +40,7 @@ static std::array<Tile, 11> sample_tiles = {
       0x12111122,
       0x12111121}},
 
-    {{0x11111111,
+    Tile{{0x11111111,
       0x22222222,
       0x11111111,
       0x11111111,
@@ -49,7 +49,7 @@ static std::array<Tile, 11> sample_tiles = {
       0x22222222,
       0x11111111}},
 
-    {{0x11111111,
+    Tile{{0x11111111,
       0x22222221,
       0x11111121,
       0x11111121,
@@ -58,7 +58,7 @@ static std::array<Tile, 11> sample_tiles = {
       0x22111121,
       0x12111121}},
 
-    {{0x12111121,
+    Tile{{0x12111121,
       0x12111122,
       0x12111111,
       0x12111111,
@@ -67,7 +67,7 @@ static std::array<Tile, 11> sample_tiles = {
       0x12222222,
       0x11111111}},
 
-    {{0x12111121,
+    Tile{{0x12111121,
       0x22111121,
       0x11111121,
       0x11111121,
@@ -76,7 +76,7 @@ static std::array<Tile, 11> sample_tiles = {
       0x22222221,
       0x11111111}},
 
-    {{0x12111121,
+    Tile{{0x12111121,
       0x12111121,
       0x12111121,
       0x12111121,
@@ -85,7 +85,7 @@ static std::array<Tile, 11> sample_tiles = {
       0x12111121,
       0x12111121}},
 
-    {{0x00044000,
+    Tile{{0x00044000,
       0x04444440,
       0x00044444,
       0x00000444,
@@ -94,7 +94,7 @@ static std::array<Tile, 11> sample_tiles = {
       0x00044000,
       0x00000000}},
 
-    {{0x00000000,
+    Tile{{0x00000000,
       0x00000000,
       0x00077000,
       0x00777700,
@@ -103,7 +103,7 @@ static std::array<Tile, 11> sample_tiles = {
       0x00000000,
       0x00000000}},
 
-    {{0x07654321,
+    Tile{{0x07654321,
       0x01234567,
       0x02644321,
       0x17660321,

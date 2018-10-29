@@ -16,8 +16,8 @@ void enable_dmas() {
 int main() {
     using namespace gba::sound;
 
-    enable(true);
-    enable_left(Channel::SQUARE1);
+    set_enabled(true);
+    set_left(Channel::SQUARE1, true);
 
     enable_dmas();
 

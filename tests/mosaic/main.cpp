@@ -1,5 +1,4 @@
 #include <libgba-cpp/arch/display/layers.h>
-#include <libgba-cpp/arch/display/control.h>
 #include <libgba-cpp/arch/display/effects.h>
 
 #include "sample_tiles.h"

@@ -1,5 +1,4 @@
 #include <libgba-cpp/arch/display/layers.h>
-#include <libgba-cpp/arch/display/control.h>
 #include <libgba-cpp/arch/display/effects.h>
 #include <libgba-cpp/arch/display/window.h>
 
@@ -40,22 +39,26 @@ int main() {
     layer_visible(Layer::BG0);
     layer_visible(Layer::BG1);
 
-    window_visible(Window::WIN0);
-    window_visible(Window::WIN1);
+    set_window_visible(Window::WIN0);
+    set_window_visible(Window::WIN1);
 
     bg_control(Layer::BG0).screen_base_block(1);
     bg_control(Layer::BG1).screen_base_block(2);
 
-    bg_control(Layer::BG0).priority(BGPriority::LOWEST);
-    bg_control(Layer::BG1).priority(BGPriority::LOW);
-    bg_control(Layer::BG2).priority(BGPriority::HIGH);
-    bg_control(Layer::BG3).priority(BGPriority::HIGHEST);
+    bg_control(Layer::BG3).priority(BGPriority::LOWEST);
+    bg_control(Layer::BG2).priority(BGPriority::LOW);
+    bg_control(Layer::BG1).priority(BGPriority::HIGH);
+    bg_control(Layer::BG0).priority(BGPriority::HIGHEST);
 
     bg_ox(Layer::BG0) = -64;
     bg_oy(Layer::BG0) = -16;
 
     bg_ox(Layer::BG1) = 16;
     bg_oy(Layer::BG1) = -16;
+
+    auto& window_control = gba::display::window_control();
+    auto& window0 = gba::display::window0();
+    auto& window1 = gba::display::window1();
 
     window_control.window0_enable(Layer::BG0);
     window_control.window1_enable(Layer::BG1);
@@ -65,15 +68,15 @@ int main() {
 
     gen_map();
 
-    window0.left = 0;
-    window0.right = 128;
+    window0.left = 80;
+    window0.right = 120;
     window0.top = 4;
     window0.bottom = 120;
 
     window1.left = 0;
-    window1.right = 240;
+    window1.right = 140;
     window1.top = 0;
-    window1.bottom = 160;
+    window1.bottom = 45;
 
 
     auto i = 0;

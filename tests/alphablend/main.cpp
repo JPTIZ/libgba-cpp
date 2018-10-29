@@ -1,5 +1,4 @@
 #include <libgba-cpp/arch/display/layers.h>
-#include <libgba-cpp/arch/display/control.h>
 #include <libgba-cpp/arch/display/effects.h>
 
 #include "sample_tiles.h"
@@ -21,21 +20,9 @@ void copy_tiles() {
     for (auto i = 0u; i < sample_tiles.size(); ++i) {
         tileset()[i + 1] = sample_tiles[i];
     }
-
-    tileset()[11] = {{
-        0x77777777,
-        0x77777777,
-        0x77777777,
-        0x77777777,
-        0x77777777,
-        0x77777777,
-        0x77777777,
-        0x77777777,
-    }};
 }
 
 void gen_map() {
-
     for (auto i = 0u; i < layer0.size(); ++i) {
         auto x = i % 8;
         auto y = i / 8;
@@ -71,23 +58,24 @@ int main() {
     bg_control(Layer::BG2).priority(BGPriority::HIGH);
     bg_control(Layer::BG3).priority(BGPriority::HIGHEST);
 
-    bg_oy(Layer::BG1) = -16;
-
-    first_target(Layer::BG3);
-    first_target(Layer::BG2);
-    first_target(Layer::BG1);
-    second_target(Layer::BG2);
-    second_target(Layer::BG1);
-    second_target(Layer::BG0);
+    set_first_target(Layer::BG3);
+    set_first_target(Layer::BG2);
+    set_first_target(Layer::BG1);
+    set_second_target(Layer::BG2);
+    set_second_target(Layer::BG1);
+    set_second_target(Layer::BG0);
     select(SpecialEffect::ALPHA_BLEND);
-
-    blend_a_strength() = 8;
-    blend_b_strength() = 8;
 
     copy_palette();
     copy_tiles();
 
     gen_map();
+
+    bg_oy(Layer::BG0) = -8;
+    bg_oy(Layer::BG1) = -16;
+
+    blend_first_target_strength() = 8;
+    blend_second_target_strength() = 4;
 
     auto i = 0;
 
