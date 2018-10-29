@@ -17,6 +17,18 @@ requirements are:
 - GCC 7.1 or above;
 - DevKitPro (to compile for GBA ARMv4 ISA and ARM7TDMI processor).
 
+Examples
+--------
+
+- [AlphaBlending (BG Layers)](tests/alphablend)
+- [Generated Tilemaps](tests/gen_tilemap)
+- [Interrupts](tests/interrupts)
+- [Mode5](tests/mode5)
+- [Mosaic](tests/mosaic)
+- [Sound](tests/sound)
+- [Tilemap](tests/tilemap)
+- [Windowing](tests/windowing)
+
 Documentation
 -------------
 
