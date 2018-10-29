@@ -6,7 +6,7 @@ using namespace gba::display;
 using map::Tile;
 
 static auto& tiles = *new (reinterpret_cast<void*>(0x0600'0000)) std::array<Tile, 0x40>{};
-static auto& tilemap = *reinterpret_cast<std::array<std::uint16_t, 0x9000>*>(0x06000000);
+static auto& tilemap = *reinterpret_cast<std::array<std::uint16_t, 0x9000>*>(tiles.end());
 
 }
 
