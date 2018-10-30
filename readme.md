@@ -37,8 +37,8 @@ Documentation
 To-Do's
 -------
 
-- [ ] Allow non-Read-Only graphics API (currently all data must be `const`/in ROM,
-- [ ] or else we couldn't have bitmaps bigger than 32KB).
+- [ ] Allow non-Read-Only graphics API (currently all data must be `const`/in
+      ROM, or else we couldn't have bitmaps bigger than 32KB).
 - [ ] Add proper SFX support;
 - [ ] Add proper Music support;
 - [ ] Fix Mosaic effects;
