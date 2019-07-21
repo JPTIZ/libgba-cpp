@@ -32,18 +32,12 @@ Examples
 Documentation
 -------------
 
-- [API Documentation](https://jptiz.github.io/libgba-cpp/html/index.html)
+- [API Documentation](https://jptiz.github.io/libgba-cpp/index.html)
 
 To-Do's
 -------
 
-- [ ] Allow non-Read-Only graphics API (currently all data must be `const`/in
-      ROM, or else we couldn't have bitmaps bigger than 32KB).
-- [ ] Add proper SFX support;
-- [ ] Add proper Music support;
-- [ ] Fix Mosaic effects;
-- [ ] Add DMA support;
-- [ ] Fix interrupt handling.
+[Check issues](https://github.com/JPTIZ/libgba-cpp/issues).
 
 Bibliography
 ------------
