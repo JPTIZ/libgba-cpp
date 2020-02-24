@@ -3,6 +3,7 @@
 
 #include <array>
 #include <bitset>
+#include <variant>
 
 #include <libgba-cpp/arch/registers.h>
 #include <libgba-cpp/utils/general.h>
@@ -159,25 +160,15 @@ private:
 
 /**
  * Single data from VRAM.
+ *
+ * May be:
+ * - A 16-bit pixel value;
+ * - Two consecutive palette indexes;
+ * - A Color value.
+ *
+ * @remarks Do not forget GBA VRAM is little-endian.
  */
-union VRAMData {
-    /**
-     * VRAM data as pixel value.
-     */
-    uint16_t s;
-
-    /**
-     * VRAM data as two palette index consecutive values.
-     *
-     * @remarks GBA VRAM is little-endian.
-     */
-    uint8_t c[2];
-
-    /**
-     * VRAM data as color.
-     */
-    Color color;
-};
+using VRAMData = std::variant<uint16_t, uint8_t[2], Color>;
 
 
 /**
@@ -209,7 +200,7 @@ namespace mode3 {
      * @returns Pixel color in given coordinates.
      */
     inline auto& vram(int x, int y) {
-        return vram_data()[x + screen_width * y].color;
+        return std::get<Color>(vram_data()[x + screen_width * y]);
     }
 
     /**
@@ -220,7 +211,7 @@ namespace mode3 {
      * @returns Pixel color in given VRAM index.
      */
     inline auto& vram(int index) {
-        return vram_data()[index].color;
+        return std::get<Color>(vram_data()[index]);
     }
 }
 
@@ -248,7 +239,7 @@ namespace mode4 {
      * @returns Palette index in given coordinates.
      */
     inline auto& vram(int x, int y) {
-        return vram_data()[x + screen_width * y / 2].c[y & 1];
+        return std::get<uint8_t[2]>(vram_data()[x + screen_width * y / 2])[y & 1];
     }
 
     /**
@@ -259,7 +250,7 @@ namespace mode4 {
      * @returns Palette index in given VRAM index.
      */
     inline auto& vram(int index) {
-        return vram_data()[index].c;
+        return std::get<uint8_t[2]>(vram_data()[index]);
     }
 }
 

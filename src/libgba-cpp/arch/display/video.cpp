@@ -23,7 +23,7 @@ Color& gba::display::mode5::vram(int x, int y) {
 }
 
 Color& gba::display::mode5::vram(int index) {
-    return vram_data()[index + utils::value_of(::page) * screen_width * screen_height].color;
+    return std::get<Color>(vram_data()[index + utils::value_of(::page) * screen_width * screen_height]);
 }
 
 Page gba::display::mode5::page() {
