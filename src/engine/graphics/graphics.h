@@ -1,9 +1,14 @@
-#ifndef GBA_ENGINE_GRAPHICS_GRAPHICS_H
-#define GBA_ENGINE_GRAPHICS_GRAPHICS_H
+#ifndef LIBGBA_ENGINE_GRAPHICS_H
+#define LIBGBA_ENGINE_GRAPHICS_H
 
-namespace gba::engine::graphics {
+#include <libgba-cpp/arch/display/video.h>
 
+/**
+ * Graphics API
+ */
+namespace gba::graphics {
 
+using gba::display::Color;
 
 }
 
