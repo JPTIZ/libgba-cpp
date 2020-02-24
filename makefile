@@ -3,8 +3,8 @@
 #------------------------------------------------------------------------------
 export BINDIR     = $(CURDIR)/bin
 export DOCDIR     = $(CURDIR)/docs
-export INCLUDEDIR = $(CURDIR)/include
 export SRCDIR     = $(CURDIR)/src
+export INCLUDEDIR = $(SRCDIR)
 export TESTDIR    = $(CURDIR)/tests
 
 #------------------------------------------------------------------------------
