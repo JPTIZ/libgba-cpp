@@ -30,7 +30,7 @@ export CXX	      = $(TOOLCHAIN)/arm-none-eabi-g++
 export LD         = $(TOOLCHAIN)/arm-none-eabi-g++
 export AR         = $(TOOLCHAIN)/arm-none-eabi-ar
 export OBJCOPY	  = $(TOOLCHAIN)/arm-none-eabi-objcopy
-export GBAFIX	  = $(TOOLCHAIN)/gbafix
+export GBAFIX	  = gbafix
 
 #------------------------------------------------------------------------------
 # Base compiler flags
@@ -57,7 +57,7 @@ export CXXFLAGS   = $(CFLAGS)\
 					-std=$(CXXSTD)
 
 export LDFLAGS    = $(CXXFLAGS)\
-	                -specs=gba.specs
+	                -specs=$(CURDIR)/gba.specs
 
 ifeq ($(DEBUG), 1)
 	export CXXFLAGS += -g
