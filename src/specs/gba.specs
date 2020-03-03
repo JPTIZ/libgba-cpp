@@ -1,0 +1,8 @@
+%rename link                old_link
+
+*link:
+%(old_link) -T /home/jptiz/dev/libgba-cpp/src/specs/gba_cart.ld%s --gc-sections
+
+*startfile:
+/home/jptiz/dev/libgba-cpp/src/specs/gba_crt0%O%s crti%O%s crtbegin%O%s
+

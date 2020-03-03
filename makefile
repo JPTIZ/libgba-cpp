@@ -3,8 +3,9 @@
 #------------------------------------------------------------------------------
 export BINDIR     = $(CURDIR)/bin
 export DOCDIR     = $(CURDIR)/docs
+export INCLUDEDIR = $(CURDIR)/src
+export SPECSDIR   = $(CURDIR)/src/specs
 export SRCDIR     = $(CURDIR)/src
-export INCLUDEDIR = $(SRCDIR)
 export TESTDIR    = $(CURDIR)/tests
 
 #------------------------------------------------------------------------------
@@ -57,7 +58,7 @@ export CXXFLAGS   = $(CFLAGS)\
 					-std=$(CXXSTD)
 
 export LDFLAGS    = $(CXXFLAGS)\
-	                -specs=$(CURDIR)/gba.specs
+	                -specs=$(SPECSDIR)/gba.specs
 
 ifeq ($(DEBUG), 1)
 	export CXXFLAGS += -g
