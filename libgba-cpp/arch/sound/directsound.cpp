@@ -1,7 +1,8 @@
-#include <libgba-cpp/arch/sound/directsound.h>
+#include <sound/directsound.h>
 
-#include <libgba-cpp/arch/registers.h>
 #include <libgba-cpp/utils/general.h>
+
+#include "registers.h"
 
 using utils::value_of;
 using namespace gba::arch::registers::sound;
