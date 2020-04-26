@@ -1,0 +1,29 @@
+# vi:syntax=toml
+[binaries]
+c = '/opt/devkitpro/devkitARM/bin/arm-none-eabi-gcc'
+cpp = '/opt/devkitpro/devkitARM/bin/arm-none-eabi-g++'
+ar = '/opt/devkitpro/devkitARM/bin/arm-none-eabi-ar'
+strip = '/opt/devkitpro/devkitARM/bin/arm-none-eabi-strip'
+gbafix = 'gbafix'
+
+[properties]
+cpp_eh = 'none'
+cpp_rtti = false
+cpp_args = [
+    '-ffast-math',
+    '-fomit-frame-pointer',
+    '-mthumb-interwork', ]
+default_library = 'static'
+has_function_printf = true
+
+[host_machine]
+system = 'none'
+cpu_family = 'arm'
+cpu = 'arm7tdmi'
+endian = 'little'
+
+[target_machine]
+system = 'none'
+cpu_family = 'arm'
+cpu = 'arm7tdmi'
+endian = 'little'
