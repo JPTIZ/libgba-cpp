@@ -1,6 +1,9 @@
 # Really specific
 gba.specs
 
+# Build system
+build
+
 # IDE configs
 .vscode
 
