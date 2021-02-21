@@ -1,0 +1,1 @@
+option('build-tests', type : 'boolean', value : false, description : 'Build ROMs from "tests" directory.')
