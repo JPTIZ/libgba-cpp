@@ -1,8 +1,8 @@
 %rename link                old_link
 
 *link:
-%(old_link) -T ___SPECS_DIR___/gba_cart.ld%s --gc-sections
+%(old_link) -T @SPECS_DIR@/gba_cart.ld%s --gc-sections
 
 *startfile:
-___SPECS_DIR___/gba_crt0%O%s crti%O%s crtbegin%O%s
+@CRT0_DIR@/gba_crt0%O%s crti%O%s crtbegin%O%s
 

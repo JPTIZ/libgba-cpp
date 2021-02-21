@@ -6,10 +6,11 @@ project('libgba-cpp',
   ],
 )
 
-add_global_arguments(['-mthumb-interwork',
-            '-fomit-frame-pointer',
-            '-ffast-math'], language: 'cpp')
-
 toplevel_inc = include_directories('.')
 
+subdir('specs')
 subdir('libgba-cpp')
+
+if get_option('build-tests')
+  subdir('tests')
+endif
