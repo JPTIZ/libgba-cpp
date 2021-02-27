@@ -14,8 +14,10 @@ Requirements
 A lot of statements are being written with C++11/14/17 features, so, the
 requirements are:
 
-- GCC 7.1 or above;
-- DevKitPro (to compile for GBA ARMv4 ISA and ARM7TDMI processor).
+- **Toolchain**: DevKitPro (to compile for GBA ARMv4 ISA and ARM7TDMI
+  processor).
+- **Compiler**: GCC 7.1 or above;
+- **Build-system**: Meson
 
 Examples
 --------
@@ -28,6 +30,37 @@ Examples
 - [Sound](tests/sound)
 - [Tilemap](tests/tilemap)
 - [Windowing](tests/windowing)
+
+Building
+--------
+
+To build this project, after installing the [Requirements](#Requirements) and
+cloning this repository, enter the cloned repository's directory and run:
+
+```console
+$ meson build
+```
+
+If you want to build examples as well, add `-Dbuild-tests=true` to the command:
+
+```console
+$ meson build -Dbuild-tests=true
+```
+
+Running examples
+----------------
+
+After building the examples (see [Building](#Building)), you'll need a GBA
+emulator. My personal recommendations are:
+- [MGBA](https://mgba.io/): an open-source fully-featured GBA emulator with a
+  lot of cool debugging tools. Can also link with GDB for a professional
+  in-depth debugging.
+- [Visual Boy Advance-M](https://vba-m.com/): continuation of the almighty
+  legendary VisualBoyAdvance.
+
+Examples are compiled into the `build/tests` directory. So to run, say,
+`alphablend` example, you should open `build/tests/alphablend.gba` with your
+emulator.
 
 Documentation
 -------------
