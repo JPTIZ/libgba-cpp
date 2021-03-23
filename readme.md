@@ -38,7 +38,7 @@ To build this project, after installing the [Requirements](#Requirements) and
 cloning this repository, enter the cloned repository's directory and run:
 
 ```console
-$ meson build
+$ meson build --cross-file cross_file.ini
 ```
 
 If you want to build examples as well, add `-Dbuild-tests=true` to the command:

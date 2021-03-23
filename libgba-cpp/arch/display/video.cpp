@@ -8,7 +8,7 @@ using gba::display::Color;
 using gba::display::RawPalette;
 using gba::display::VRAMData;
 
-static auto& vram_data = *new (reinterpret_cast<void*>(0x0600'0000)) std::array<VRAMData, 0x18000 / 2>{};
+static volatile auto& vram_data = *new (reinterpret_cast<void*>(0x0600'0000)) std::array<VRAMData, 0x18000 / 2>{};
 
 static auto page = Page::PAGE1;
 
