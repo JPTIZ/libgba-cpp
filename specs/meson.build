@@ -5,8 +5,8 @@ specs_in_files = files([
 specs_output = 'gba.specs'
 
 specs_conf = configuration_data({
-  'SPECS_DIR' : meson.current_source_dir(),
-  'CRT0_DIR' : meson.current_build_dir(),
+  'SPECS_DIR' : '/'.join(meson.current_source_dir().split('\\')),
+  'CRT0_DIR' : '/'.join(meson.current_build_dir().split('\\')),
 })
 
 specs_gen_file = configure_file(
