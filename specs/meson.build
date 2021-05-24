@@ -26,5 +26,9 @@ gba_crt0 = custom_target(
 
 gba_runtime_dep = declare_dependency(
   sources : gba_crt0,
-  link_args : '-specs=@0@'.format(specs_path)
+  link_args : [
+    '-specs=@0@'.format(specs_path),
+    # Include nosys for not implemented functions by previous spec file
+    '-specs=nosys.specs',
+  ]
 )
