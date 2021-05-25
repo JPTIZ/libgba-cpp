@@ -6,6 +6,62 @@
 #include <bitset>
 
 
+template<typename T>
+class bitset_bit {
+public:
+    bitset_bit(T& value, std::size_t index)
+        : index_(index)
+        , value_(value)
+    {}
+
+    bitset_bit& operator=(bool bit)
+	{
+	  if (bit) {
+	    value_ |= (1 << index_);
+	  } else {
+	    value_ &= ~(1 << index_);
+	  }
+      return *this;
+	};
+
+private:
+    std::size_t index_;
+    T& value_;
+};
+
+template<typename T>
+class bitset {
+public:
+    bitset() = default;
+
+    bitset(T value)
+        : value_(value)
+    {}
+
+    bitset_bit<T> operator[](std::size_t index) {
+        return bitset_bit(value_, index);
+    }
+
+    uint32_t operator=(const T& other)
+    {
+        value_ = other;
+        return value_;
+    }
+
+    T& operator|=(const T& other)
+    {
+        value_ |= other;
+        return value_;
+    }
+
+    unsigned long int to_ulong() const {
+        return value_;
+    }
+
+private:
+    T value_;
+};
+
 /**
  * Elements related to GBA's physical architecture.
  */
@@ -48,17 +104,17 @@ namespace display {
 /**
  * Display Control Register.
  */
-static auto& lcd_control                = at<std::bitset<16>>(0x0400'0000);
+static auto& lcd_control                = at<bitset<uint16_t>>(0x0400'0000);
 
 /**
  * Green Swap Register (no official documentation).
  */
-static auto& green_swap                 = at<std::bitset<16>>(0x0400'0002);
+static auto& green_swap                 = at<bitset<uint16_t>>(0x0400'0002);
 
 /**
  * Display status register.
  */
-static auto& lcd_status                 = at<std::bitset<16>>(0x0400'0004);
+static auto& lcd_status                 = at<bitset<uint16_t>>(0x0400'0004);
 
 /**
  * Number of scanline currently being processed by PPU.
@@ -147,7 +203,7 @@ static auto& window_inside              = at<uint16_t>(0x0400'0048);
 static auto& window_outside             = at<uint16_t>(0x0400'004a);
 
 static auto& mosaic_size                = at<uint16_t>(0x0400'004c);
-static auto& effect_control             = at<std::bitset<16>>(0x0400'0050);
+static auto& effect_control             = at<bitset<uint16_t>>(0x0400'0050);
 static auto& blend_a                    = at<uint8_t>(0x0400'0052);
 static auto& blend_b                    = at<uint8_t>(0x0400'0054);
 static auto& brightness                 = at<uint16_t>(0x0400'0056);
@@ -160,38 +216,38 @@ static auto& bg_palette                 = at<std::array<uint16_t, 256>>(0x0500'0
  */
 namespace sound {
 
-static auto& channel1_sweep             = at<std::bitset<16>>(0x0400'0060);
-static auto& channel1_envelope          = at<std::bitset<16>>(0x0400'0062);
-static auto& channel1_control           = at<std::bitset<16>>(0x0400'0064);
+static auto& channel1_sweep             = at<bitset<uint16_t>>(0x0400'0060);
+static auto& channel1_envelope          = at<bitset<uint16_t>>(0x0400'0062);
+static auto& channel1_control           = at<bitset<uint16_t>>(0x0400'0064);
 
-static auto& channel2_envelope          = at<std::bitset<16>>(0x0400'0068);
-static auto& channel2_control           = at<std::bitset<16>>(0x0400'006c);
+static auto& channel2_envelope          = at<bitset<uint16_t>>(0x0400'0068);
+static auto& channel2_control           = at<bitset<uint16_t>>(0x0400'006c);
 
-static auto& channel3_wave_bank         = at<std::bitset<16>>(0x0400'0070);
-static auto& channel3_length            = at<std::bitset<16>>(0x0400'0072);
-static auto& channel3_control           = at<std::bitset<16>>(0x0400'0074);
+static auto& channel3_wave_bank         = at<bitset<uint16_t>>(0x0400'0070);
+static auto& channel3_length            = at<bitset<uint16_t>>(0x0400'0072);
+static auto& channel3_control           = at<bitset<uint16_t>>(0x0400'0074);
 
-static auto& channel4_envelope          = at<std::bitset<16>>(0x0400'0078);
-static auto& channel4_noise             = at<std::bitset<16>>(0x0400'007c);
+static auto& channel4_envelope          = at<bitset<uint16_t>>(0x0400'0078);
+static auto& channel4_noise             = at<bitset<uint16_t>>(0x0400'007c);
 
-static auto& dmg_control                = at<std::bitset<16>>(0x0400'0080);
-static auto& directsound_control        = at<std::bitset<16>>(0x0400'0082);
-static auto& status                     = at<std::bitset<16>>(0x0400'0084);
+static auto& dmg_control                = at<bitset<uint16_t>>(0x0400'0080);
+static auto& directsound_control        = at<bitset<uint16_t>>(0x0400'0082);
+static auto& status                     = at<bitset<uint16_t>>(0x0400'0084);
 
-static auto& bias                       = at<std::bitset<16>>(0x0400'0088);
+static auto& bias                       = at<bitset<uint16_t>>(0x0400'0088);
 
-static auto& wave_ram0_l                = at<std::bitset<16>>(0x0400'0090);
-static auto& wave_ram0_h                = at<std::bitset<16>>(0x0400'0092);
+static auto& wave_ram0_l                = at<bitset<uint16_t>>(0x0400'0090);
+static auto& wave_ram0_h                = at<bitset<uint16_t>>(0x0400'0092);
 
-static auto& wave_ram1_l                = at<std::bitset<16>>(0x0400'0094);
-static auto& wave_ram1_h                = at<std::bitset<16>>(0x0400'0096);
+static auto& wave_ram1_l                = at<bitset<uint16_t>>(0x0400'0094);
+static auto& wave_ram1_h                = at<bitset<uint16_t>>(0x0400'0096);
 
-static auto& wave_ram2_l                = at<std::bitset<16>>(0x0400'0098);
-static auto& wave_ram2_h                = at<std::bitset<16>>(0x0400'009a);
+static auto& wave_ram2_l                = at<bitset<uint16_t>>(0x0400'0098);
+static auto& wave_ram2_h                = at<bitset<uint16_t>>(0x0400'009a);
 
 // TODO: Fix data types
-static auto& wave_ram3_l                = at<std::bitset<16>>(0x0400'009c);
-static auto& wave_ram3_h                = at<std::bitset<16>>(0x0400'009e);
+static auto& wave_ram3_l                = at<bitset<uint16_t>>(0x0400'009c);
+static auto& wave_ram3_h                = at<bitset<uint16_t>>(0x0400'009e);
 
 static auto& dsa_fifo_0                 = at<uint8_t>(0x0400'00a0);
 static auto& dsa_fifo_1                 = at<uint8_t>(0x0400'00a1);
@@ -247,14 +303,14 @@ static auto& serial_third               = at<uint16_t>(0x0400'0126);
 static auto& serial_control             = at<uint16_t>(0x0400'0128);
 static auto& serial_send_data           = at<uint8_t>(0x0400'012a);
 
-static volatile const auto& keypad_status = at<volatile const std::bitset<16>>(0x0400'0130);
-static auto& keypad_interrupt           = at<std::bitset<16>>(0x0400'0132);
+static volatile const auto& keypad_status = at<volatile const bitset<uint16_t>>(0x0400'0130);
+static auto& keypad_interrupt           = at<bitset<uint16_t>>(0x0400'0132);
 
-static auto& serial_mode                = at<std::bitset<16>>(0x0400'0134);
-static auto& serial_joy_control         = at<std::bitset<16>>(0x0400'0140);
+static auto& serial_mode                = at<bitset<uint16_t>>(0x0400'0134);
+static auto& serial_joy_control         = at<bitset<uint16_t>>(0x0400'0140);
 static auto& serial_joy_receive_data    = at<uint32_t>(0x0400'0150);
 static auto& serial_joy_transmit_data   = at<uint32_t>(0x0400'0154);
-static auto& serial_joy_receive_status  = at<std::bitset<32>>(0x0400'0158);
+static auto& serial_joy_receive_status  = at<bitset<uint32_t>>(0x0400'0158);
 
 }
 
@@ -263,10 +319,10 @@ static auto& serial_joy_receive_status  = at<std::bitset<32>>(0x0400'0158);
 //----------------------------------------------------------------------------
 namespace cpu {
 
-static auto& interrupt_enable           = at<std::bitset<16>>(0x0400'0200);
+static auto& interrupt_enable           = at<bitset<uint16_t>>(0x0400'0200);
 static volatile auto& interrupt_request = at<volatile uint16_t>(0x0400'0202);
-static auto& gamepak_wait_control       = at<std::bitset<16>>(0x0400'0204);
-static auto& master_enable              = at<std::bitset<16>>(0x0400'0208);
+static auto& gamepak_wait_control       = at<bitset<uint16_t>>(0x0400'0204);
+static auto& master_enable              = at<bitset<uint16_t>>(0x0400'0208);
 
 }
 
@@ -275,7 +331,7 @@ static auto& master_enable              = at<std::bitset<16>>(0x0400'0208);
 //----------------------------------------------------------------------------
 namespace bios {
 
-static volatile auto& interrupt_check   = at<std::bitset<16>>(0x0300'7ff8);
+static volatile auto& interrupt_check   = at<bitset<uint16_t>>(0x0300'7ff8);
 
 }
 
