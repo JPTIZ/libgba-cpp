@@ -1,12 +1,17 @@
+#include <new>
+
 #include <libgba-cpp/arch/display/window.h>
 
 using gba::display::WindowPosition;
 using gba::display::WindowControl;
 
 namespace {
-    auto& window0 = *new (reinterpret_cast<void*>(0x0400'0040)) WindowPosition{};
-    auto& window1 = *new (reinterpret_cast<void*>(0x0400'0042)) WindowPosition{};
-    auto& window_control = *new (reinterpret_cast<void*>(0x0400'0048)) WindowControl{};
+    auto const win0_address = reinterpret_cast<WindowPosition*>(0x0400'0040);
+    auto const win1_address = reinterpret_cast<WindowPosition*>(0x0400'0042);
+    auto const win2_address = reinterpret_cast<WindowPosition*>(0x0400'0048);
+    auto& window0 = *new (win0_address) WindowPosition{};
+    auto& window1 = *new (win1_address) WindowPosition{};
+    auto& window_control = *new (win2_address) WindowControl{};
 }
 
 namespace gba {

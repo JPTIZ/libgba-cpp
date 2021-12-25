@@ -10,7 +10,8 @@ using gba::display::RawPalette;
 
 using gba::arch::registers::display::bg_controls;
 
-static auto& bg_palette = *new (reinterpret_cast<void*>(0x0500'0000)) RawPalette<256>{};
+static auto const bg_address = reinterpret_cast<RawPalette<256>*>(0x0500'0000);
+static auto& bg_palette = *new (bg_address) RawPalette<256>{};
 
 }
 

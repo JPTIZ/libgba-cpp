@@ -5,8 +5,9 @@ using gba::display::RawPalette;
 
 namespace {
 
+static auto const obj_palette_address = reinterpret_cast<RawPalette<256>*>(0x0500'0200);
 static auto& obj_palette =
-    *new (reinterpret_cast<void*>(0x0500'0200)) RawPalette<256>{};
+    *new (obj_palette_address) RawPalette<256>{};
 
 }
 
