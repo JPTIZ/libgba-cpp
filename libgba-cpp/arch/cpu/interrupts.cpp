@@ -15,7 +15,8 @@ using namespace gba::arch::registers::bios;
 using namespace gba::arch::registers::cpu;
 
 auto& main_handler = *reinterpret_cast<handler_function_t*>(0x0300'7ffc);
-auto& display_status = *new (reinterpret_cast<void*>(0x0400'0004)) std::bitset<8>{};
+auto const display_status_address = reinterpret_cast<std::bitset<8>*>(0x0400'0004);
+auto& display_status = *new (display_status_address) std::bitset<8>{};
 auto& vcount_desired = *reinterpret_cast<uint8_t*>(0x0400'0005);
 
 struct Handler {
