@@ -4,6 +4,7 @@
 #include <array>
 #include <cstdint>
 #include <bitset>
+#include <type_traits>
 
 
 template<typename T>
@@ -82,18 +83,8 @@ namespace gba::arch::registers {
  * @returns Instantiated data in given address.
  */
 template <typename T>
-inline T& at(unsigned address) {
-    return *new (reinterpret_cast<void*>(address)) T{};
-}
-
-template <>
-inline uint16_t& at<uint16_t>(unsigned address) {
-    return *reinterpret_cast<uint16_t*>(address);
-}
-
-template <>
-inline volatile const uint16_t& at<volatile const uint16_t>(unsigned address) {
-    return *reinterpret_cast<volatile const uint16_t*>(address);
+inline T& at(uintptr_t address) {
+    return *new (reinterpret_cast<std::remove_volatile<T>*>(address)) T{};
 }
 
 /**
@@ -105,6 +96,7 @@ namespace display {
  * Display Control Register.
  */
 static auto& lcd_control                = at<bitset<uint16_t>>(0x0400'0000);
+static_assert(sizeof(lcd_control) == 2, "LCD Control must exactly have 2 bytes.");
 
 /**
  * Green Swap Register (no official documentation).
