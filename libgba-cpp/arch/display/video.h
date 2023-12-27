@@ -2,7 +2,6 @@
 #define GBA_DRIVERS_DISPLAY_VIDEO_H
 
 #include <array>
-#include <variant>
 
 #include <libgba-cpp/arch/registers.h>
 #include <libgba-cpp/utils/general.h>
@@ -47,7 +46,7 @@ inline volatile const auto& vcount() {
  * @remarks Changing the display mode will make PPU interpret VRAM data
  *          differently. Remember to update data when changing modes.
  */
-inline void change_mode(Mode mode) {
+inline auto change_mode(Mode mode) -> void {
     auto& lcd_control = gba::arch::registers::display::lcd_control;
     lcd_control = (lcd_control.to_ulong() & ~0b111u) | utils::value_of(mode);
 }
@@ -157,29 +156,19 @@ private:
 };
 
 
-/**
- * Single data from VRAM.
- *
- * May be:
- * - A 16-bit pixel value;
- * - Two consecutive palette indexes;
- * - A Color value.
- *
- * @remarks Do not forget GBA VRAM is little-endian.
- */
-using VRAMData = std::variant<uint16_t, uint8_t[2], Color>;
-
-
-/**
- * GBA's VRAM data array.
- */
-std::array<VRAMData, 0x18000 / 2>& vram_data();
+template <class VRAMDataType>
+inline auto vram_data() {
+  constexpr auto VRAM_BASE_ADDRESS = 0x0600'0000;
+  return reinterpret_cast<VRAMDataType*>(VRAM_BASE_ADDRESS);
+}
 
 
 /**
  * Display Mode 3 elements.
  */
 namespace mode3 {
+    using VRAMData = std::uint16_t;
+
     /**
      * Screen resolution's width.
      */
@@ -198,8 +187,8 @@ namespace mode3 {
      *
      * @returns Pixel color in given coordinates.
      */
-    inline auto& vram(int x, int y) {
-        return std::get<Color>(vram_data()[x + screen_width * y]);
+    inline auto vram(int x, int y) -> VRAMData& {
+        return vram_data<VRAMData>()[x + screen_width * y];
     }
 
     /**
@@ -209,8 +198,8 @@ namespace mode3 {
      *
      * @returns Pixel color in given VRAM index.
      */
-    inline auto& vram(int index) {
-        return std::get<Color>(vram_data()[index]);
+    inline auto vram(int index) -> VRAMData& {
+        return vram_data<VRAMData>()[index];
     }
 }
 
@@ -219,6 +208,8 @@ namespace mode3 {
  * Display Mode 4 elements.
  */
 namespace mode4 {
+    using VRAMData = std::array<std::uint8_t, 2>;
+
     /**
      * Screen resolution's width.
      */
@@ -238,7 +229,7 @@ namespace mode4 {
      * @returns Palette index in given coordinates.
      */
     inline auto& vram(int x, int y) {
-        return std::get<uint8_t[2]>(vram_data()[x + screen_width * y / 2])[y & 1];
+        return vram_data<VRAMData>()[x + screen_width * y / 2][y & 1];
     }
 
     /**
@@ -249,7 +240,7 @@ namespace mode4 {
      * @returns Palette index in given VRAM index.
      */
     inline auto& vram(int index) {
-        return std::get<uint8_t[2]>(vram_data()[index]);
+        return vram_data<VRAMData>()[index];
     }
 }
 
@@ -258,6 +249,8 @@ namespace mode4 {
  * Display Mode 5 elements.
  */
 namespace mode5 {
+    using VRAMData = Color;
+
     /**
      * Screen resolution's width.
      */
@@ -302,7 +295,7 @@ namespace mode5 {
 /**
  * Skip current VBlank stage and waits for the next one to begin.
  */
-inline void vsync() {
+inline auto vsync() -> void {
     while (vcount() >= 160) {}
     while (vcount() < 160) {}
 }

@@ -6,18 +6,9 @@ namespace {
 using gba::display::Page;
 using gba::display::Color;
 using gba::display::RawPalette;
-using gba::display::VRAMData;
-
-using VRAM = std::array<VRAMData, 0x18000 / 2>;
-static auto const vram_address = reinterpret_cast<VRAM*>(0x0600'0000);
-static auto& vram_data = *new (vram_address) VRAM{};
 
 static auto page = Page::PAGE1;
 
-}
-
-std::array<VRAMData, 0x18000 / 2>& gba::display::vram_data() {
-    return ::vram_data;
 }
 
 Color& gba::display::mode5::vram(int x, int y) {
@@ -25,7 +16,7 @@ Color& gba::display::mode5::vram(int x, int y) {
 }
 
 Color& gba::display::mode5::vram(int index) {
-    return std::get<Color>(vram_data()[index + utils::value_of(::page) * screen_width * screen_height]);
+    return vram_data<gba::display::mode5::VRAMData>()[index + utils::value_of(::page) * screen_width * screen_height];
 }
 
 Page gba::display::mode5::page() {

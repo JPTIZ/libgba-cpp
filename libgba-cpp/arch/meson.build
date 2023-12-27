@@ -1,14 +1,14 @@
 arch_src = files([
-    'cpu/interrupts.cpp',
-    'display/effects.cpp',
-    'display/layers.cpp',
-    'display/objects.cpp',
-    'display/tilemap.cpp',
-    'display/video.cpp',
-    'display/window.cpp',
-    'sound/directsound.cpp',
-    'sound/sound.cpp',
-  ])
+  'cpu/interrupts.cpp',
+  'display/effects.cpp',
+  'display/layers.cpp',
+  'display/objects.cpp',
+  'display/tilemap.cpp',
+  'display/video.cpp',
+  'display/window.cpp',
+  'sound/directsound.cpp',
+  'sound/sound.cpp',
+])
 
 arch_public_headers = files([
   'registers.h',
@@ -21,7 +21,7 @@ arch_public_headers = files([
   'display/window.h',
   'sound/directsound.h',
   'sound/sound.h',
-  ])
+])
 
 install_headers(arch_public_headers)
 
