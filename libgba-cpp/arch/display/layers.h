@@ -1,7 +1,6 @@
 #ifndef GBA_DRIVERS_DISPLAY_LAYERS_H
 #define GBA_DRIVERS_DISPLAY_LAYERS_H
 
-#include <array>
 
 #include <libgba-cpp/arch/registers.h>
 #include <libgba-cpp/arch/display/video.h>
