@@ -3,8 +3,8 @@
 
 #include <array>
 #include <cstdint>
-#include <bitset>
 #include <type_traits>
+#include <new>
 
 
 template<typename T>

@@ -1,6 +1,8 @@
 #ifndef GBA_DRIVERS_DISPLAY_WINDOW_H
 #define GBA_DRIVERS_DISPLAY_WINDOW_H
 
+#include <bitset>
+
 #include <libgba-cpp/arch/display/layers.h>
 
 namespace gba::display {
@@ -39,6 +41,7 @@ struct WindowPosition {
     uint8_t left;
 
 private:
+    [[maybe_unused]]
     uint8_t __do_not_plz[2];
 
 public:

@@ -2,7 +2,6 @@
 #define GBA_DRIVERS_DISPLAY_VIDEO_H
 
 #include <array>
-#include <bitset>
 #include <variant>
 
 #include <libgba-cpp/arch/registers.h>
