@@ -15,15 +15,22 @@ public:
         , value_(value)
     {}
 
-    bitset_bit& operator=(bool bit)
-	{
-	  if (bit) {
-	    value_ |= (1 << index_);
-	  } else {
-	    value_ &= ~(1 << index_);
-	  }
-      return *this;
-	};
+    bitset_bit& operator=(bool bit) {
+        if (bit) {
+            value_ |= (1 << index_);
+        } else {
+            value_ &= ~(1 << index_);
+        }
+        return *this;
+    };
+
+    operator bool() const {
+        return value_ & (1 << index_);
+    }
+
+    operator bool() {
+        return value_ & (1 << index_);
+    }
 
 private:
     std::size_t index_;
@@ -40,6 +47,14 @@ public:
     {}
 
     auto operator[](std::size_t index) -> bitset_bit<T> {
+        return bitset_bit(value_, index);
+    }
+
+    auto operator[](std::size_t index) const -> const bitset_bit<const T> {
+        return bitset_bit(value_, index);
+    }
+
+    auto operator[](std::size_t index) volatile const -> const bitset_bit<const volatile T> {
         return bitset_bit(value_, index);
     }
 
@@ -302,7 +317,7 @@ static auto& serial_third               = raw_at<uint16_t>(0x0400'0126);
 static auto& serial_control             = raw_at<uint16_t>(0x0400'0128);
 static auto& serial_send_data           = raw_at<uint8_t>(0x0400'012a);
 
-static volatile const auto& keypad_status = raw_at<volatile const bitset<uint16_t>>(0x0400'0130);
+static auto& keypad_status              = raw_at<volatile const bitset<uint16_t>>(0x0400'0130);
 static auto& keypad_interrupt           = raw_at<bitset<uint16_t>>(0x0400'0132);
 
 static auto& serial_mode                = raw_at<bitset<uint16_t>>(0x0400'0134);

@@ -19,24 +19,24 @@ struct Rect {
     int width;
     int height;
 
-    auto top_left() const {
-        return Point{x, y};
+    auto top_left() const -> Point {
+        return {x, y};
     }
 
-    auto top_right() const {
-        return Point{x + width, y};
+    auto top_right() const -> Point {
+        return {x + width, y};
     }
 
-    auto bottom_left() const {
-        return Point{x, y + height};
+    auto bottom_left() const -> Point {
+        return {x, y + height};
     }
 
-    auto bottom_right() const {
-        return Point{x + width, y + height};
+    auto bottom_right() const -> Point {
+        return {x + width, y + height};
     }
 
-    auto size() const {
-        return Size{width, height};
+    auto size() const -> Size {
+        return {width, height};
     }
 };
 

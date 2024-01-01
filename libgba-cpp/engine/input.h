@@ -16,8 +16,8 @@ enum class Key {
     L,
 };
 
-bool pressing(Key);
-void update();
+auto pressing(Key) -> bool;
+auto update() -> void;
 
 }
 

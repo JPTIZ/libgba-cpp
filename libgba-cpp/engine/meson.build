@@ -1,4 +1,5 @@
 engine_src = files([
+  'input.cpp',
   'graphics/bitmap.cpp',
   'graphics/palette.cpp',
   ])
