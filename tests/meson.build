@@ -1,6 +1,7 @@
 generic_test_dirs = [
   'alphablend',
   'interrupts',
+  'pong',
   'mode5',
   'mosaic',
   'sound',

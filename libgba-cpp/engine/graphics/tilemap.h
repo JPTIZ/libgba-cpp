@@ -3,18 +3,15 @@
 
 #include <array>
 #include <cstdint>
-#include <utility>
 
 #include <libgba-cpp/arch/display/layers.h>
 #include <libgba-cpp/arch/display/tilemap.h>
 #include "palette.h"
 
-#include "graphics.h"
 
 namespace gba::graphics {
 
 using MapSize = gba::display::MapSize;
-
 using Tile = gba::display::map::Tile;
 
 /**
@@ -76,7 +73,7 @@ public:
         tiles_{tiles}
     {}
 
-    const auto length() const {
+    auto length() const {
         return count_;
     }
 
@@ -84,7 +81,7 @@ public:
         return tiles_;
     }
 
-    const auto operator[](int i) const {
+    auto operator[](int i) const {
         return tiles_[i];
     }
 
@@ -183,12 +180,15 @@ inline void load_map(const Map& map) {
     load_tileset(map.tileset());
 
     /* set all control the bits in this register */
-    auto itlayer = std::begin({Layer::BG0, Layer::BG1, Layer::BG2, Layer::BG3});
-    auto priority = std::begin({
+    constexpr auto layers = std::array{Layer::BG0, Layer::BG1, Layer::BG2, Layer::BG3};
+    constexpr auto priorities = std::array{
         BGPriority::LOWEST,
         BGPriority::LOW,
         BGPriority::HIGH,
-        BGPriority::HIGHEST});
+        BGPriority::HIGHEST,
+    };
+    auto itlayer = std::begin(layers);
+    auto priority = std::begin(priorities);
     for (auto i = 0u; i < 4; ++i) {
         const auto layer = *itlayer;
 

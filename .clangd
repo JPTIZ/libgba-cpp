@@ -1,0 +1,7 @@
+CompileFlags:
+  Add: [
+    -isystem=/opt/devkitpro/devkitARM/arm-none-eabi/include,
+    -I/opt/devkitpro/devkitARM/arm-none-eabi/include/c++/13.2.0,
+    -I/opt/devkitpro/devkitARM/arm-none-eabi/include,
+    -I/opt/devkitpro/devkitARM/arm-none-eabi/include/c++/13.2.0/arm-none-eabi/,
+  ]
