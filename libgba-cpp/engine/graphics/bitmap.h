@@ -5,28 +5,23 @@
 
 #include <libgba-cpp/engine/graphics/tilemap.h>
 
-
 namespace gba::graphics {
-
 
 class PalettedBitmap {
 public:
-    PalettedBitmap(
-            int width,
-            int height,
-            const Palette& palette);
+    PalettedBitmap(int width, int height, const Palette& palette);
 
     PalettedBitmap(
-            int width,
-            int height,
-            const Palette& palette,
-            uint8_t data[]
+        int width,
+        int height,
+        const Palette& palette,
+        uint8_t data[]
     ):
         width_{width},
         height_{height},
         palette_{palette},
-        data_{data}
-    {}
+        data_{data} {
+    }
 
     auto width() const {
         return width_;
@@ -51,19 +46,19 @@ private:
     const uint8_t* data_;
 };
 
-
 class TiledBitmap {
 public:
     TiledBitmap(
-            int width,
-            int height,
-            const Tileset& tileset,
-            const Tilemap& tilemap):
+        int width,
+        int height,
+        const Tileset& tileset,
+        const Tilemap& tilemap
+    ):
         width_{width},
         height_{height},
         tileset_{tileset},
-        tilemap_{tilemap}
-    {}
+        tilemap_{tilemap} {
+    }
 
     auto tileset() const {
         return tileset_;
@@ -88,7 +83,6 @@ private:
     const Tilemap& tilemap_;
 };
 
-
-}
+} // namespace gba::graphics
 
 #endif

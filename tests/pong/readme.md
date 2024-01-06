@@ -11,7 +11,7 @@ Tests if a pong game example made for mode 3 works as expected.
 Explanation
 -----------
 
-_TODO._
+_TODO (waiting for engine code implementation)._
 
 Screenshots
 -----------
