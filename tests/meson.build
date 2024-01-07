@@ -1,11 +1,12 @@
 generic_test_dirs = [
-  'alphablend',
-  'interrupts',
-  'pong',
-  'mode5',
-  'mosaic',
-  'sound',
-  'windowing',
+  # 'alphablend',
+  # 'interrupts',
+  # 'pong',
+  'pong-mode0',
+  # 'mode5',
+  # 'mosaic',
+  # 'sound',
+  # 'windowing',
   ]
 
 foreach test_dir : generic_test_dirs

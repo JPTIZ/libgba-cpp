@@ -4,8 +4,6 @@
 #include <libgba-cpp/utils/geometry.h>
 #include "libgba-cpp/engine/map/objects.h"
 
-using gba::geometry::Rect;
-
 const static auto WHITE = gba::display::Color{31, 31, 31};
 const static auto BLACK = gba::display::Color{0, 0, 0};
 const static auto RED = gba::display::Color{31, 0, 0};
@@ -175,6 +173,8 @@ struct MainScreen {
     }
 
     auto game_loop() -> void {
+        using gba::geometry::Rect;
+
         auto seed = utils::random();
         // Screen size is 240x160, so value ranges [0..239, 0..159].
         // For the upper index we must consider that the ball starts -2 pixels

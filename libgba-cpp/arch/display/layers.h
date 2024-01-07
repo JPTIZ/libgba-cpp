@@ -110,7 +110,7 @@ enum class MapSize {
 };
 
 
-constexpr geometry::Size extract_size(MapSize size) {
+constexpr auto get_size_values(MapSize size) -> geometry::Size {
     switch (size) {
         case MapSize::TEXT_256X256:
             return {256, 256};
