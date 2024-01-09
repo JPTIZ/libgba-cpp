@@ -7,7 +7,7 @@
 /**
  * General C++ Utilities.
  */
-namespace utils {
+namespace gba::utils {
 
 /**
  * Extracts value from enum.

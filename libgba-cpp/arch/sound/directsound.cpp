@@ -4,7 +4,7 @@
 
 #include "registers.h"
 
-using utils::value_of;
+using gba::utils::value_of;
 using namespace gba::arch::registers::sound;
 
 namespace gba {

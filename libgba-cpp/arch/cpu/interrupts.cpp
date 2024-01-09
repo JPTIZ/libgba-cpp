@@ -53,7 +53,7 @@ auto& register_at(uint16_t address) {
 }
 
 void set_interrupt_bit(Handler handler, bool enabled) {
-    const auto& sender = senders[utils::value_of(handler.type)];
+    const auto& sender = senders[gba::utils::value_of(handler.type)];
     register_at(sender.offset)[sender.bit] = enabled;
 }
 

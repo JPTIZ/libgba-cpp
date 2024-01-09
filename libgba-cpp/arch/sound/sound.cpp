@@ -3,7 +3,7 @@
 #include <libgba-cpp/arch/registers.h>
 #include <libgba-cpp/utils/general.h>
 
-using utils::value_of;
+using gba::utils::value_of;
 using namespace gba::arch::registers::sound;
 
 namespace gba {

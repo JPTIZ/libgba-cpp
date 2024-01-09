@@ -6,75 +6,7 @@
 #include <type_traits>
 #include <new>
 
-
-template<typename T>
-class bitset_bit {
-public:
-    bitset_bit(T& value, std::size_t index)
-        : index_(index)
-        , value_(value)
-    {}
-
-    bitset_bit& operator=(bool bit) {
-        if (bit) {
-            value_ |= (1 << index_);
-        } else {
-            value_ &= ~(1 << index_);
-        }
-        return *this;
-    };
-
-    operator bool() const {
-        return value_ & (1 << index_);
-    }
-
-    operator bool() {
-        return value_ & (1 << index_);
-    }
-
-private:
-    std::size_t index_;
-    T& value_;
-};
-
-template<typename T>
-class bitset {
-public:
-    bitset() = default;
-
-    bitset(T value)
-        : value_(value)
-    {}
-
-    auto operator[](std::size_t index) -> bitset_bit<T> {
-        return bitset_bit(value_, index);
-    }
-
-    auto operator[](std::size_t index) const -> const bitset_bit<const T> {
-        return bitset_bit(value_, index);
-    }
-
-    auto operator[](std::size_t index) volatile const -> const bitset_bit<const volatile T> {
-        return bitset_bit(value_, index);
-    }
-
-    auto operator=(const T& other) -> uint32_t {
-        value_ = other;
-        return value_;
-    }
-
-    auto operator|=(const T& other) -> T& {
-        value_ |= other;
-        return value_;
-    }
-
-    auto to_ulong() const -> unsigned long int {
-        return value_;
-    }
-
-private:
-    T value_;
-};
+#include <libgba-cpp/utils/bitset.h>
 
 /**
  * Elements related to GBA's physical architecture.
@@ -118,18 +50,18 @@ namespace display {
 /**
  * Display Control Register.
  */
-static auto& lcd_control                = at<bitset<uint16_t>>(0x0400'0000);
+static auto& lcd_control                = at<gba::utils::bitset<uint16_t>>(0x0400'0000);
 static_assert(sizeof(lcd_control) == 2, "LCD Control must exactly have 2 bytes.");
 
 /**
  * Green Swap Register (no official documentation).
  */
-static auto& green_swap                 = raw_at<bitset<uint16_t>>(0x0400'0002);
+static auto& green_swap                 = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0002);
 
 /**
  * Display status register.
  */
-static auto& lcd_status                 = raw_at<bitset<uint16_t>>(0x0400'0004);
+static auto& lcd_status                 = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0004);
 
 /**
  * Number of scanline currently being processed by PPU.
@@ -218,7 +150,7 @@ static auto& window_inside              = raw_at<uint16_t>(0x0400'0048);
 static auto& window_outside             = raw_at<uint16_t>(0x0400'004a);
 
 static auto& mosaic_size                = raw_at<uint16_t>(0x0400'004c);
-static auto& effect_control             = raw_at<bitset<uint16_t>>(0x0400'0050);
+static auto& effect_control             = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0050);
 static auto& blend_a                    = raw_at<uint8_t>(0x0400'0052);
 static auto& blend_b                    = raw_at<uint8_t>(0x0400'0054);
 
@@ -230,38 +162,38 @@ static auto& bg_palette                 = raw_at<std::array<uint16_t, 256>>(0x05
  */
 namespace sound {
 
-static auto& channel1_sweep             = raw_at<bitset<uint16_t>>(0x0400'0060);
-static auto& channel1_envelope          = raw_at<bitset<uint16_t>>(0x0400'0062);
-static auto& channel1_control           = raw_at<bitset<uint16_t>>(0x0400'0064);
+static auto& channel1_sweep             = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0060);
+static auto& channel1_envelope          = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0062);
+static auto& channel1_control           = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0064);
 
-static auto& channel2_envelope          = raw_at<bitset<uint16_t>>(0x0400'0068);
-static auto& channel2_control           = raw_at<bitset<uint16_t>>(0x0400'006c);
+static auto& channel2_envelope          = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0068);
+static auto& channel2_control           = raw_at<gba::utils::bitset<uint16_t>>(0x0400'006c);
 
-static auto& channel3_wave_bank         = raw_at<bitset<uint16_t>>(0x0400'0070);
-static auto& channel3_length            = raw_at<bitset<uint16_t>>(0x0400'0072);
-static auto& channel3_control           = raw_at<bitset<uint16_t>>(0x0400'0074);
+static auto& channel3_wave_bank         = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0070);
+static auto& channel3_length            = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0072);
+static auto& channel3_control           = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0074);
 
-static auto& channel4_envelope          = raw_at<bitset<uint16_t>>(0x0400'0078);
-static auto& channel4_noise             = raw_at<bitset<uint16_t>>(0x0400'007c);
+static auto& channel4_envelope          = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0078);
+static auto& channel4_noise             = raw_at<gba::utils::bitset<uint16_t>>(0x0400'007c);
 
-static auto& dmg_control                = raw_at<bitset<uint16_t>>(0x0400'0080);
-static auto& directsound_control        = raw_at<bitset<uint16_t>>(0x0400'0082);
-static auto& status                     = raw_at<bitset<uint16_t>>(0x0400'0084);
+static auto& dmg_control                = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0080);
+static auto& directsound_control        = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0082);
+static auto& status                     = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0084);
 
-static auto& bias                       = raw_at<bitset<uint16_t>>(0x0400'0088);
+static auto& bias                       = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0088);
 
-static auto& wave_ram0_l                = raw_at<bitset<uint16_t>>(0x0400'0090);
-static auto& wave_ram0_h                = raw_at<bitset<uint16_t>>(0x0400'0092);
+static auto& wave_ram0_l                = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0090);
+static auto& wave_ram0_h                = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0092);
 
-static auto& wave_ram1_l                = raw_at<bitset<uint16_t>>(0x0400'0094);
-static auto& wave_ram1_h                = raw_at<bitset<uint16_t>>(0x0400'0096);
+static auto& wave_ram1_l                = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0094);
+static auto& wave_ram1_h                = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0096);
 
-static auto& wave_ram2_l                = raw_at<bitset<uint16_t>>(0x0400'0098);
-static auto& wave_ram2_h                = raw_at<bitset<uint16_t>>(0x0400'009a);
+static auto& wave_ram2_l                = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0098);
+static auto& wave_ram2_h                = raw_at<gba::utils::bitset<uint16_t>>(0x0400'009a);
 
 // TODO: Fix data types
-static auto& wave_ram3_l                = raw_at<bitset<uint16_t>>(0x0400'009c);
-static auto& wave_ram3_h                = raw_at<bitset<uint16_t>>(0x0400'009e);
+static auto& wave_ram3_l                = raw_at<gba::utils::bitset<uint16_t>>(0x0400'009c);
+static auto& wave_ram3_h                = raw_at<gba::utils::bitset<uint16_t>>(0x0400'009e);
 
 static auto& dsa_fifo_0                 = raw_at<uint8_t>(0x0400'00a0);
 static auto& dsa_fifo_1                 = raw_at<uint8_t>(0x0400'00a1);
@@ -317,14 +249,14 @@ static auto& serial_third               = raw_at<uint16_t>(0x0400'0126);
 static auto& serial_control             = raw_at<uint16_t>(0x0400'0128);
 static auto& serial_send_data           = raw_at<uint8_t>(0x0400'012a);
 
-static auto& keypad_status              = raw_at<volatile const bitset<uint16_t>>(0x0400'0130);
-static auto& keypad_interrupt           = raw_at<bitset<uint16_t>>(0x0400'0132);
+static auto& keypad_status              = raw_at<volatile const gba::utils::bitset<uint16_t>>(0x0400'0130);
+static auto& keypad_interrupt           = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0132);
 
-static auto& serial_mode                = raw_at<bitset<uint16_t>>(0x0400'0134);
-static auto& serial_joy_control         = raw_at<bitset<uint16_t>>(0x0400'0140);
+static auto& serial_mode                = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0134);
+static auto& serial_joy_control         = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0140);
 static auto& serial_joy_receive_data    = raw_at<uint32_t>(0x0400'0150);
 static auto& serial_joy_transmit_data   = raw_at<uint32_t>(0x0400'0154);
-static auto& serial_joy_receive_status  = raw_at<bitset<uint32_t>>(0x0400'0158);
+static auto& serial_joy_receive_status  = raw_at<gba::utils::bitset<uint32_t>>(0x0400'0158);
 
 }
 
@@ -333,9 +265,9 @@ static auto& serial_joy_receive_status  = raw_at<bitset<uint32_t>>(0x0400'0158);
 //----------------------------------------------------------------------------
 namespace cpu {
 
-static auto& interrupt_enable           = raw_at<bitset<uint16_t>>(0x0400'0200);
+static auto& interrupt_enable           = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0200);
 static volatile auto& interrupt_request = raw_at<volatile uint16_t>(0x0400'0202);
-static auto& gamepak_wait_control       = raw_at<bitset<uint16_t>>(0x0400'0204);
+static auto& gamepak_wait_control       = raw_at<gba::utils::bitset<uint16_t>>(0x0400'0204);
 static auto& master_enable              = raw_at<bool>(0x0400'0208);
 
 }
@@ -345,7 +277,7 @@ static auto& master_enable              = raw_at<bool>(0x0400'0208);
 //----------------------------------------------------------------------------
 namespace bios {
 
-static volatile auto& interrupt_check   = raw_at<bitset<uint16_t>>(0x0300'7ff8);
+static volatile auto& interrupt_check   = raw_at<gba::utils::bitset<uint16_t>>(0x0300'7ff8);
 
 }
 
