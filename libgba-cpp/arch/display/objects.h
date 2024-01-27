@@ -12,14 +12,14 @@ namespace gba::display {
  */
 enum class ObjectMapping {
     /**
-     * Object data as unidimensional array.
-     */
-    MAP_ARRAY,
-
-    /**
      * Object data as tile matrix.
      */
     MAP_TILE_MATRIX,
+
+    /**
+     * Object data as unidimensional array.
+     */
+    MAP_ARRAY,
 };
 
 /**

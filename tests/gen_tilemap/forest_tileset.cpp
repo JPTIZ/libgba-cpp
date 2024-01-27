@@ -1,5 +1,7 @@
 #include "forest_tileset.h"
 
+#include <libgba-cpp/engine/graphics.h>
+
 namespace {
 using gba::graphics::Color;
 using gba::graphics::Palette;

@@ -20,13 +20,13 @@ using Tile = gba::display::map::Tile;
 class Tileset {
 public:
     template <std::size_t N>
-    Tileset(const Palette& palette, const std::array<Tile, N>& tiles):
+    constexpr Tileset(const Palette& palette, const std::array<Tile, N>& tiles):
         palette_{palette},
         count_{N},
         tiles_{reinterpret_cast<const Tile*>(tiles.data())} {
     }
 
-    Tileset(const Palette& palette, const Tile tiles[], unsigned count):
+    constexpr Tileset(const Palette& palette, const Tile tiles[], unsigned count):
         palette_{palette},
         count_{count},
         tiles_{tiles} {
@@ -179,9 +179,7 @@ inline void load_map(const Map& map) {
     using gba::display::PaletteMode;
 
     /* load the palette from the image into palette memory*/
-    auto& palette = map.tileset().palette();
-    //volatile auto x = *reinterpret_cast<const long*>(palette.colors());
-    load_palette(palette);
+    load_palette(map.tileset().palette());
 
     /* load the image into char block 0 (16 bits at a time) */
     load_tileset(map.tileset());
@@ -248,6 +246,6 @@ constexpr auto null_tilemap = std::array<uint16_t, 32*32>{
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 };
 
-} // namespace gba::graphics
+}
 
 #endif

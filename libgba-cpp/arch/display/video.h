@@ -95,14 +95,14 @@ public:
     /**
      * Constructs black color.
      */
-    Color() = default;
+    constexpr Color() = default;
 
     /**
      * Constructs color from specified value.
      *
      * @param value Value (in X1B5G5R5 format).
      */
-    Color(unsigned value):
+    constexpr Color(unsigned value):
         value_{static_cast<uint16_t>(value)}
     {}
 
@@ -113,7 +113,7 @@ public:
      * @param g Green channel intensity.
      * @param b Blue channel intensity.
      */
-    Color(int r, int g, int b):
+    constexpr Color(int r, int g, int b):
         value_{static_cast<uint16_t>(
                 ((r & 0x1f) << 0) |
                 ((g & 0x1f) << 5) |
