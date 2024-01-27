@@ -5,3 +5,4 @@ CompileFlags:
     -I/opt/devkitpro/devkitARM/arm-none-eabi/include,
     -I/opt/devkitpro/devkitARM/arm-none-eabi/include/c++/13.2.0/arm-none-eabi/,
   ]
+  Remove: [-mthumb-interwork]

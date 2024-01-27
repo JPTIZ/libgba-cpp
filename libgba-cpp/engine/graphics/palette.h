@@ -4,7 +4,7 @@
 #include <array>
 #include <cstdint>
 
-#include "graphics.h"
+#include <libgba-cpp/arch/display/video.h>
 
 namespace gba::graphics {
 
@@ -14,13 +14,13 @@ namespace gba::graphics {
 class Palette {
 public:
     template <std::size_t N>
-    Palette(const std::array<Color, N>& palette):
+    constexpr Palette(const std::array<gba::display::Color, N>& palette):
         size_{N},
         palette_{palette.data()}
     {}
 
     template <std::size_t N>
-    Palette(const std::array<uint16_t, N>& palette):
+    constexpr Palette(const std::array<uint16_t, N>& palette):
         size_{N},
         palette_{palette.data()}
     {}
@@ -33,7 +33,7 @@ public:
             std::size_t size
     ):
         size_{size},
-        palette_{reinterpret_cast<const Color*>(palette)}
+        palette_{reinterpret_cast<const gba::display::Color*>(palette)}
     {}
 
     /**
@@ -67,7 +67,7 @@ public:
     static const Palette EMPTY;
 private:
     std::size_t size_;
-    const Color* palette_;
+    const gba::display::Color* palette_;
 };
 
 /**

@@ -40,7 +40,7 @@ public:
     Tile() = default;
 
     Tile(std::array<uint32_t, 8> rows):
-        rows_{move(rows)}
+        rows_{std::move(rows)}
     {}
 
     /**
